@@ -8,8 +8,9 @@ server '52.68.65.94', user: 'ec2-user', roles: %w{app db web}
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-
-
+server "52.68.65.94", user: "ec2-user", roles: %w{app db web}
+set :rails_env, "production"
+set :unicorn_rack_env, "production"
 # role-based syntax
 # ==================
 
