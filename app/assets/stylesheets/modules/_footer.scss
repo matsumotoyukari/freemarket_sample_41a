@@ -1,0 +1,158 @@
+.app-banner {
+  background: url(https://www.mercari.com/jp/assets/img/common/jp/top/download_bg_pc.jpg?40116333);
+  background-position: center;
+  min-width: 768px;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+            &-pc {
+              display: block;
+              overflow: hidden;
+              position: relative;
+              width: 750px;
+              height: 260px;
+              margin: 0 auto;
+              color: #fff;
+                  &-inner {
+                    left: 0;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                            h2 {
+                              text-shadow: 0 0 5px rgba(0,0,0,0.4);
+                              font-size: 24px;
+                              font-weight: bold;
+                                }
+                            p {
+                              text-shadow: 0 0 5px rgba(0,0,0,0.4);
+                              font-size: 35px;
+                              margin-top: 10px;
+                              display: inline;
+                              }
+                            }
+                  figure:last-child {
+                          position: absolute;
+                          top: 0;
+                          right: 0;
+                          bottom: 0;
+                          width: 300px;
+                          height: 100%;
+                          margin: 0;
+                          img {
+                              width: 100%;
+                              }
+                          }
+                  }
+            &-icon {
+                    margin-top: 20px;
+                    figure {
+                            float: left;
+                            margin: 0;
+                            padding: 0;
+                            }
+                            ul {
+                              float: left;
+                              margin-left: 24px;
+                              line-height: 68px;
+                              list-style: none;
+                                li {
+                                  float: left;
+                                  display: -webkit-box;
+                                    a {
+                                      display: block;
+                                      img {
+                                          vertical-align: middle;
+                                        }
+                                      }
+                                    a:hover {
+                                      opacity: 0.5;
+                                            }
+                                    }
+                                li:last-child {
+                                  margin-left: 16px;
+                                              }
+                                }
+                  }
+                  .clearfix:after {
+                                  content: "";
+                                  clear: both;
+                                  display: block;
+                                    }
+            }
+
+.global-footer {
+  background: #212121;
+  color: #fff;
+  padding: 60px 0;
+  text-align: center;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+              nav {
+                width: 1020px;
+                margin: 0 auto;
+                overflow:  hidden;
+                  ul {
+                    list-style: none;
+                    overflow:  hidden;
+                      .footer-cell {
+                        display: inline-block;
+                        width: 23%;
+                        margin: 0 2% 0 0;
+                        vertical-align: top;
+                        float: left;
+                                    h2 {
+                                      line-height: 1.4;
+                                      font-weight: bold;
+                                    }
+                                    .footer-head {
+                                      font-size: 16px;
+                                    }
+                                    li {
+                                      margin: 16px 0 0;
+                                    }
+                                    li:first-child {
+                                      margin: 24px 0 0;
+                                                    }
+                                    a {
+                                      font-size: 14px;
+                                      display: block;
+                                      line-height: 1;
+                                      color: #fff;
+                                      text-decoration: none;
+                                      }
+                                    a:hover {
+                                      opacity: 0.5;
+                                      text-decoration: underline;
+                                            }
+                                    .footer-nav-lang {
+                                      list-style: none;
+                                                      a {
+                                                        opacity: .3;
+                                                        vertical-align: top;
+                                                        display: inline;
+                                                        }
+                                                      img {
+                                                        margin: 0 8px 0 0;
+                                                          }
+                                                      .active {
+                                                        opacity: 1.0;
+                                                                }
+                                                      }
+                                    }
+                      }
+              }
+              .footer-logo {
+                    margin: 40px 0 0;
+                    text-align: center;
+                    content: "";
+                    clear: both;
+                    display: block;
+                    img {
+                      vertical-align: middle;
+                    }
+              }
+              .footer-copyright {
+                    margin: 8px 0 0;
+                    text-align: center;
+                                small {
+                                  font-size: 14px;
+                                      }
+                                }
+}
