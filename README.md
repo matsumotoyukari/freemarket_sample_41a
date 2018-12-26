@@ -15,8 +15,24 @@
 - has_many :products
 - has_many :likes
 - has_many :transactions
+- has_one :creditcard
+- has_one :address
+- has_one :personal_info
 
 
+## creditcardテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false,foreign_key: ture|
+|cardnumber|integer|null: false|
+|expiration_month|integer|null: false|
+|expiration_year|integer|null: false|
+|security_code|integer|null: false|
+
+### Association
+
+- belongs_to :user
 
 ## Rateテーブル
 
@@ -29,7 +45,7 @@
 
 ### Association
 - belongs_to :user
-- has_one :product
+- belongs_to :product
 
 
 
@@ -69,7 +85,7 @@
 
 |Column|type|option|
 |------|----|------|
-| user_id |references|null: false,foreign_key: true|
+| seller |references|null: false,foreign_key: true|
 | name |string|null:false|
 | detail | text | null: false|
 | category_id|references| null: false, foreign_key: true|
@@ -79,12 +95,12 @@
 | shipmentday| integer | null: false|
 | shipment|integer|null: false|
 |price|decimal|precision: 10,scale: 0|
-|size_id|references|null: true,foreign_key|
+|size_id|references|null: true,foreign_key: true|
 |  fee | integer | null: false|
 
 ### Association
 
-- belongs_to :user
+- belongs_to :user,foreign_key => "seller"
 - has_one :rate
 - has_many :likes
 - belongs_to :category
@@ -94,19 +110,24 @@
 - has_one :transaction
 - has_many :product_images
 
+
+
 ## Categoryテーブル
 
 |Column|type|option|
 |------|----|------|
 | name | string | null: false|
 | ancestry|string|index: true|
+| sizetype_id|refereces|null: true,foreign_key: true|
 
 
 
 ### Association
 
--  has_ancestry
--  has_many products
+- has_ancestry
+- has_many products
+- belongs_to sizetype
+- has_many :blands
 
 ### gem ancestry使用手順
 
@@ -128,17 +149,48 @@ end
 [ancestryのGithub](https://github.com/stefankroes/ancestry)
 
 
-## Blandテーブル
+## Sizetypeテーブル
 
 |Column|type|option|
 |------|----|------|
 | name | string|null: false|
 
+### Association
+
+- has_many :sizes
+- has_many :categories
+
+
+
+## Sizeテーブル
+
+|Column|type|option|
+|------|----|------|
+| name |string|null: false|
+| sizetype_id|references|null: false,foreign_key: true|
+
+### Association
+
+- has_many :products
+- belongs_to :sizetype
+
+
+
+
+
+
+## Blandテーブル
+
+|Column|type|option|
+|------|----|------|
+| name | string|null: false|
+| category_id| references|null:false, foreign_key|
+
 
 ### Association
 
 - has_many products
-
+- belongs_to category
 
 ## Areaテーブル
 
@@ -162,12 +214,46 @@ end
 
 - belongs_to :product
 
-
-## Sizeテーブル
+## addressテーブル
 
 |Column|type|option|
 |------|----|------|
-| name |string|null: false|
+| user_id|references|foreign_key: true|
+| first_name | string | null: false|
+| last_name | string | null: false|
+|first_name_kana| string | null: false|
+| last_name_kana| string | null:false |
+| zip-code | integer | null: false |
+| prefecture | string | null: false |
+| city | string | null: false |
+| address1 | string | null: false |
+| address2 | string | null: true |
+| telephone | integer | null: true |
+
 
 ### Association
-- has_one :product
+
+- belongs_to :user
+
+
+
+## Personal_infoテーブル
+
+|Column|type|option|
+|------|----|------|
+| user_id | references |foreign_key: true|
+| first_name | string | null: false|
+| last_name | string | null: false|
+|first_name_kana| string | null: false|
+| last_name_kana| string | null:false |
+| zip-code | integer | null: true |
+| prefecture | string | null: false |
+| city | string | null: false |
+| address1 | string | null: false |
+| address2 | string | null: true |
+|birthday | integer | null: false |
+
+
+### Association
+
+- belongs_to :user
