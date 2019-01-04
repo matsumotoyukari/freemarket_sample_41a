@@ -9,133 +9,136 @@
       overflow: hidden;
         .owl-stage {
           height: 100%;
-            .owl-item {
-              height: 100%;
-              float: left;
-              min-height: 1px;
-                .top-main-visual {
+            .prev-arrow {
+              cursor: pointer;
+              position: absolute;
+              top: 45%;
+              left: 60px;
+              z-index: 1;
+            }
+            .next-arrow {
+              cursor: pointer;
+              position: absolute;
+              top: 45%;
+              right: 60px;
+              z-index: 1;
+            }
+            .top-main-visual {
+              height: 390px;
+              background: url(https://www.mercari.com/jp/assets/img/common/jp/top/main_bg_pc.jpg);
+              background-size: cover;
+                div {
+                  max-width: 860px;
+                  position: relative;
                   height: 390px;
-                  background: url(https://www.mercari.com/jp/assets/img/common/jp/top/main_bg_pc.jpg);
-                  background-size: cover;
-                    div {
-                      max-width: 860px;
-                      position: relative;
-                      height: 390px;
-                      margin: 0 auto;
-                        .top-main-visual-content {
-                          position: absolute;
-                          top: 50%;
-                          left: 0;
-                          height: 298px;
-                          width: 480px;
-                          transform: translate(0, -50%);
-                            h2 {
-                              font-size: 60px;
-                              line-height: 1.2;
-                              font-weight: bold;
-                              color: #333;
-                            }
-                            p {
-                              font-size: 18px;
-                              margin: 16px 0 0;
-                              line-height: 1.77778;
-                              color: #333;
-                            }
-                            .top-main-visual-store {
-                              margin: 24px 0 0;
-                              line-height: 0;
+                  margin: 0 auto;
+                    .top-main-visual-content {
+                      position: absolute;
+                      top: 50px;
+                      left: 0;
+                      height: 298px;
+                      width: 480px;
+                        h2 {
+                          font-size: 60px;
+                          line-height: 1.2;
+                          font-weight: bold;
+                          color: #333;
+                        }
+                        p {
+                          font-size: 18px;
+                          margin: 16px 0 0;
+                          line-height: 1.77778;
+                          color: #333;
+                        }
+                        .top-main-visual-store {
+                          margin: 24px 0 0;
+                          line-height: 0;
+                          height: 50px;
+                            a {
+                              width: 170px;
                               height: 50px;
-                                a {
-                                  width: 170px;
-                                  height: 50px;
-                                  display: inline-block;
-                                  margin: 0 0 0 8px;
-                                    img {
-                                      width: 100%;
-                                      vertical-align: bottom;
-                                    }
-                                }
-                                a:first-child {
-                                  margin: 0;
+                              display: inline-block;
+                              margin: 0 0 0 8px;
+                                img {
+                                  width: 100%;
+                                  vertical-align: bottom;
                                 }
                             }
-                            .clearfix:after {
-                              content: '';
-                              display: block;
-                              clear: both;
+                            a:hover {
+                              opacity: 0.7;
+                            }
+                            a:first-child {
+                              margin: 0;
                             }
                         }
-                        .top-main-visual-iphone-picture {
-                              position: absolute;
-                              top: 0;
-                              right: 0;
-                              height: 100%;
-                              width: auto;
+                        .clearfix:after {
+                          content: '';
+                          display: block;
+                          clear: both;
                         }
+                    }
+                    .top-main-visual-iphone-picture {
+                          position: absolute;
+                          top: 0;
+                          right: 0;
+                          height: 100%;
+                          width: auto;
                     }
                 }
             }
-            .top-banner.banner-bokurano-heisei {
+            .banner-bokurano-heisei {
+              display: block;
+              height: 390px;
               background-image: url(https://www.mercari.com/jp/assets/img/common/jp/top/banner-bokurano-heisei.jpg);
             }
-            .top-banner.banner-kusanagi {
+            .banner-kusanagi {
+              display: block;
+              height: 390px;
               background-image: url(https://www.mercari.com/jp/assets/img/common/jp/top/top-banner-kusanagi.jpg);
             }
-            .top-banner.banner-welcome {
+            .banner-welcome {
+              display: block;
+              height:390px;
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
               background-color: #D9F7FF;
               background-image: url(https://www.mercari.com/jp/assets/img/common/jp/top/top-banner-welcome.png);
             }
         }
     }
-    .owl-nav {
-      color: transparent;
-      display: block;
-      height: 0;
-        .owl-prev {
-          left: 60px;
-          background-image: url(https://www.mercari.com/jp/assets/img/common/jp/top/carousel-prev.png);
-          cursor: pointer;
-          height: 46px;
-          width: 31px;
-          position: absolute;
-          top: 50%;
-          -webkit-transform: translateY(-23px);
-          transform: translateY(-23px);
-        }
-        .owl-next {
-          right: 60px;
-          background-image: url(https://www.mercari.com/jp/assets/img/common/jp/top/carousel-next.png);
-          cursor: pointer;
-          height: 46px;
-          width: 31px;
-          position: absolute;
-          top: 50%;
-          -webkit-transform: translateY(-23px);
-          transform: translateY(-23px);
-        }
-    }
-    .owl-dots {
+    .slide-dots {
       margin: -30px;
       text-align: center;
-        .owl-dot {
-          background: #fff;
-          border-radius: 50%;
-          height: 12px;
-          margin-right: 15px;
-          width: 12px;
-          position: relative;
-          overflow: hidden;
+      position: relative;
+        li {
           display: inline-block;
-          opacity: .4;
-          cursor: pointer;
+          margin: 0 15px 0 0;
+            button {
+              position: relative;
+              text-indent: -9999px;
+              cursor: pointer;
+              border-radius: 50%;
+              display: inline-block;
+              padding: 0;
+              height: 12px;
+              width: 12px;
+              overflow: hidden;
+              border: none;
+              background-color: #fff;
+              opacity: .4;
+              pointer-events: none;
+            }
         }
-        .active {
-          background: rgba(0,0,0,0.5);
+        .slick-active {
+              button {
+                cursor: default;
+                opacity: 0.9;
+                background-color: rgba(0,0,0,0.5);
+              }
         }
     }
 }
-
-
 
 
 
@@ -169,7 +172,6 @@
   }
   .items-box-container {
     width: 940px;
-    // height: 330px;
     margin: 0 auto;
     .text-center {
       font-size: 22px;
@@ -184,7 +186,6 @@
     .items-box-content.clearfix{
       width: auto;
       margin: 0 auto;
-      // background-color: red;
       height: 330px;
       .items-box{
         margin: 0 0 0 20px;
@@ -197,32 +198,21 @@
           display: block;
           color: #333;
           text-decoration: none;
-          // margin: 0;
           .items-box-photo {
             width: 213px;
-            // height: 220px;
             overflow: hidden;
             position: relative;
             padding: 0 0 100%;
             margin: 0;
             .is-higher-height.lazyloaded{
-              // height: 213px;
-              // width: 287px;
               position: absolute;
-              // top: 0;
-              // right: 0;
-              // bottom: 0;
-              // left: 0;
               z-index: 1;
               width: 100%;
             }
           }
           .items-box-body{
             padding: 16px 16px 8px 16px;
-            // height: 110px;
-            // margin: 0;
             .items-box-name{
-              // height: 48px;
               overflow: hidden;
               position: relative;
               font-weight: 400;
@@ -234,8 +224,6 @@
               color: #333;
             }
             .items-box-num.clearfix{
-              // height: 30px;
-              // width: 181px;
               margin: 8px 0 0;
               .items-box-price{
                 font-size: 19px;
@@ -246,9 +234,6 @@
               .items-box-likes{
                 float: right;
                 font-size: 16px;
-                // font-weight: 400;
-                // color: #333;
-                // margin: 0 4px 0 0;
                 vertical-align: middle;
                 .fa-heart{
                 display: inline-block;
@@ -260,17 +245,13 @@
                 line-height: 1;
                 color: #ccc;
                 vertical-align: inherit;
-                // -webkit-font-smoothing: antialiased;
                 }
                 span{
                   display: inline-block;
-                  // margin: 1px 0 0;
                   vertical-align: middle;
                 }
               }
               .item-box-tax{
-                // margin: 0;
-                // padding: 0;
                 font-size: 10px;
                 clear: both;
               }
@@ -280,8 +261,6 @@
       }
     }
     .view-all{
-      // width: 940px;
-      // height: 64px;
       padding: 20px 0 30px;
       width: 99.5%;
       text-align: right;
@@ -289,8 +268,6 @@
         color: #0099e8;
         text-decoration: none;
         font-size: 14px;
-        // display: block;
-        // clear: both;
       }
     }
   }
