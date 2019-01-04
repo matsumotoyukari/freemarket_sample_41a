@@ -1,7 +1,7 @@
 .pc-header.visible-pc{
-  height: 90px;
+  height: 83px;
   .pc-header-inner{
-    height: 90px;
+    height: 83px;
     width: 1020px;
     margin: 0 auto;
     font-family: 'Source Sans Pro', Helvetica, Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
@@ -64,12 +64,18 @@
               text-decoration: none;
               color: black;
             }
+            .pc-header-nav-foot:hover{
+              color: #0099e8;
+            }
             .pc-header-nav-root{
               position: relative;
               line-height: 32px;
               margin-left: 12px;
               text-decoration: none;
               color: black;
+            }
+            .pc-header-nav-root:hover{
+              color: #0099e8;
             }
           }
         }
@@ -92,6 +98,10 @@
             padding: 5px 10px;
             text-decoration: none;
           }
+          .sp-header-btn.btn-red:hover{
+            background-color: #DD0000;
+            transition:all 0.5s;
+          }
           .sp-header-btn.header-signup{
             background: #fff;
             border-radius: 4px;
@@ -102,6 +112,11 @@
             padding: 5px 10px;
             float: right;
             text-decoration: none;
+          }
+          .sp-header-btn.header-signup:hover{
+            background-color: #0099e8;
+            color: white;
+            transition:all 0.5s;
           }
         }
       }
