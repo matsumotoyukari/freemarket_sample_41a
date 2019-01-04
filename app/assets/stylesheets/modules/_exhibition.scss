@@ -1,0 +1,22 @@
+.footer-sell-btn {
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  position: fixed;
+  z-index: 1000;
+  bottom: 32px;
+  right: 32px;
+  width: 160px;
+  height: 160px;
+  font-size: 22px;
+  border-radius: 50%;
+  background: #ea352d;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  div {
+    margin: 28px 0 0;
+  }
+  .fa.fa-camera {
+    // margin: 8px 0 0;
+    font-size: 60px;
+  }
+}
