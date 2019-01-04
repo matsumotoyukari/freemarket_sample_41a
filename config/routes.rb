@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root "products#index"
   resources :users
   get "productshow" => "products#productshow"
+  get "buyproduct" => "products#buyproduct"
 end
