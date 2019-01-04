@@ -250,9 +250,9 @@
 ## comment
 |Column|type|option|
 |------|----|------|
-| text | text | null: dalse|
+| text | text | null: false|
 | user_id | references | foreign_key:true |
-| product_id | references | foreign_key |
+| product_id | references | foreign_key: true |
 
 
 ### Assosiation
