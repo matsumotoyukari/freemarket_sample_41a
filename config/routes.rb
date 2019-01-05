@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get "productshow" => "products#productshow"
   get "buyproduct" => "products#buyproduct"
   get "userlogout" => "users#userlogout"
+  get "creditcard" => "users#creditcard-registration"
 end
