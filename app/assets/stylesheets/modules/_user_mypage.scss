@@ -1,13 +1,17 @@
 //右のリスト全体
 .l-container {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
   border-style: solid;
-  height: 100vh;
+  height: 100%;
   border-width: 0;
   width : 1020px;
   margin: 40px auto 0;
   padding: 0 0 40px;
   background-repeat: no-repeat;
-  @include clearfix();
 }
 
 //全体
