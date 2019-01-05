@@ -49,14 +49,36 @@
     background: #fff;
     .mypage-tabs {
       border: 0;
-      background: #eee;
       font-size: 0;
       li {
+        background: #eee;
         width: 50%;
         display: inline-block;
         text-align: center;
         vertical-align: top;
         h3 {
+          font-weight: bold;
+          font-size: 22px;
+          a{
+          position: relative;
+          display: block;
+          color: #333;
+          font-size: 16px;
+          line-height: 72px;
+          text-decoration: none;
+        }
+      }
+    }
+    li.active {
+        font-weight: bold;
+        border-top: solid 2px red;
+        background: #fff;
+        width: 50%;
+        display: inline-block;
+        text-align: center;
+        vertical-align: top;
+        h3 {
+          font-weight: bold;
           font-size: 22px;
           a{
           position: relative;
@@ -119,6 +141,7 @@
   margin: 40px 0 0;
   background: #fff;
   .mypage-tab-head{
+    font-weight: bold;
     padding: 0 16px;
     background: #fafafa;
     font-size: 16px;
@@ -128,13 +151,33 @@
     border: 0;
     background: #eee;
     font-size: 0;
-    li {
+    li.active {
+      border-top: solid 2px red;
       background: #fff;
       width: 50%;
       display: inline-block;
       text-align: center;
       vertical-align: top;
       h3{
+        font-weight: bold;
+        font-size: 22px;
+        a{
+            position: relative;
+            display: block;
+            color: #333;
+            font-size: 16px;
+            line-height: 72px;
+        }
+      }
+    }
+    li {
+      background: #eee;
+      width: 50%;
+      display: inline-block;
+      text-align: center;
+      vertical-align: top;
+      h3{
+        font-weight: bold;
         font-size: 22px;
         a{
             position: relative;
@@ -203,20 +246,36 @@ h2{
   .mypage-nav-list{
     display: block;
     list-style: none;
+    .mypage-nav-list-item.active {
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+      background-color: #eee;
+      position: relative;
+      display: block;
+      min-height: 15px;
+      padding: 18px;
+      color: #333;
+      }
     .mypage-nav-list-item {
-        border-bottom: 1px solid #eee;
-        position: relative;
-        display: block;
-        min-height: 15px;
-        padding: 18px;
-        background: #fff;
-        color: #333;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      display: block;
+      min-height: 15px;
+      padding: 18px;
+      background: #fff;
+      color: #333;
       }
     }
   }
 }
 
-
+.angle-right {
+  position: absolute;
+  top: 23px;
+  right: 16px;
+  font-size : 15px;
+  opacity: 0.7;
+}
 
 a{
   text-decoration: none;
