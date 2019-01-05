@@ -1,89 +1,4 @@
 %main.l-container.clearfix
-  .l-content
-    %section.mypage-user-icon
-      = link_to "#" do
-        %figure
-          %img
-        %h2.bold
-          Shuta imai
-        .mypage-number
-          %div
-            評価
-            %span.bold
-              0
-          %div
-            出品数
-            %span.bold
-              0
-    %section.mypage-tab-container-notification-todo
-      %ul.mypage-tabs
-        %li
-          %h3
-            =link_to "お知らせ", "#"
-      .tab-content
-        %ul#mypage-tab-notification.mypage-item-list.tab-pane.active
-          %li
-            =link_to "#", class: "mypage-item-link" do
-              %figure
-                %img.lazyloaded{:alt => "", "data-src" => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", :src => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png"}/
-              .mypge-item-body
-                .mypage-item-text
-                  【期間限定のお得情報】2018年話題になった賞品をプレゼント！キャンペーン詳細はこちら
-                %time
-                  %i.icon-time
-                  %span
-                    4日前
-              %i.icon-arrow-right
-          %li
-            =link_to "#", class: "mypage-item-link" do
-              %figure
-                %img.lazyloaded{:alt => "", "data-src" => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", :src => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png"}/
-              .mypge-item-body
-                .mypage-item-text
-                  【期間限定のお得情報】2018年話題になった賞品をプレゼント！キャンペーン詳細はこちら
-                %time
-                  %i.icon-time
-                  %span
-                    4日前
-              %i.icon-arrow-right
-          %li
-            =link_to "#", class: "mypage-item-link" do
-              %figure
-                %img.lazyloaded{:alt => "", "data-src" => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", :src => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png"}/
-              .mypge-item-body
-                .mypage-item-text
-                  【期間限定のお得情報】2018年話題になった賞品をプレゼント！キャンペーン詳細はこちら
-                %time
-                  %i.icon-time
-                  %span
-                    4日前
-              %i.icon-arrow-right
-          %li
-            =link_to "#", class: "mypage-item-link" do
-              %figure
-                %img.lazyloaded{:alt => "", "data-src" => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", :src => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png"}/
-              .mypge-item-body
-                .mypage-item-text
-                  【期間限定のお得情報】2018年話題になった賞品をプレゼント！キャンペーン詳細はこちら
-                %time
-                  %i.icon-time
-                  %span
-                    4日前
-              %i.icon-arrow-right
-          %li.mypage-go-list
-            =link_to "一覧を見る", "#"
-    %section.mypage-tab-container
-      %h2.mypage-tab-head
-        購入した商品
-      %ul.mypage-tabs
-        %li
-          %h3
-            = link_to "#" do
-              取引中
-      .tab-content
-        %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane
-          %li.mypage-item-not-found.bold
-          取引中の商品がありません
   .l-side
     %nav.mypage-nav
       %ul.mypage-nav-list
@@ -182,7 +97,91 @@
             電話番号の確認
             %i
         %li
-          = link_to "#", class: "mypage-nav-list-item" do
+          = link_to "/userlogout", class: "mypage-nav-list-item" do
             ログアウト
             %i
-
+  .l-content
+    %section.mypage-user-icon
+      = link_to "#" do
+        %figure
+          %img
+        %h2.bold
+          Shuta imai
+        .mypage-number
+          %div
+            評価
+            %span.bold
+              0
+          %div
+            出品数
+            %span.bold
+              0
+    %section.mypage-tab-container-notification-todo
+      %ul.mypage-tabs
+        %li
+          %h3
+            =link_to "お知らせ", "#"
+      .tab-content
+        %ul#mypage-tab-notification.mypage-item-list.tab-pane.active
+          %li
+            =link_to "#", class: "mypage-item-link" do
+              %figure
+                %img.lazyloaded{:alt => "", "data-src" => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", :src => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png"}/
+              .mypge-item-body
+                .mypage-item-text
+                  【期間限定のお得情報】2018年話題になった賞品をプレゼント！キャンペーン詳細はこちら
+                %time
+                  %i.icon-time
+                  %span
+                    4日前
+              %i.icon-arrow-right
+          %li
+            =link_to "#", class: "mypage-item-link" do
+              %figure
+                %img.lazyloaded{:alt => "", "data-src" => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", :src => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png"}/
+              .mypge-item-body
+                .mypage-item-text
+                  【期間限定のお得情報】2018年話題になった賞品をプレゼント！キャンペーン詳細はこちら
+                %time
+                  %i.icon-time
+                  %span
+                    4日前
+              %i.icon-arrow-right
+          %li
+            =link_to "#", class: "mypage-item-link" do
+              %figure
+                %img.lazyloaded{:alt => "", "data-src" => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", :src => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png"}/
+              .mypge-item-body
+                .mypage-item-text
+                  【期間限定のお得情報】2018年話題になった賞品をプレゼント！キャンペーン詳細はこちら
+                %time
+                  %i.icon-time
+                  %span
+                    4日前
+              %i.icon-arrow-right
+          %li
+            =link_to "#", class: "mypage-item-link" do
+              %figure
+                %img.lazyloaded{:alt => "", "data-src" => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", :src => "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png"}/
+              .mypge-item-body
+                .mypage-item-text
+                  【期間限定のお得情報】2018年話題になった賞品をプレゼント！キャンペーン詳細はこちら
+                %time
+                  %i.icon-time
+                  %span
+                    4日前
+              %i.icon-arrow-right
+          %li.mypage-go-list
+            =link_to "一覧を見る", "#"
+    %section.mypage-tab-container
+      %h2.mypage-tab-head
+        購入した商品
+      %ul.mypage-tabs
+        %li
+          %h3
+            = link_to "#" do
+              取引中
+      .tab-content
+        %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane
+          %li.mypage-item-not-found.bold
+          取引中の商品がありません
