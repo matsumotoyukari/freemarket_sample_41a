@@ -1,3 +1,5 @@
+= render "products/header"
+
 %main.l-container.clearfix
   .l-content
     %section.mypage-user-icon
@@ -192,3 +194,5 @@
           = link_to "/userlogout", class: "mypage-nav-list-item" do
             ログアウト
             = fa_icon "angle-right", class: "angle-right"
+
+= render "products/footer"
