@@ -17,7 +17,7 @@
                   .sell-upload-items.have-item-0
                     %ul
                 .sell-upload-drop-box
-                  %input.sell-upload-drop-file{multiple: "multiple", name: "image1", style: "display: none;", type: "file"}/
+                  %input.sell-upload-drop-file{multiple: "multiple", name: "images[]", style: "display: none;", type: "file"}/
                   %pre.visible-pc
                     :preserve
                       ドラッグアンドドロップ
@@ -63,25 +63,59 @@
                         %option{value: "1318"} 自動車・オートバイ
                         %option{value: "10"} その他
                       %i.fas.fa-chevron-down
+                    .select-wrap
+                      %select.select-default
+                        %option{value: ""} ---
+                        %option{value: "30"} トップス
+                        %option{value: "31"} ジャケット/アウター
+                        %option{value: "32"} パンツ
+                        %option{value: "33"} 靴
+                        %option{value: "34"} バッグ
+                        %option{value: "35"} スーツ
+                        %option{value: "36"} 帽子
+                        %option{value: "37"} アクセサリー
+                        %option{value: "38"} 小物
+                        %option{value: "39"} 時計
+                        %option{value: "40"} 水着
+                        %option{value: "41"} レッグウェア
+                        %option{value: "42"} アンダーウェア
+                        %option{value: "43"} その他
+                      %i.fas.fa-chevron-down
+                    .select-wrap
+                      %select.select-default
+                        %option{value: ""} ---
+                        %option{value: "302"} Tシャツ/カットソー(半袖/袖なし)
+                        %option{value: "303"} Tシャツ/カットソー(七分/長袖)
+                        %option{value: "304"} シャツ
+                        %option{value: "305"} ポロシャツ
+                        %option{value: "306"} タンクトップ
+                        %option{value: "307"} ニット/セーター
+                        %option{value: "308"} パーカー
+                        %option{value: "309"} カーディガン
+                        %option{value: "310"} スウェット
+                        %option{value: "311"} ジャージ
+                        %option{value: "312"} ベスト
+                        %option{value: "313"} その他
+                      %i.fas.fa-chevron-down
                 / サイズを持つカテゴリーの商品を選択後追加されるフォーム
-                / .form-group
-                /   %label
-                /     サイズ
-                /     %span.form-require 必須
-                /   .select-wrap
-                /     %select.select-default
-                /       %option{value: ""} ---
-                /       %option{value: "153"} XXS以下
-                /       %option{value: "154"} XS(SS)
-                /       %option{value: "2"} S
-                /       %option{value: "3"} M
-                /       %option{value: "4"} L
-                /       %option{value: "5"} XL(LL)
-                /       %option{value: "155"} 2XL(3L)
-                /       %option{value: "156"} 3XL(4L)
-                /       %option{value: "157"} 4XL(5L)以上
-                /       %option{value: "7"} FREE SIZE
-                /     %i.fas.fa-chevron-down
+                .form-group
+                  %label
+                    サイズ
+                    %span.form-require 必須
+                  .select-wrap
+                    %select.select-default
+                      %option{value: ""} ---
+                      %option{value: "153"} XXS以下
+                      %option{value: "154"} XS(SS)
+                      %option{value: "2"} S
+                      %option{value: "3"} M
+                      %option{value: "4"} L
+                      %option{value: "5"} XL(LL)
+                      %option{value: "155"} 2XL(3L)
+                      %option{value: "156"} 3XL(4L)
+                      %option{value: "157"} 4XL(5L)以上
+                      %option{value: "7"} FREE SIZE
+                    %i.fas.fa-chevron-down
                 / react-empty: 276
                 / ブランドを持つカテゴリーを選択後追加されるフォーム
                 / .form-group.form-suggest-container
@@ -118,6 +152,23 @@
                       %option{value: ""} ---
                       %option{value: "2"} 送料込み(出品者負担)
                       %option{value: "1"} 着払い(購入者負担)
+                    %i.fas.fa-chevron-down
+                .form-group
+                  %label
+                    配送の方法
+                    %span.form-require 必須
+                  .select-wrap
+                    %select.select-default
+                      %option{value: ""} ---
+                      %option{value: "5"} 未定
+                      %option{value: "14"} らくらくメルカリ便
+                      %option{value: "6"} ゆうメール
+                      %option{value: "8"} レターパック
+                      %option{value: "9"} 普通郵便(定形、定形外)
+                      %option{value: "10"} クロネコヤマト
+                      %option{value: "11"} ゆうパック
+                      %option{value: "13"} クリックポスト
+                      %option{value: "7"}
                     %i.fas.fa-chevron-down
                 .form-group
                   %label
