@@ -50,12 +50,12 @@
 
 
 
-# サイズタイプ
+# # サイズタイプ
 # Sizetype.create(name: "服のサイズ")
 # Sizetype.create(name: "靴のサイズ")
 
 
-# サイズ
+# # サイズ
 
 # Size.create(name: "XXS以下",sizetype_id: 1)
 # Size.create(name: "XS(SS)",sizetype_id: 1)
@@ -88,7 +88,8 @@
 
 # カテゴリーテーブル
 
-ladies, mens,baby,interior,book_music_game,toy_hoby_goods,kosumebiyou,kadensumaho,sportleja,handmade,ticket,car_autoby,sonota1 = Category.create([{name: "レディース"}, {name: "メンズ"},{name: "ベビー・キッズ"},{name: "インテリア・住まい・小物"},{name: "本・音楽・ゲーム"},{name: "おもちゃ・ホビー・グッズ"},{name: "コスメ・香水・美容"},{name: "家電・スマホ・カメラ"},{name: "スポーツ・レジャー"},{name: "ハンドメイド"},{name: "チケット"},{name: "自動車・オートバイ"},{name: "その他"}])
+ladies,mens,baby,interior,book_music_game,toy_hoby_goods,kosumebiyou,kadensumaho,sportleja,handmade,ticket,car_autoby,sonota1 = Category.create([{name: "レディース"}, {name: "メンズ"},{name: "ベビー・キッズ"},{name: "インテリア・住まい・小物"},{name: "本・音楽・ゲーム"},{name: "おもちゃ・ホビー・グッズ"},{name: "コスメ・香水・美容"},{name: "家電・スマホ・カメラ"},{name: "スポーツ・レジャー"},{name: "ハンドメイド"},{name: "チケット"},{name: "自動車・オートバイ"},{name: "その他"}])
+
 
 # レディース
 tops,jaket_outer,pants,skart,wanpice,shoo,roomwea,regwea,hat,bag,acesary,hairacesary,komono,tokeil,wigexste,yukata,sutu,matanity,sonota = ladies.children.create([{name: "トップス"},{name: "ジャケット/アウター"},{name: "パンツ"},{name: "スカート"},{name: "ワンピース"},{name: "靴"},{name: "ルームウェア/パジャマ"},{name: "レッグウェア"},{name: "帽子"},{name: "バッグ"},{name: "アクセサリー"},{name: "ヘアアクセサリー"},{name: "小物"},{name: "時計"},{name: "ウィッグ/エクステ"},{name: "浴衣/水着"},{name: "スーツ/フォーマル/ドレス"},{name: "マタニティ"},{name: "その他"}])
@@ -483,5 +484,284 @@ end
   oral.children.create(name: name)
 end
 
+["エッセンシャルオイル","芳香器","お香/香炉","キャンドル","その他"].each do |name|
+  rirag.children.create(name: name)
+end
+
+
+["ダイエット食品","エクササイズ用品","体重計","体脂肪計","その他"].each do |name|
+  diet.children.create(name: name)
+
+end
+
+
+["健康用品","看護/介護用品","救急/衛生用品","その他"].each do |name|
+  sonota.children.create(name: name)
+end
+
+# 家電・スマホ・カメラ
+
+
+sumaho,sumahoac,pctab,camera,terebi,odio,biyou,reibou,seikatu,sonota = kadensumaho.children.create([{name: "スマートフォン/携帯電話"},{name: "スマホアクセサリー"},{name: "PC/タブレット"},{name: "カメラ"},{name: "テレビ/映像機器"},{name: "オーディオ機器"},{name: "美容/健康"},{name: "冷暖房/空調"},{name: "生活家電"},{name: "その他"}])
+
+
+["スマートフォン本体","バッテリー/充電器","携帯電話本体","PHS本体","その他"].each do |name|
+  sumaho.children.create(name: name)
+end
+
+
+["Android用ケース","iPhone用ケース","カバー","イヤホンジャック","ストラップ","フィルム","自撮り棒","その他"].each do |name|
+  sumahoac.children.create(name: name)
+end
+
+["タブレット","ノートPC","デスクトップ型PC","ディスプレイ","電子ブックリーダー","PC周辺機器","PCパーツ","その他"].each do |name|
+  pctab.children.create(name: name)
+end
+
+["デジタルカメラ","ビデオカメラ","レンズ(単焦点)","レンズ(ズーム)","フィルムカメラ","防犯カメラ","その他"].each do |name|
+  camera.children.create(name: name)
+end
+
+
+["テレビ","プロジェクター","ブルーレイレコーダー","DVDレコーダー","ブルーレイプレーヤー","DVDプレーヤー","映像用ケーブル","その他"].each do |name|
+  terebi.children.create(name: name)
+
+end
+
+
+["ポータブルプレーヤー","イヤフォン","ヘッドフォン","アンプ","スピーカー","ケーブル/シールド","ラジオ","その他"].each do |name|
+  odio.children.create(name: name)
+end
+
+["ヘアドライヤー","ヘアアイロン","美容機器","マッサージ機","電気シェーバー","電動歯ブラシ","その他"].each do |name|
+  biyou.children.create(name: name)
+end
+
+
+["エアコン","空気清浄器","加湿器","扇風機","除湿機","ファンヒーター","電気ヒーター","オイルヒーター","ストーブ","ホットカーペット","こたつ","電気毛布","その他"].each do |name|
+  reibou.children.create(name: name)
+end
+
+["冷蔵庫","洗濯機","炊飯器","電子レンジ/オーブン","調理機器","アイロン","掃除機","エスプレッソマシン","コーヒーメーカー","衣類乾燥機","その他"].each do |name|
+  seikatu.children.create(name: name)
+end
+
+
+sonota.children.create(name: "その他")
+
+# スポーツ・レジャー
+
+golf,fissing,jitensya,traning,yakyu,sakka,tenisu,snowbode,skie,tasport,outdore,sonota = sportleja.children.create([{name: "ゴルフ"},{name: "フィッシング"},{name: "自転車"},{name: "トレーニング/エクササイズ"},{name: "野球"},{name: "サッカー/フットサル"},{name: "テニス"},{name: "スノーボード"},{name: "スキー"},{name: "その他スポーツ"},{name: "アウトドア"},{name: "その他"}])
+
+["クラブ","ウエア(男性用)","ウエア(女性用)","バッグ","シューズ(男性用)","シューズ(女性用)","アクセサリー","その他"].each do |name|
+  golf.children.create(name: name)
+end
+
+
+["ロッド","リール","ルアー用品","ウエア","釣り糸/ライン","その他"].each do |name|
+  fissing.children.create(name: name)
+end
+
+
+["自転車本体","ウエア","パーツ","アクセサリー","バッグ","工具/メンテナンス","その他"].each do |name|
+  jitensya.children.create(name: name)
+end
+
+
+["ランニング","ウォーキング","ヨガ","トレーニング用品","その他"].each do |name|
+  traning.children.create(name: name)
+end
+
+["ウェア","シューズ","グローブ","バット","アクセサリー","防具","練習機器","記念グッズ","応援グッズ","その他"].each do |name|
+  yakyu.children.create(name: name)
+
+end
+
+
+["ウェア","シューズ","ボール","アクセサリー","記念グッズ","応援グッズ","その他"].each do |name|
+  sakka.children.create(name: name)
+end
+
+
+["ラケット(硬式用)","ラケット(軟式用)","ウェア","シューズ","ボール","アクセサリー","記念グッズ","応援グッズ","その他"].each do |name|
+  tenisu.children.create(name: name)
+
+end
+
+
+["ボード","バインディング","ブーツ(男性用)","ブーツ(女性用)","ブーツ(子ども用)","ウエア/装備(男性用)","ウエア/装備(女性用)","ウエア/装備(子ども用)","アクセサリー","バッグ","その他"].each do |name|
+  snowbode.children.create(name: name)
+end
+
+["板","ブーツ(男性用)","ブーツ(女性用)","ブーツ(子ども用)","ビンディング","ウエア(男性用)","ウエア(女性用)","ウエア(子ども用)","ストック","その他"].each do |name|
+  skie.children.create(name: name)
+end
+
+
+["ダンス/バレエ","サーフィン","バスケットボール","バドミントン","バレーボール","スケートボード","陸上競技","ラグビー","アメリカンフットボール","ボクシング","ボウリング","その他"].each do |name|
+  tasport.children.create(name: name)
+end
+
+["テント/タープ","ライト/ランタン","寝袋/寝具","テーブル/チェア","ストーブ/コンロ","調理器具","食器","登山用品","その他"].each do |name|
+  outdore.children.create(name: name)
+end
+
+
+["旅行用品","その他"].each do |name|
+  sonota.children.create(name: name)
+end
+
+
+# ハンドメイド
+
+acw,fassionko,tokei,nitiyou,syumi,kids,sozai,niji,sonota = handmade.children.create([{name: "アクセサリー(女性用)"},{name: "ファッション/小物"},{name: "ファッション/時計"},{name: "日用品/インテリア"},{name: "趣味/おもちゃ"},{name: "キッズ/ベビー"},{name: "素材/材料"},{name: "
+二次創作物"},{name: "素材/材料"},{name: "その他"}])
+
+
+["ピアス","イヤリング","ネックレス","ブレスレット","リング","チャーム","ヘアゴム","アンクレット","その他"].each do |name|
+  acw.children.create(name: name)
+end
+
+
+["バッグ(女性用)","バッグ(男性用)","財布(女性用)","財布(男性用)","ファッション雑貨","その他"].each do |name|
+  fassionko.children.create(name: name)
+end
+
+["アクセサリー(男性用)","時計(女性用)","時計(男性用)","その他"].each do |name|
+  tokei.children.create(name: name)
+end
+
+
+["キッチン用品","家具","文房具","アート/写真","アロマ/キャンドル","フラワー/ガーデン","その他"].each do |name|
+  nitiyou.children.create(name: name)
+end
+
+
+["クラフト/布製品","おもちゃ/人形","その他"].each do |name|
+  syumi.children.create(name: name)
+end
+
+
+["ファッション雑貨","スタイ/よだれかけ","外出用品","ネームタグ","その他"].each do |name|
+  kids.children.create(name: name)
+end
+
+["Ingress","クリエイターズ宇宙兄弟"].each do |name|
+  niji.children.create(name: name)
+end
+
+
+# チケット
+
+music,sport,engeki,event,moovi,sisetu,yutai,sonota = ticket.children.create([{name: "音楽"},{name: "スポーツ"},{name: "演劇/芸能"},{name: "イベント"},{name: "映画"},{name: "施設利用券"},{name: "優待券/割引券"},{name: "その他"}])
+
+["男性アイドル","女性アイドル","韓流","国内アーティスト","海外アーティスト","音楽フェス","声優/アニメ","その他"].each do |name|
+  music.children.create(name: name)
+end
+
+
+["サッカー","野球","テニス","格闘技/プロレス","相撲/武道","ゴルフ","バレーボール","バスケットボール","モータースポーツ","ウィンタースポーツ","その他"].each do |name|
+  sport.children.create(name: name)
+
+end
+
+
+["ミュージカル","演劇","伝統芸能","落語","お笑い","オペラ","サーカス","バレエ","その他"].each do |name|
+  engeki.children.create(name: name)
+end
+
+
+["声優/アニメ","キッズ/ファミリー","トークショー/講演会","その他"].each do |name|
+  event.children.create(name: name )
+end
+
+
+["邦画","洋画","その他"].each do |name|
+  moovi.children.create(name: name)
+end
+
+
+["遊園地/テーマパーク","美術館/博物館","スキー場","ゴルフ場","フィットネスクラブ","プール","ボウリング場","水族館","動物園","その他"].each do |name|
+  sisetu.children.create(name: name)
+end
+
+
+["ショッピング","レストラン/食事券","フード/ドリンク券","宿泊券","その他"].each do |name|
+  yutai.children.create(name: name)
+end
+
+
+# 自動車　オートバイ
+
+
+car,taiya,part,acs,autoby,autopart,autobyac = car_autoby.children.create([{name: "自動車本体"},{name: "自動車タイヤ/ホイール"},{name: "自動車パーツ"},{name: "自動車アクセサリー"},{name: "オートバイ車体"},{name: "オートバイパーツ"},{name: "オートバイアクセサリー"}])
+
+["国内自動車本体","外国自動車本体"].each do |name|
+  car.children.create(name: name)
+end
+
+["タイヤ/ホイールセット","タイヤ","ホイール","その他"].each do |name|
+  taiya.children.create(name: name)
+end
+
+["サスペンション","ブレーキ","外装、エアロパーツ","ライト","内装品、シート","ステアリング","マフラー・排気系","エンジン、過給器、冷却装置","クラッチ、ミッション、駆動系","電装品","補強パーツ","汎用パーツ","外国自動車用パーツ","その他"].each do |name|
+  part.children.create(name: name)
+end
+
+
+["車内アクセサリー","カーナビ","カーオーディオ","車外アクセサリー","メンテナンス用品","チャイルドシート","ドライブレコーダー","レーダー探知機","カタログ/マニュアル","セキュリティ","ETC","その他"].each do |name|
+  acs.children.create(name: name)
+end
+
+["タイヤ","マフラー","エンジン、冷却装置","カウル、フェンダー、外装","サスペンション","ホイール","シート","ブレーキ","タンク","ライト、ウィンカー","チェーン、スプロケット、駆動系","メーター","電装系","ミラー","外国オートバイ用パーツ","その他"].each do |name|
+  autopart.children.create(name: name)
+end
+
+
+["ヘルメット/シールド","バイクウエア/装備","アクセサリー","メンテナンス","カタログ/マニュアル","その他"].each do |name|
+  autobyac.children.create(name: name)
+end
+
+
+#その他
+
+
+
+matome,pet,food,drink,nitiyou,untic,bunbou,jimu,sonota = sonota1.children.create([{name: "まとめ売り"},{name: "ペット用品"},{name: "食品"},{name: "飲料/酒"},{name: "日用品/生活雑貨/旅行"},{name: "アンティーク/コレクション"},{name: "文房具/事務用品"},{name: "事務"},{name: ""}])
+
+["ペットフード","犬用品","猫用品","魚用品/水草","小動物用品","爬虫類/両生類用品","かご/おり","鳥用品","虫類用品","その他"].each do |name|
+  pet.children.create(name: name)
+end
+
+
+["菓子","米","野菜","果物","調味料","魚介類(加工食品)","肉類(加工食品)","その他 加工食品","その他"].each do |name|
+  food.children.create(name: name)
+end
+
+
+["コーヒー","ソフトドリンク","ミネラルウォーター","茶","ウイスキー","ワイン","ブランデー","焼酎","日本酒","ビール、発泡酒","その他"].each do |name|
+  drink.children.create(name: name)
+end
+
+
+
+["タオル/バス用品","日用品/生活雑貨","洗剤/柔軟剤","旅行用品","防災関連グッズ","その他"].each do |name|
+  nitiyou.children.create(name: name)
+end
+
+
+["雑貨","工芸品","家具","印刷物","その他"].each do |name|
+  untic.children.create(name: name)
+end
+
+
+["筆記具","ノート/メモ帳","テープ/マスキングテープ","カレンダー/スケジュール","アルバム/スクラップ","ファイル/バインダー","はさみ/カッター","カードホルダー/名刺管理","のり/ホッチキス","その他"].each do |name|
+  bunbou.children.create(name: name)
+end
+
+
+["オフィス用品一般","オフィス家具","店舗用品","OA機器","ラッピング/包装","その他"].each do |name|
+  jimu.children.create(name: name)
+end
 
 
