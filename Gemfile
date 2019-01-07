@@ -67,6 +67,3 @@ gem 'erb2haml'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'ancestry'
-gem 'carrierwave'
-gem 'mini_magick'
-gem "fog-aws"
