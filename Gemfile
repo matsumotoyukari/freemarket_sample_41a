@@ -75,3 +75,4 @@ gem 'devise'
 gem 'ancestry'
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'recaptcha', require: "recaptcha/rails"
