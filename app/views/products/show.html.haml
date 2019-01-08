@@ -141,6 +141,19 @@
         %span あんしん・あんぜんへの取り組み
 
 
+.listing-item-change-box
+  = link_to "商品の編集","#",class: "btn-default btn-red"
+  %p.text-center
+    or
+  = form_for @product , method: :delete do |f|
+    / %input(type ="hidden" name ="_csrf_value" value="damii")
+
+    %button.btn-default.btn-red(type= "submit")
+      出品を再開する
+
+    = f.submit 'この商品を消去する', class: "btn-default btn-gray"
+
+
 %ul.nav-item-link-prev-next.clearfix
   %li.nav-item-link-prev
     %a(href='#')

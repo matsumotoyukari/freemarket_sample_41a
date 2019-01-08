@@ -2,8 +2,10 @@
   font-family: 'Source Sans Pro', Helvetica , Arial, 'æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“', 'YuGothic', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Meiryo', sans-serif;
   background-color: #FFF;
   margin: 40px auto 0;
-  padding: 24px 40px 40px;
   width: 700px;
+  padding: 24px 40px 40px;
+  box-sizing: border-box;
+
     .item-name{
       font-size: 24px;
       text-align: center;
@@ -284,6 +286,60 @@
     // ポイント関係
 
 }
+
+// 消去機能
+
+.listing-item-change-box{
+  margin: 24px auto;
+  background: #fff;
+  padding: 8px 16px 8px 16px;
+  width: 700px;
+  box-sizing: border-box;
+  .btn-default{
+    margin: 16px 0 16px 0;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .btn-red{
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+  }
+  p{
+    font-size: 16px;
+  }
+  .text-center{
+    text-align: center;
+  }
+  form{
+    .btn-default{
+      margin: 16px 0 16px 0;
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-red{
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+    }
+  }
+  .btn-gray{
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+  }
+}
+
+
+
 
 .nav-item-link-prev-next {
   margin: 24px auto 0;
