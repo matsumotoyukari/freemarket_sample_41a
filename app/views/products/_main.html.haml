@@ -32,16 +32,18 @@
     %h3.text-center
       %a{:href => ""}
         レディース 新着アイテム
+
     .items-box-content.clearfix
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "【ストロベリーフィールズ】パンプス サンダル", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858"}/
-          .items-box-body
-            %h3.items-box-name.font-2 【ストロベリーフィールズ】パンプス サンダル
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 2,100
-              %p.item-box-tax (税込)
+      - @products.each do |product|
+        %section.items-box
+          = link_to product_path(product) do
+            %figure.items-box-photo
+              %img.is-higher-height.lazyloaded{:alt => "【ストロベリーフィールズ】パンプス サンダル", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858"}/
+            .items-box-body
+              %h3.items-box-name.font-2 【ストロベリーフィールズ】パンプス サンダル
+              .items-box-num.clearfix
+                .items-box-price.font-5 ¥ 2,100
+                %p.item-box-tax (税込)
       %section.items-box
         %a{:href => ""}
           %figure.items-box-photo
