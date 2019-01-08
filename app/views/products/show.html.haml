@@ -145,13 +145,14 @@
   = link_to "商品の編集","#",class: "btn-default btn-red"
   %p.text-center
     or
-  %form(action="#")
-    %input(type ="hidden" name ="_csrf_value" value="damii")
+  = form_for @product , method: :delete do |f|
+    / %input(type ="hidden" name ="_csrf_value" value="damii")
+
     %button.btn-default.btn-red(type= "submit")
       出品を再開する
-    %form(action="#")
-      %button.btn-default.btn-gray(type="submit")
-        この商品を消去する
+
+    = f.submit 'この商品を消去する', class: "btn-default btn-gray"
+
 
 %ul.nav-item-link-prev-next.clearfix
   %li.nav-item-link-prev
