@@ -1,0 +1,180 @@
+.single-container {
+  padding: 0 0 220px;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  .single-header{
+    height: 128px;
+    text-align: center;
+    h1{
+      margin: 40px 0 0;
+      display: inline-block;
+      img{
+        width: 185px;
+        height: 49px;
+        line-height: 49px;
+        display: inline-block;
+        margin: 0 8px 0 0;
+      }
+    }
+    .signup-bar.progress-bar {
+      padding: 40px 0 0 44px;
+      border: 0;
+      display: inline-block;
+    }
+    .progress-bar {
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+      ol{
+        margin: 0;
+        list-style: none;
+        li {
+          margin: 0 40px 0 0;
+          min-width: 60px;
+          position: relative;
+          z-index: 1;
+          display: inline-block;
+          min-width: 40px;
+          font-size: 12px;
+          color: #888;
+          .progress-status2-1 {
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ea352d;
+            border-radius: 50%;
+          }
+          .progress-status2-1:after {
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            content: '';
+            width: 200%;
+            height: 2px;
+            // background: #ccc;
+            background: #ea352d;
+            border-style: solid;
+            border-width: 0;
+            text-decoration: inherit;
+            vertical-align: inherit;
+            box-sizing: inherit;
+          }
+          #category2{
+            color: #ea352d;
+            font-weight: 600;
+          }
+          .progress-status2-2 {
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ea352d;
+            border-radius: 50%;
+          }
+          .progress-status2-2:after {
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            content: '';
+            width: 200%;
+            height: 2px;
+            background: #ccc;
+            border-style: solid;
+            border-width: 0;
+            text-decoration: inherit;
+            vertical-align: inherit;
+            box-sizing: inherit;
+          }
+          .progress-status2-3 {
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ccc;
+            border-radius: 50%;
+          }
+          .progress-status2-3:after {
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            content: '';
+            width: 210%;
+            height: 2px;
+            background: #ccc;
+            border-style: solid;
+            border-width: 0;
+            text-decoration: inherit;
+            vertical-align: inherit;
+            box-sizing: inherit;
+          }
+          .progress-status2-4 {
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ccc;
+            border-radius: 50%;
+          }
+          .progress-status2-4:after {
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            content: '';
+            width: 170%;
+            height: 2px;
+            background: #ccc;
+            border-style: solid;
+            border-width: 0;
+            text-decoration: inherit;
+            vertical-align: inherit;
+            box-sizing: inherit;
+          }
+          .progress-status2-5 {
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ccc;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+  .l-chapter-head {
+    font-size: 24px;
+    padding: 8px 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .form-group{
+    font-size: 14px;
+  }
+  .input-default3{
+    width: 285px;
+    height: 33px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  .l-single-text{
+    padding-top: 5px;
+    font-size: 14px;
+  }
+  .l-chapter-sub-head{
+    font-weight: bold;
+  }
+  .l-chapter-sub-head{
+    font-size: 16px;
+    line-height: 16px;
+  }
+  a{
+    font-size: 14px;
+    color: #0099e8;
+    padding-top: 5px;
+    display: inline-block;
+  }
+}
+

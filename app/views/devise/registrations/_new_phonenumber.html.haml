@@ -1,0 +1,53 @@
+%body
+  .single-container
+    %header.single-header
+      %h1
+        %a
+          %img{:alt => "mercari", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?4136293187"}/
+      %nav.progress-bar.signup-bar
+        %ol.clearfix
+          %li.active
+            #category 会員情報
+            .progress-status2-1
+          %li
+            #category2 電話番号
+            .progress-status2-2
+          %li
+            #category 住所入力
+            .progress-status2-3
+          %li
+            #category 支払い方法
+            .progress-status2-4
+          %li
+            #category 完了
+            .progress-status2-5
+    %main.single-main
+      %section.l-single-container
+        %h2.l-chapter-head 電話番号認証
+        = form_for @user, class:'l-single-inner', action:'https://www.mercari.com/jp/signup/address/', method:'POST', novalidate:'novalidate' do |f|
+          .l-single-content
+            .form-group
+              %label{:for => "captcha"} 認証番号
+              =f.text_field :id, class: 'input-default', name:'captcha', placeholder:'認証番号を入力'
+            %p.l-single-text SMSで届いた認証番号を入力してください
+            %button.btn-default.btn-red{:type => "submit"} 認証して完了
+          %input{:name => "__csrf_value", :type => "hidden", :value => "b9d577e501290b65be37a1d32eb3ed8610f78a4d1f2dc2da0f62ed61ff333cb83c756ad31dc4e5afa10ecd66c3f475ef2f76f430921ac6b9586f728c4fd052470"}/
+          %input{:name => "id", :type => "hidden", :value => "423878271"}/
+        %form.l-single-inner{:action => "https://www.mercari.com/jp/signup/sms_confirmation/phone/", :method => "POST", :novalidate => "novalidate"}
+          .l-single-content
+            %h3.l-chapter-sub-head 30秒たっても認証番号が届かない方へ
+            %p.l-single-text 電話で認証番号を聞くこともできます。
+            %button.btn-default.btn-red{:type => "submit"} 電話で認証番号を聞く（通話無料）
+          %input{:name => "__csrf_value", :type => "hidden", :value => "b9d577e501290b65be37a1d32eb3ed8610f78a4d1f2dc2da0f62ed61ff333cb83c756ad31dc4e5afa10ecd66c3f475ef2f76f430921ac6b9586f728c4fd052470"}/
+          %input{:name => "id", :type => "hidden", :value => "423878271"}/
+        .l-single-inner
+          .l-single-content
+            %h3.l-chapter-sub-head 認証番号を再送することもできます。もう一度電話番号を入力して下さい。
+            %p
+              %a{:href => ""} 電話番号を再度入力する
+            %p.l-single-text
+              ※SMSが届かない場合は
+              %a{:href => "", :target => "_blank"}> SMS受信設定
+              を確認して、もう一度電話番号を入力してください。
+
+    = render "products/header_logo"
