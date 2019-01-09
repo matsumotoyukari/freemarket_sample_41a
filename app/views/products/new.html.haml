@@ -22,7 +22,25 @@
                         :preserve
                           ドラッグアンドドロップ
                           またはクリックしてファイルをアップロード
-                      = i.file_field :image, class: "file", id: "image"
+                      = i.file_field :image, class: "file", id: "image", multiple: true
+                    / = i.label :image, class: "sell-upload-drop-box", for: "image" do
+                    /   %pre.visible-pc
+                    /     :preserve
+                    /       ドラッグアンドドロップ
+                    /       またはクリックしてファイルをアップロード
+                    /   = i.file_field :image, class: "file", id: "image", multiple: true
+                    / = i.label :image, class: "sell-upload-drop-box", for: "image" do
+                    /   %pre.visible-pc
+                    /     :preserve
+                    /       ドラッグアンドドロップ
+                    /       またはクリックしてファイルをアップロード
+                    /   = i.file_field :image, class: "file", id: "image", multiple: true
+                    / = i.label :image, class: "sell-upload-drop-box", for: "image" do
+                    /   %pre.visible-pc
+                    /     :preserve
+                    /       ドラッグアンドドロップ
+                    /       またはクリックしてファイルをアップロード
+                    /   = i.file_field :image, class: "file", id: "image", multiple: true
             .sell-content
               .form-group
                 = f.label :name do
