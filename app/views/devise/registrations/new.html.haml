@@ -3,38 +3,35 @@
     %section.l-single-container
       %h2.l-single-head
         会員情報登録
-      = form_for new_user_registration_path, html: {class: "l-single-inner"} do |f|
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "l-single-inner"}) do |f|
         .l-single-content
           .form-group
-            %label{for:"nickname"}
+            = f.label :nickname do
               ニックネーム
             %span.form-require
               必須
-            %input.input-default{type:"text", name:"name", placeholder:"ニックネーム"}
+            = f.text_field :name, placeholder: "ニックネーム", html: {class: "input-default" }
           .form-group
-            %label{for:"email"}
+            = f.label :email do
               メールアドレス
             %span.form-require
               必須
-            %input.input-default{type:"email", name:"email", placeholder:"PC・携帯どちらでも可"}
-          %input{type:"hidden", name:"login-type"}
+            = f.email_field :email, placeholder:"PC・携帯どちらでも可", html: {class: "input-default"}
+            %input{type:"hidden", name:"login-type"}
           .form-group
-            %label{for:"password"}
+            = f.label :password do
               パスワード
             %span.form-require
               必須
-            %input.input-default{type:"password", name:"password", placeholder:"6文字以上"}
+            = f.password_field :password, placeholder: "6文字以上", html: {class: "input-default"}
           .form-group
-            %label{for: "password"}
+            = f.label :password do
               パスワード(確認)
             %span.form-require
               必須
-            %input.input-default{type: "password", name: "password2", placeholder: "6文字以上"}
-          %input{type: "hidden", name:"after_save_callback"}
+            = f.password_field :password, placeholder: "6文字以上", html: {class: "input-default"}
+            %input{type: "hidden", name:"after_save_callback"}
           .form-group
-            .g-recaptcha{"data-sitekey"=> "6LfgxIcUAAAAAGmC8vOWkJFg40fNb5ArzXvubnW3"}
+            = recaptcha_tags
           .form-group.rbt
-          = link_to "secondpage" do
-            %button.btn-default.btn-red{type:"submit"}
-              次に進む
-
+            = f.submit "次に進む", html: {class: "btn-default btn-red"}
