@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   belongs_to :area
   belongs_to :size
   accepts_nested_attributes_for :product_images
+  has_one :trade
 
   enum condition: {
     notselect: 0,
