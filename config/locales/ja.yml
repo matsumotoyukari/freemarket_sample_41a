@@ -1,0 +1,17 @@
+ja:
+  enums:
+    product:
+      condition:
+        noselect: --
+        unused: 新品、未使用
+        close_to_unused: 未使用に近い
+        no_dirt: 目立った傷や汚れなし
+        slightly_dirty: やや傷や汚れあり
+        dirt: 傷や汚れあり
+        bad: 全体的に状態が悪い
+
+      shipmentday:
+        noselect: --
+        oneday_twoday: 1日~2日で発送
+        twoday_threeday: 2日~3日で発送
+        fourday_sevenday: 4日~7日で発送
