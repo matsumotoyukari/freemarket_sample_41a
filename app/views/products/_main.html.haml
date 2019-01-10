@@ -31,202 +31,92 @@
   %section.items-box-container.clearfix
     %h3.text-center
       %a{:href => ""}
-        レディース 新着アイテム
+        = Category.find(1).name + "新着アイテム"
 
     .items-box-content.clearfix
-      - @products.each do |product|
+      - @ladies.each do |product|
         %section.items-box
           = link_to product_path(product) do
             %figure.items-box-photo
-              %img.is-higher-height.lazyloaded{:alt => "【ストロベリーフィールズ】パンプス サンダル", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858"}/
+              - if product.product_images.present?
+                %img.is-higher-height.lazyloaded{:alt => "【ストロベリーフィールズ】パンプス サンダル", "data-src" => "#{product.product_images[0]}", :src => "#{product.product_images[0].image_url}"}/
             .items-box-body
-              %h3.items-box-name.font-2 【ストロベリーフィールズ】パンプス サンダル
+              %h3.items-box-name.font-2
+                = product.name
               .items-box-num.clearfix
-                .items-box-price.font-5 ¥ 2,100
+                .items-box-price.font-5
+                  - if product.price
+                    = converting_to_jpy(product.price)
                 %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "22OCTOBRE ダウンジャケットこげ茶38号", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414"}/
-          .items-box-body
-            %h3.items-box-name.font-2 22OCTOBRE ダウンジャケットこげ茶38号
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 9,000
-              %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "UNIQLO ユニクロ カーディガン セーター  L", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m46275665153_1.jpg?1545152597", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m46275665153_1.jpg?1545152597"}/
-          .items-box-body
-            %h3.items-box-name.font-2 UNIQLO ユニクロ カーディガン セーター  L
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 1,650
-              .items-box-likes.font-2
-                %i.far.fa-heart
-                %span 4
-              %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "ルイヴィトン エピ マルゼルブ", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m98516872559_1.jpg?1545702170", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m98516872559_1.jpg?1545702170"}/
-          .items-box-body
-            %h3.items-box-name.font-2 ルイヴィトン エピ マルゼルブ
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 42,000
-              .items-box-likes.font-2
-                %i.far.fa-heart
-                %span 4
-              %p.item-box-tax (税込)
+
     .view-all
       %a{:href => ""} すべての商品を見る
 
   %section.items-box-container.clearfix
     %h3.text-center
       %a{:href => ""}
-        メンズ 新着アイテム
+        = Category.find(2).name + "新着アイテム"
     .items-box-content.clearfix
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "【ストロベリーフィールズ】パンプス サンダル", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858"}/
-          .items-box-body
-            %h3.items-box-name.font-2 【ストロベリーフィールズ】パンプス サンダル
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 2,100
-              %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "22OCTOBRE ダウンジャケットこげ茶38号", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414"}/
-          .items-box-body
-            %h3.items-box-name.font-2 22OCTOBRE ダウンジャケットこげ茶38号
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 9,000
-              %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "UNIQLO ユニクロ カーディガン セーター  L", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m46275665153_1.jpg?1545152597", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m46275665153_1.jpg?1545152597"}/
-          .items-box-body
-            %h3.items-box-name.font-2 UNIQLO ユニクロ カーディガン セーター  L
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 1,650
-              .items-box-likes.font-2
-                %i.far.fa-heart
-                %span 4
-              %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "ルイヴィトン エピ マルゼルブ", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m98516872559_1.jpg?1545702170", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m98516872559_1.jpg?1545702170"}/
-          .items-box-body
-            %h3.items-box-name.font-2 ルイヴィトン エピ マルゼルブ
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 42,000
-              .items-box-likes.font-2
-                %i.far.fa-heart
-                %span 4
-              %p.item-box-tax (税込)
+      - @mens.each do |product|
+        %section.items-box
+          = link_to product_path(product) do
+            %figure.items-box-photo
+              - if product.product_images.present?
+                = image_tag product.product_images[0].image_url  ,class: "is-higher-height lazyloaded"
+            .items-box-body
+              %h3.items-box-name.font-2
+                = product.name
+              .items-box-num.clearfix
+                .items-box-price.font-5
+                  = converting_to_jpy(product.price)
+                %p.item-box-tax (税込)
+
     .view-all
       %a{:href => ""} すべての商品を見る
 
   %section.items-box-container.clearfix
     %h3.text-center
       %a{:href => ""}
-        ベビー・キッズ 新着アイテム
+        = Category.find(3).name + "新着アイテム"
     .items-box-content.clearfix
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "【ストロベリーフィールズ】パンプス サンダル", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858"}/
-          .items-box-body
-            %h3.items-box-name.font-2 【ストロベリーフィールズ】パンプス サンダル
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 2,100
-              %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "22OCTOBRE ダウンジャケットこげ茶38号", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414"}/
-          .items-box-body
-            %h3.items-box-name.font-2 22OCTOBRE ダウンジャケットこげ茶38号
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 9,000
-              %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "UNIQLO ユニクロ カーディガン セーター  L", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m46275665153_1.jpg?1545152597", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m46275665153_1.jpg?1545152597"}/
-          .items-box-body
-            %h3.items-box-name.font-2 UNIQLO ユニクロ カーディガン セーター  L
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 1,650
-              .items-box-likes.font-2
-                %i.far.fa-heart
-                %span 4
-              %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "ルイヴィトン エピ マルゼルブ", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m98516872559_1.jpg?1545702170", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m98516872559_1.jpg?1545702170"}/
-          .items-box-body
-            %h3.items-box-name.font-2 ルイヴィトン エピ マルゼルブ
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 42,000
-              .items-box-likes.font-2
-                %i.far.fa-heart
-                %span 4
-              %p.item-box-tax (税込)
+      .items-box-content.clearfix
+        - @baby.each do |product|
+          %section.items-box
+            = link_to product_path(product) do
+              %figure.items-box-photo
+                - if product.product_images.present?
+                  = image_tag product.product_images[0].image_url  ,class: "is-higher-height lazyloaded"
+
+              .items-box-body
+                %h3.items-box-name.font-2
+                  = product.name
+                .items-box-num.clearfix
+                  .items-box-price.font-5
+                    - if product.price
+                      = converting_to_jpy(product.price)
+                  %p.item-box-tax (税込)
+
     .view-all
       %a{:href => ""} すべての商品を見る
 
   %section.items-box-container.clearfix
     %h3.text-center
       %a{:href => ""}
-        コスメ・香水・美容 新着アイテム
+        = Category.find(4).name + "新着アイテム"
     .items-box-content.clearfix
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "【ストロベリーフィールズ】パンプス サンダル", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m55414947404_1.jpg?1545841858"}/
-          .items-box-body
-            %h3.items-box-name.font-2 【ストロベリーフィールズ】パンプス サンダル
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 2,100
-              %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "22OCTOBRE ダウンジャケットこげ茶38号", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414"}/
-          .items-box-body
-            %h3.items-box-name.font-2 22OCTOBRE ダウンジャケットこげ茶38号
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 9,000
-              %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "UNIQLO ユニクロ カーディガン セーター  L", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m46275665153_1.jpg?1545152597", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m46275665153_1.jpg?1545152597"}/
-          .items-box-body
-            %h3.items-box-name.font-2 UNIQLO ユニクロ カーディガン セーター  L
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 1,650
-              .items-box-likes.font-2
-                %i.far.fa-heart
-                %span 4
-              %p.item-box-tax (税込)
-      %section.items-box
-        %a{:href => ""}
-          %figure.items-box-photo
-            %img.is-higher-height.lazyloaded{:alt => "ルイヴィトン エピ マルゼルブ", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m98516872559_1.jpg?1545702170", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m98516872559_1.jpg?1545702170"}/
-          .items-box-body
-            %h3.items-box-name.font-2 ルイヴィトン エピ マルゼルブ
-            .items-box-num.clearfix
-              .items-box-price.font-5 ¥ 42,000
-              .items-box-likes.font-2
-                %i.far.fa-heart
-                %span 4
-              %p.item-box-tax (税込)
+      - @kosume.each do |product|
+        %section.items-box
+          = link_to product_path(product) do
+            %figure.items-box-photo
+              %img.is-higher-height.lazyloaded{:alt => "22OCTOBRE ダウンジャケットこげ茶38号", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414"}/
+            .items-box-body
+              %h3.items-box-name.font-2
+                = product.name
+              .items-box-num.clearfix
+                .items-box-price.font-5
+                  = converting_to_jpy(product.price)
+                %p.item-box-tax (税込)
+
     .view-all
       %a{:href => ""} すべての商品を見る
 
