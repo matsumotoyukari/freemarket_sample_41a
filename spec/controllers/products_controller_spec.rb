@@ -57,7 +57,6 @@ describe ProductsController do
     it "商品消去と同時に紐づく商品画像も消去できる" do
       product = create(:product,category_id: 340)
       image = create(:product_image,product_id: product.id)
-      binding.pry
       expect do
         delete :destroy, params: { id: product}
       end.to change(ProductImage, :count).by(-1)
