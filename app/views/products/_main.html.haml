@@ -34,20 +34,8 @@
         = Category.find(1).name + "新着アイテム"
 
     .items-box-content.clearfix
-      - @ladies.each do |product|
-        %section.items-box
-          = link_to product_path(product) do
-            %figure.items-box-photo
-              - if product.product_images.present?
-                %img.is-higher-height.lazyloaded{:alt => "【ストロベリーフィールズ】パンプス サンダル", "data-src" => "#{product.product_images[0]}", :src => "#{product.product_images[0].image_url}"}/
-            .items-box-body
-              %h3.items-box-name.font-2
-                = product.name
-              .items-box-num.clearfix
-                .items-box-price.font-5
-                  - if product.price
-                    = converting_to_jpy(product.price)
-                %p.item-box-tax (税込)
+      = render partial: "productlist", collection: @ladies, as: :product
+
 
     .view-all
       %a{:href => ""} すべての商品を見る
@@ -57,19 +45,7 @@
       %a{:href => ""}
         = Category.find(2).name + "新着アイテム"
     .items-box-content.clearfix
-      - @mens.each do |product|
-        %section.items-box
-          = link_to product_path(product) do
-            %figure.items-box-photo
-              - if product.product_images.present?
-                = image_tag product.product_images[0].image_url  ,class: "is-higher-height lazyloaded"
-            .items-box-body
-              %h3.items-box-name.font-2
-                = product.name
-              .items-box-num.clearfix
-                .items-box-price.font-5
-                  = converting_to_jpy(product.price)
-                %p.item-box-tax (税込)
+      = render partial: "productlist", collection: @mens, as: :product
 
     .view-all
       %a{:href => ""} すべての商品を見る
@@ -79,22 +55,7 @@
       %a{:href => ""}
         = Category.find(3).name + "新着アイテム"
     .items-box-content.clearfix
-      .items-box-content.clearfix
-        - @baby.each do |product|
-          %section.items-box
-            = link_to product_path(product) do
-              %figure.items-box-photo
-                - if product.product_images.present?
-                  = image_tag product.product_images[0].image_url  ,class: "is-higher-height lazyloaded"
-
-              .items-box-body
-                %h3.items-box-name.font-2
-                  = product.name
-                .items-box-num.clearfix
-                  .items-box-price.font-5
-                    - if product.price
-                      = converting_to_jpy(product.price)
-                  %p.item-box-tax (税込)
+      = render partial: "productlist", collection: @baby_products, as: :product
 
     .view-all
       %a{:href => ""} すべての商品を見る
@@ -104,18 +65,7 @@
       %a{:href => ""}
         = Category.find(4).name + "新着アイテム"
     .items-box-content.clearfix
-      - @kosume.each do |product|
-        %section.items-box
-          = link_to product_path(product) do
-            %figure.items-box-photo
-              %img.is-higher-height.lazyloaded{:alt => "22OCTOBRE ダウンジャケットこげ茶38号", "data-src" => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414", :src => "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m15730862176_1.jpg?1545543414"}/
-            .items-box-body
-              %h3.items-box-name.font-2
-                = product.name
-              .items-box-num.clearfix
-                .items-box-price.font-5
-                  = converting_to_jpy(product.price)
-                %p.item-box-tax (税込)
+      = render partial: "productlist", collection: @interior_products, as: :product
 
     .view-all
       %a{:href => ""} すべての商品を見る
