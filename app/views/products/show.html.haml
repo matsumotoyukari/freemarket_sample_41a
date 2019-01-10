@@ -1,7 +1,7 @@
 = render "products/header"
 %section.item-box-container.l-single-container
   %h1.item-name
-    SAMPLE
+    = @product.name
   .item-main-content.clearfix
     .item-photo
       .owl-carousel.owl-loaded.owl-drag
@@ -33,11 +33,11 @@
         /     %span
         /     .owl-dot-inner
         /       %img(src="https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m40712253135_4.jpg?1545354854")
-      / 売り切れの場合
-      .item-sold-out-badge
-        %div
-          SOLD
-        / ここまで
+      / - if @product.tranzaction.deal == true
+      /   .item-sold-out-badge
+      /     %div
+      /       SOLD
+      /     / ここまで
     %table.item-detail-table
       %tbody
         %tr
@@ -90,7 +90,7 @@
           %th
             商品の状態
           %td
-            = converting_to_condition(@product.condition)
+            = @product.condition
         %tr
           %th
             配送料の負担
@@ -111,7 +111,7 @@
           %th
             発送日の目安
           %td
-            = converting_to_condition(@product.shipmentday)
+            = @product.shipmentday
   .item-price-box.text-center
     %span.item-price.bold
       = converting_to_jpy(@product.price)
@@ -119,8 +119,11 @@
       (税込)
     %span.item-shipping-fee
       送料込み
-  .item-buy-btn.disabled
-    売り切れました
+  = link_to "#" ,class: "item-buy-btn" do
+    商品を購入する
+  / - if @product.tranzaction.deal == true
+  /   .item-buy-btn.disabled
+  /     売り切れました
 
   .item-description
     %p.item-description-inner
