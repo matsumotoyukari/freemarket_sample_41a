@@ -9,10 +9,10 @@ class ProductsController < ApplicationController
     @mens = Product.where(category_id: mens_ids.first..mens_ids.last).limit(4).order('created_at DESC')
     baby_ids = Category.find(3).subtree_ids
     baby_ids.pop(1)
-    @baby = Product.where(category_id: baby_ids.first..baby_ids.last).limit(4).order('created_at DESC')
-    kosume_ids = Category.find(4).subtree_ids
-    kosume_ids.pop(1)
-    @kosume = Product.where(category_id: kosume_ids.first..kosume_ids.last).limit(4).order('created_at DESC')
+    @baby_products = Product.where(category_id: baby_ids.first..baby_ids.last).limit(4).order('created_at DESC')
+    interior_ids = Category.find(4).subtree_ids
+    interior_ids.pop(1)
+    @interior_products = Product.where(category_id: interior_ids.first..interior_ids.last).limit(4).order('created_at DESC')
   end
 
   def new
