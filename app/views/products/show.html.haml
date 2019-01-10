@@ -90,7 +90,7 @@
           %th
             商品の状態
           %td
-            = @product.condition
+            = @product.condition_i18n
         %tr
           %th
             配送料の負担
@@ -111,7 +111,7 @@
           %th
             発送日の目安
           %td
-            = @product.shipmentday
+            = @product.shipmentday_i18n
   .item-price-box.text-center
     %span.item-price.bold
       = converting_to_jpy(@product.price)
