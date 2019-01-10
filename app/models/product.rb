@@ -5,4 +5,21 @@ class Product < ApplicationRecord
   belongs_to :area
   belongs_to :size
   accepts_nested_attributes_for :product_images
+
+  enum condition: {
+    notselect: 0,
+    unused: 1,
+    close_to_unused: 2,
+    no_dirt: 3,
+    slightly_dirty: 4,
+    dirt: 5,
+    bad: 6,
+  }
+
+  enum shipmentday: {
+    noselect: 0,
+    oneday_twoday: 1,
+    twoday_threeday: 2,
+    fourday_sevenday: 3
+  }
 end
