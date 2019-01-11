@@ -14,7 +14,7 @@
 - has_many :rates
 - has_many :products
 - has_many :likes
-- has_many :transactions
+- has_many :trades
 - has_one :creditcard
 - has_one :address
 - has_one :personal_info
@@ -64,7 +64,7 @@
 
 
 
-## Transactionテーブル
+## Tradeテーブル
 
 |Column|type|option|
 |------|----|------|
@@ -76,7 +76,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to product
+- belongs_to :product
 
 
 
@@ -107,7 +107,7 @@
 - belongs_to :bland
 - belongs_to :area
 - belongs_to :size
-- has_one :transaction
+- has_one :trade
 - has_many :product_images
 - has_many :comments
 
