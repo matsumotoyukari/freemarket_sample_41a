@@ -33,11 +33,11 @@
         /     %span
         /     .owl-dot-inner
         /       %img(src="https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m40712253135_4.jpg?1545354854")
-      / - if @product.tranzaction.deal == true
-      /   .item-sold-out-badge
-      /     %div
-      /       SOLD
-      /     / ここまで
+      - if @product.trade.deal == true
+        .item-sold-out-badge
+          %div
+            SOLD
+          / ここまで
     %table.item-detail-table
       %tbody
         %tr
@@ -119,11 +119,12 @@
       (税込)
     %span.item-shipping-fee
       送料込み
-  = link_to "#" ,class: "item-buy-btn" do
-    商品を購入する
-  / - if @product.tranzaction.deal == true
-  /   .item-buy-btn.disabled
-  /     売り切れました
+  - if @product.trade.deal == false
+    = link_to "#" ,class: "item-buy-btn" do
+      商品を購入する
+  - elsif @product.trade.deal == true
+    .item-buy-btn.disabled
+      売り切れました
 
   .item-description
     %p.item-description-inner
