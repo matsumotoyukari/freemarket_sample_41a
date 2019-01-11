@@ -1,0 +1,2 @@
+%form{:action => "/pay", :method => "post"}
+  %script.payjp-button{"data-key" => "#{ENV['PAYJP_PRIVATE_KEY']}", "data-partial" => "false", "data-submit-text" => "カードを登録する", "data-token-name" => "cardtoken", "data-text" => "カードを登録登録", :src => "https://checkout.pay.jp/", :type => "text/javascript"}
