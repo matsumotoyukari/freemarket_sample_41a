@@ -22,13 +22,13 @@ describe ProductsController do
     it "カテゴリーベビー・キッズに属する商品が格納されるか" do
       product = create(:product,category_id: 397)
       get :index
-      expect(assigns(:baby).length).to eq 1
+      expect(assigns(:baby_products).length).to eq 1
     end
 
-    it "カテゴリーコスメに属する商品が格納されるか" do
+    it "カテゴリーインテリアに属する商品が格納されるか" do
       product = create(:product,category_id: 533)
       get :index
-      expect(assigns(:kosume).length).to eq 1
+      expect(assigns(:interior_products).length).to eq 1
     end
   end
 
@@ -46,6 +46,21 @@ describe ProductsController do
     end
   end
 
+  describe 'GET #search' do
+
+    it "#searchのビューの表示" do
+      get :search,params: {keyword: "テ"}
+      expect(response).to render_template :search
+    end
+
+    it "検索フォームから送信されたキーワードで検索できるか" do
+      create(:product,category_id: 340)
+      get :search, params: {keyword: "テ" }
+      expect(assigns(:products).length).to eq 1
+    end
+  end
+
+
   describe 'DELETE #destroy' do
     it "商品消去" do
       product = create(:product,category_id: 340)
@@ -60,8 +75,6 @@ describe ProductsController do
       expect do
         delete :destroy, params: { id: product}
       end.to change(ProductImage, :count).by(-1)
-
     end
   end
-
 end
