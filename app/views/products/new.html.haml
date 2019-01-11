@@ -16,13 +16,13 @@
                 .sell-upload-items-container
                   .sell-upload-items.have-item-0
                     %ul
-                = f.fields_for :product_images do |fi|
+                = f.fields_for :product_images do |i|
                   .sell-upload-drop-box.have-item
                     %pre.visible-pc
                       :preserve
                         ドラッグアンドドロップ
                         またはクリックしてファイルをアップロード
-                    = fi.file_field :image, class: "file"
+                    = i.file_field :image, class: "file"
             .sell-content
               .form-group
                 = f.label :name do
