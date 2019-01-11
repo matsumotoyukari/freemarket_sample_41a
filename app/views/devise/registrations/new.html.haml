@@ -30,7 +30,6 @@
             %span.form-require
               必須
             = f.password_field :password, placeholder: "6文字以上", class: "input-default"
-            %input{type: "hidden", name:"after_save_callback"}
           .form-group
             = recaptcha_tags
           .form-group.rbt
