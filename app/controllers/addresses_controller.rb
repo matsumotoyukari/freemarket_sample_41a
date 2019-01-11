@@ -6,7 +6,7 @@ class AddressesController < ApplicationController
 
   def create
      @address = Address.create(address_params)
-     redirect_to root_path
+     redirect_to register_cregit_card_path
   end
 
   private
