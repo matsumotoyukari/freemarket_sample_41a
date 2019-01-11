@@ -5,12 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :products
-<<<<<<< HEAD
   has_one :address
   accepts_nested_attributes_for :address
-=======
   has_many :trades
-
-
->>>>>>> Taiki0806/master
 end
