@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    4.times { @product.product_images.build }
+    4.times { @product.product_images.build}
   end
 
   def show
@@ -25,7 +25,8 @@ class ProductsController < ApplicationController
   end
 
   def create
-     @product = Product.new(product_params)
+    @product = Product.new(product_params)
+
     if @product.save
       redirect_to root_path(@product)
     else
@@ -41,7 +42,6 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    binding.pry
     params.require(:product).permit(:name, :detail, :price, :category_id, :size_id, :area_id, product_images_attributes: [:image]).merge(:seller => 1, :condition => 1, :shipmentday => 1)
   end
 end
