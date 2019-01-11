@@ -11,8 +11,10 @@ class UsersController < ApplicationController
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     @user = User.find(current_user)
     @user.cardtoken = params[:cardtoken]
-    @user.save
-    redirect_to root_path
+    if @user.save
+      redirect_to root_path
+    else
+      redirect_to register_cregit_card_path
   end
 
 end
