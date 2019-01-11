@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       redirect_to register_cregit_card_path
+    end
   end
 
 end
