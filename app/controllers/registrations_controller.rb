@@ -14,8 +14,8 @@ private
     resource.validate
     unless verify_recaptcha(model: resource)
       respond_with_navigational(resource) {render:new}
+    end
   end
-end
 
   def customize_sign_up_params
     devise_parameter_sanitizer.permit :sign_up, keys: [:name, :password, :email, :password, :password_confirmation]
