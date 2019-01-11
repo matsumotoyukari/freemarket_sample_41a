@@ -40,15 +40,12 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @keyword = product_search[:keyword]
-    @products = Product.where('name LIKE(?) OR detail  LIKE(?)',"%#{product_search[:keyword]}%","%#{product_search[:keyword]}%").limit(20)
+    @keyword = params[:keyword]
+    @products = Product.where('name LIKE(?) OR detail  LIKE(?)',"%#{params[:keyword]}%","%#{params[:keyword]}%").limit(20)
   end
 
   private
   def product_params
     params.require(:product).permit(:name, :detail, :price, :category_id, :size_id, :area_id, product_images_attributes: [:image]).merge(:seller => 1, :condition => 1, :shipmentday => 1)
-  end
-  def product_search
-    params.permit(:keyword)
   end
 end
