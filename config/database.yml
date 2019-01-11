@@ -9,7 +9,7 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.7/en/old-client.html
 #
-default: &default
+ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
@@ -17,9 +17,11 @@ default: &default
   password:
   socket: /tmp/mysql.sock
 
+
 development:
   <<: *default
   database: freemarket_sample_41a_development
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
