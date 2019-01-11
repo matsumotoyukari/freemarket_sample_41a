@@ -17,8 +17,4 @@ private
     end
   end
 
-  def customize_sign_up_params
-    devise_parameter_sanitizer.permit :sign_up, keys: [:name, :password, :email, :password, :password_confirmation]
-  end
-
 end
