@@ -764,4 +764,21 @@ end
   jimu.children.create(name: name)
 end
 
+# shipments(発送方法)テーブル
+  Shipment.create(name: "未定", shipingfee_id: 1)
+  Shipment.create(name: "らくらくメルカリ便", shipingfee_id: 1)
+  Shipment.create(name: "ゆうメール", shipingfee_id: 1)
+  Shipment.create(name: "レターパック", shipingfee_id: 1)
+  Shipment.create(name: "普通郵便（定形、定形外）", shipingfee_id: 1)
+  Shipment.create(name: "クロネコヤマト", shipingfee_id: 1)
+  Shipment.create(name: "ゆうパック", shipingfee_id: 1)
+  Shipment.create(name: "クリックポスト", shipingfee_id: 1)
+  Shipment.create(name: "ゆうパケット", shipingfee_id: 1)
+  Shipment.create(name: "未定", shipingfee_id: 2)
+  Shipment.create(name: "クロネコヤマト", shipingfee_id: 2)
+  Shipment.create(name: "ゆうパック", shipingfee_id: 2)
+  Shipment.create(name: "ゆうメール", shipingfee_id: 2)
 
+# shipingfee(配送料負担)テーブル
+  Shipingfee.create(name: "送料込み（出品者負担）")
+  Shipingfee.create(name: "着払い（購入者負担）")
