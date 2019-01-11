@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    4.times { @product.product_images.build }
+    4.times { @product.product_images.build}
   end
 
   def show
@@ -14,7 +14,8 @@ class ProductsController < ApplicationController
   end
 
   def create
-     @product = Product.new(product_params)
+    @product = Product.new(product_params)
+
     if @product.save
       redirect_to root_path(@product)
     else
