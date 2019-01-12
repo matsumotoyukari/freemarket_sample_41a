@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameter, if: :devise_controller?
   protect_from_forgery with: :exception
 
+  include PaysHelper
+
   private
 
   def production?
