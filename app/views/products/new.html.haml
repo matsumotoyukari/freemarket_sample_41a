@@ -1,3 +1,6 @@
+.single-container{style: 'padding: 0;'}
+  = render "users/header.html.haml"
+
 %main.single-main
   %section.l-single-container.sell-item-container
     #sell-container
@@ -157,3 +160,5 @@
               %a.btn-default.btn-gray{href: "/"}
                 もどる
           .overlay
+= render "users/footer.html.haml"
+
