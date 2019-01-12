@@ -1,0 +1,87 @@
+%body
+  .single-container
+    %header.single-header
+      %h1
+        = link_to root_path do
+          %img{alt: "mercari", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?4136293187"}/
+      %nav.progress-bar.signup-bar
+        %ol.clearfix
+          %li.active
+            #category 会員情報
+            .progress-status3-1
+          %li
+            #category 電話番号
+            .progress-status3-2
+          %li
+            #category3 住所入力
+            .progress-status3-3
+          %li
+            #category 支払い方法
+            .progress-status3-4
+          %li
+            #category 完了
+            .progress-status3-5
+    %main.single-main
+      %section.l-single-container
+        %h2.l-single-head 住所入力
+        = form_for @address, class:'l-single-inner' do |f|
+          .l-single-content
+            .form-group
+              = f.label :name do
+                お名前
+                %span.form-require 必須
+                =f.text_field :first_name, class: 'input-default', placeholder:'例）山田', value: ""
+                =f.text_field :last_name, class: 'input-default',  placeholder:'例）彩', value: ""
+            .form-group
+              = f.label :name do
+                お名前カナ
+                %span.form-require 必須
+                =f.text_field :first_name_kana, class: 'input-default', placeholder:'例）ヤマダ', value: ""
+                =f.text_field :last_name_kana, class: 'input-default', placeholder:'例）アヤ', value: ""
+            .form-group
+              = f.label :zip_code do
+                郵便番号
+                %span.form-require 必須
+                =f.text_field :zip_code, class: 'input-default', placeholder:'例）123-4567', 'data-region':'jp', maxlength:'8', pattern:'\\d{3}-\\d{4}', value: ""
+            .form-group
+              = f.label :prefecture do
+                %span.form-require 必須
+                .select-wrap
+                  都道府県
+                  = f.collection_select :prefecture, Area.all,:id, :name
+                  %i.icon-arrow-bottom
+            .form-group
+              = f.label :city do
+                市区町村
+                %span.form-require 必須
+                = f.text_field :city, class: 'input-default', placeholder:'例）横浜市緑区', value: ""
+            .form-group
+              = f.label :address1_label do
+                番地
+                %span.form-require 必須
+                =f.text_field :address1, class: 'input-default', placeholder:'例）青山1−1−1', value: ""
+            .form-group
+              = f.label :address2_label do
+                建物名
+                %span.form-arbitrary 任意
+                =f.text_field :address2, class: 'input-default', placeholder:'例）柳ビル103', value: ""
+            .form-group
+              = f.label :address2_label do
+                電話
+                %span.form-arbitrary 任意
+                =f.number_field :telephone, class: 'input-default', placeholder:'例）09012345678', value: ""
+            = f.button html: {class: "btn-default btn-red", type: "submit"} do
+              次へ進む
+    %footer.single-footer
+      %nav
+        %ul.clearfix
+          %li
+            %a{href: "https://www.mercari.com/jp/privacy/"} プライバシーポリシー
+          %li
+            %a{href: "https://www.mercari.com/jp/tos/"} メルカリ利用規約
+          %li
+            %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+      %a.single-footer-logo{href: "https://www.mercari.com/jp/"}
+        %img{alt: "mercari", height: "65", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?327793976", width: "80"}/
+      %p
+        %small © 2019 Mercari
