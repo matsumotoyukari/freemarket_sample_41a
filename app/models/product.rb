@@ -8,7 +8,6 @@ class Product < ApplicationRecord
   has_one :trade
 
   enum condition: {
-    notselect: 0,
     unused: 1,
     close_to_unused: 2,
     no_dirt: 3,
@@ -18,7 +17,6 @@ class Product < ApplicationRecord
   }
 
   enum shipmentday: {
-    noselect: 0,
     oneday_twoday: 1,
     twoday_threeday: 2,
     fourday_sevenday: 3
