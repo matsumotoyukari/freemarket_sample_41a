@@ -28,6 +28,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
+      Trade.create(product_id: @product.id)
       redirect_to root_path(@product)
     else
       render :action => "new"
