@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190112020051) do
+ActiveRecord::Schema.define(version: 20190112113118) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20190112020051) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.text     "name",                   limit: 65535
+    t.string   "cardtoken"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -132,6 +133,7 @@ ActiveRecord::Schema.define(version: 20190112020051) do
   add_foreign_key "products", "shipingfees"
   add_foreign_key "products", "shipments"
   add_foreign_key "products", "users", column: "seller"
+  add_foreign_key "shipments", "shipingfees"
   add_foreign_key "sizes", "sizetypes"
   add_foreign_key "trades", "products"
   add_foreign_key "trades", "users"
