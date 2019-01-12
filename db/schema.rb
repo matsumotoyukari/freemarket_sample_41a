@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190111112110) do
+ActiveRecord::Schema.define(version: 20190112020051) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -54,20 +54,24 @@ ActiveRecord::Schema.define(version: 20190111112110) do
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                      null: false
-    t.text     "detail",      limit: 65535, null: false
-    t.integer  "seller",                    null: false
-    t.integer  "category_id",               null: false
-    t.integer  "condition",                 null: false
-    t.integer  "area_id",                   null: false
-    t.integer  "shipmentday",               null: false
+    t.string   "name",                        null: false
+    t.text     "detail",        limit: 65535, null: false
+    t.integer  "seller",                      null: false
+    t.integer  "category_id",                 null: false
+    t.integer  "condition",                   null: false
+    t.integer  "area_id",                     null: false
+    t.integer  "shipmentday",                 null: false
     t.integer  "price"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "size_id"
+    t.integer  "shipingfee_id"
+    t.integer  "shipment_id"
     t.index ["area_id"], name: "index_products_on_area_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["seller"], name: "index_products_on_seller", using: :btree
+    t.index ["shipingfee_id"], name: "index_products_on_shipingfee_id", using: :btree
+    t.index ["shipment_id"], name: "index_products_on_shipment_id", using: :btree
     t.index ["size_id"], name: "index_products_on_size_id", using: :btree
   end
 
@@ -125,6 +129,8 @@ ActiveRecord::Schema.define(version: 20190111112110) do
   add_foreign_key "addresses", "users"
   add_foreign_key "products", "areas"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "shipingfees"
+  add_foreign_key "products", "shipments"
   add_foreign_key "products", "users", column: "seller"
   add_foreign_key "sizes", "sizetypes"
   add_foreign_key "trades", "products"
