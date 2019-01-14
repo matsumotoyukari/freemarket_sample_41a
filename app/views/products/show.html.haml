@@ -146,7 +146,7 @@
 
 
 .listing-item-change-box
-  = link_to "商品の編集","#",class: "btn-default btn-red"
+  = link_to "商品の編集", edit_product_path ,class: "btn-default btn-red"
   %p.text-center
     or
   = form_for @product , method: :delete do |f|
