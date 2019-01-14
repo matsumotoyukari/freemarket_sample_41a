@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
+      Trade.create(product_id: @product.id)
       redirect_to root_path(@product)
     else
       render :action => "new"
@@ -38,10 +39,27 @@ class ProductsController < ApplicationController
   end
 
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.seller == current_user.id
+      @product.update(update_product_params)
+      redirect_to root_path(@product)
+    else
+      render action: "edit"
+    end
+  end
 
 
   private
   def product_params
-    params.require(:product).permit(:name, :detail, :price, :category_id, :size_id, :area_id, product_images_attributes: [:image]).merge(:seller => 1, :condition => 1, :shipmentday => 1)
+    params.require(:product).permit(:name, :detail, :condition, :category_id, :size_id, :shipingfee_id, :shipment_id, :area_id, :shipmentday, :price, product_images_attributes: [:image]).merge(seller: current_user.id)
+  end
+
+  def update_product_params
+    params.require(:product).permit(:name, :detail, :condition, :category_id, :size_id, :shipingfee_id, :shipment_id, :area_id, :shipmentday, :price, product_images_attributes: [:image, :destroy, :id]).merge(seller: current_user.id)
   end
 end
