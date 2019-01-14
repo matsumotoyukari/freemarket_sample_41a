@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :users
   resources :products
   get "search" => "products#search"
-  get "buyproduct" => "products#buyproduct"
+
+  resources :category,only: [:index,:show]
   get "userlogout" => "users#userlogout"
   get "creditcard" => "users#creditcard-registration"
 end
