@@ -7,6 +7,10 @@ class RegistrationsController < Devise::RegistrationsController
     new_address_path
   end
 
+  def update_resource(resource, params)
+    resource.update_without_current_password(params)
+  end
+
 private
 
   def check_recaptcha
