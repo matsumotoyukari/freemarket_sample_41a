@@ -1,0 +1,22 @@
+= render "products/header"
+%main.l-container.clearfix
+  .l-content.full-width
+    %ul.parts-nav
+      - if @category.children?
+        - @category.children.sample(9).each do |child|
+          %li
+            = link_to category_path(id: child.id) do
+              = child.name
+
+      - else
+        - @category.siblings.sample(9).each do |child|
+          %li
+            = link_to category_path(id: child.id) do
+              = child.name
+    %section.items-box-container.clearfix
+      %h1.items-box-head
+        = @category.name
+      .items-box-content.clearfix.category-brand-list
+        = render partial: "products/productlist", collection: @products, as: :product
+
+= render "products/footer"
