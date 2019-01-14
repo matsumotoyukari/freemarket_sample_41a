@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :trades
 
   def self.from_omniauth(auth)
-    user = User.where(email: auth.info.email).first
+    user = User.find_by(email: auth.info.email)
     if user
       return user
     else
