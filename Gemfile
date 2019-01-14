@@ -81,3 +81,5 @@ gem 'recaptcha', require: "recaptcha/rails"
 gem 'mini_magick'
 gem 'enum_help'
 gem 'payjp'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
