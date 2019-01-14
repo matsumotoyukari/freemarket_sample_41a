@@ -1,18 +1,10 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.all
-    ladies_ids = Category.find(1).subtree_ids
-    @ladies = Product.where(category_id: ladies_ids.first..ladies_ids.last).limit(4).order('created_at DESC')
-    mens_ids = Category.find(2).subtree_ids
-    mens_ids.pop(1)
-    @mens = Product.where(category_id: mens_ids.first..mens_ids.last).limit(4).order('created_at DESC')
-    baby_ids = Category.find(3).subtree_ids
-    baby_ids.pop(1)
-    @baby_products = Product.where(category_id: baby_ids.first..baby_ids.last).limit(4).order('created_at DESC')
-    interior_ids = Category.find(4).subtree_ids
-    interior_ids.pop(1)
-    @interior_products = Product.where(category_id: interior_ids.first..interior_ids.last).limit(4).order('created_at DESC')
+    @ladies = search_product(Category.find(1))
+    @mens = search_product(Category.find(2))
+    @baby_products = search_product(Category.find(3))
+    @interior_products = search_product(Category.find(4))
   end
 
   def new
@@ -46,6 +38,7 @@ class ProductsController < ApplicationController
     @products = Product.where('name LIKE(?) OR detail  LIKE(?)',"%#{params[:keyword]}%","%#{params[:keyword]}%").limit(20)
   end
 
+
   def edit
     @product = Product.find(params[:id])
   end
@@ -59,6 +52,7 @@ class ProductsController < ApplicationController
       render action: "edit"
     end
   end
+
 
   private
   def product_params
