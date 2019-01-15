@@ -16,6 +16,7 @@ require 'payjp'
     if current_user.point
       save_users_point(point, amount)
     end
+
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     PaysHelper.create_charge(amount, customer_id)
     Trade.transaction do
@@ -24,6 +25,7 @@ require 'payjp'
       @trade.save
       save_sellers_point(@product, amount)
     end
+
     redirect_to root_path
     rescue
     redirect_to  product_path
