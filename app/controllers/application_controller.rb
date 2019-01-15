@@ -20,4 +20,17 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameter
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
+
+  def save_users_point(point, amount)
+    @user = current_user
+    @user.point -= point
+    @user.save
+  end
+
+  def save_sellers_point(product, amount)
+      @seller = User.find_by(id: product.seller)
+      @seller.point += amount
+      @seller.save
+  end
+
 end
