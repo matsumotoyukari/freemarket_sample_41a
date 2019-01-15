@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   get "buyproduct" => "products#buyproduct"
   get "userlogout" => "users#userlogout"
   get "creditcard" => "users#creditcard-registration"
-  get "testpay/:id" => "mypayjp#create_charge"
+  post "testpay/:id" => "mypayjp#create_charge"
 end
