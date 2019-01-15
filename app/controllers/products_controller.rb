@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
+    @categoryroot = Category.find(1).siblings
     @ladies = search_product(Category.find(1))
     @mens = search_product(Category.find(2))
     @baby_products = search_product(Category.find(3))
