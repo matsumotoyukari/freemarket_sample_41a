@@ -120,7 +120,7 @@
     %span.item-shipping-fee
       送料込み
   - if @product.trade.deal == false
-    = link_to "#" ,class: "item-buy-btn" do
+    = link_to mypayjp_path, class: "item-buy-btn" do
       商品を購入する
   - elsif @product.trade.deal == true
     .item-buy-btn.disabled
@@ -146,7 +146,7 @@
 
 
 .listing-item-change-box
-  = link_to "商品の編集","#",class: "btn-default btn-red"
+  = link_to "商品の編集", edit_product_path ,class: "btn-default btn-red"
   %p.text-center
     or
   = form_for @product , method: :delete do |f|
