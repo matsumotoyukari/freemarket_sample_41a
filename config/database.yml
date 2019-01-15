@@ -17,9 +17,11 @@ default: &default
   password:
   socket: /tmp/mysql.sock
 
+
 development:
   <<: *default
   database: freemarket_sample_41a_development
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

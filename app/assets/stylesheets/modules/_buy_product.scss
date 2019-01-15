@@ -1,6 +1,7 @@
 .buy-item-container{
   width: 700px;
   margin: 0 auto;
+  background-color : #fff;
   .l-single-head{
     padding: 32px 16px;
     font-size: 22px;
@@ -29,7 +30,17 @@
       font-weight: 600;
       }
       .buy-form{
-        .buy-price{
+        .buy-accordion {
+        margin: 16px 0 0;
+        background: #ccc;
+        .accordion-toggle{
+          cursor: default;
+          padding: 16px;
+          border: 1px solid #ccc;
+          position: relative;
+        }
+        }
+        .buy-product-price{
           margin: 8px 0 0;
           line-height: 1.5;
           font-size: 28px;
@@ -44,21 +55,27 @@
         .buy-price-table{
           display: table;
           border-collapse: collapse;
-          width: 100%;
-
+          width: 320px;
           .buy-you-pay{
             margin: 0;
             padding: 0;
             font-size: 28px;
-            .buy-price-cell:first-child{
-              float: left;
+          .buy-price-cell:first-child{
+              text-align: left;
             }
-            .buy-price-cell{
-              display: inline-block;
-              padding: 16px 0;
-              float: right;
-              font-weight: 600;
+          .buy-price-cell{
+
+              font-weight: bold;
+              display: table-cell;
+              padding: 16px 0px 16px 5px;
+              text-align: right;
             }
+          .buy-price-cell-fix {
+            text-align: right;
+            display: table-cell;
+            padding: 16px 0;
+            padding-left: 110px;
+          }
           }
         }
         .has-error-text{
@@ -96,9 +113,7 @@
         margin: 8px 0 0;
         font-size: 14px;
         line-height: 1.4;
-
       }
-
     }
     .buy-user-info-fix{
       color: #0099e8;
@@ -110,4 +125,12 @@
   .buy-content:last-of-type{
     padding: 40px 12.5%;
   }
+}
+
+.buy-price {
+  display: none;
+}
+
+.btn-red {
+  background-color: red;
 }
