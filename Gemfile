@@ -46,6 +46,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'rspec-rails'
   gem 'factory_girl_rails', "~> 4.4.1"
+  gem 'faker'
 end
 
 group :production do
@@ -62,7 +63,6 @@ group :development do
 end
 
 group :test do
-  gem 'faker'
   gem 'capybara', '>= 2.15'
   gem "rails-controller-testing"
 end
