@@ -770,7 +770,7 @@ Shipingfee.create(name: "送料込み（出品者負担）")
 Shipingfee.create(name: "着払い（購入者負担）")
 
 # shipments(発送方法)テーブル
-Shipment.create(name: "未定", shipingfee: 1)
+Shipment.create(name: "未定", shipingfee_id: 1)
 Shipment.create(name: "らくらくメルカリ便", shipingfee_id: 1)
 Shipment.create(name: "ゆうメール", shipingfee_id: 1)
 Shipment.create(name: "レターパック", shipingfee_id: 1)
