@@ -120,7 +120,7 @@
     %span.item-shipping-fee
       送料込み
   - if @product.trade.deal == false
-    = link_to "#" ,class: "item-buy-btn" do
+    = link_to mypayjp_path, class: "item-buy-btn" do
       商品を購入する
   - elsif @product.trade.deal == true
     .item-buy-btn.disabled
