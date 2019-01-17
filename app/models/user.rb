@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :liked_products, through: :likes, source: :product
 
   def already_liked?(product)
-    self.likes.exists?(product_id: product.id)
+    likes.exists?(product_id: product.id)
   end
 
   def self.from_omniauth(auth)
