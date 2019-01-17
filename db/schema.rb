@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20190115085458) do
-
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -47,7 +45,6 @@ ActiveRecord::Schema.define(version: 20190115085458) do
     t.index ["sizetype_id"], name: "index_categories_on_sizetype_id", using: :btree
   end
 
-
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",    null: false
     t.integer  "product_id", null: false
@@ -55,11 +52,6 @@ ActiveRecord::Schema.define(version: 20190115085458) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_likes_on_product_id", using: :btree
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
-  end
-  
-  create_table "mypayjps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -120,13 +112,6 @@ ActiveRecord::Schema.define(version: 20190115085458) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tradeinfos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_tradeinfos_on_product_id", using: :btree
-  end
-
   create_table "trades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "product_id",                 null: false
     t.integer  "user_id"
@@ -165,7 +150,6 @@ ActiveRecord::Schema.define(version: 20190115085458) do
   add_foreign_key "products", "users", column: "seller"
   add_foreign_key "shipments", "shipingfees"
   add_foreign_key "sizes", "sizetypes"
-  add_foreign_key "tradeinfos", "products"
   add_foreign_key "trades", "products"
   add_foreign_key "trades", "users"
 end
