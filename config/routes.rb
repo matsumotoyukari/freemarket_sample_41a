@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users, :controllers => { registrations: "registrations", omniauth_callbacks: 'users/omniauth_callbacks'}
+
+
   root "products#index"
   resources :users
+  resources :addresses, only: [:new, :create]
   resources :products
-  get "buyproduct" => "products#buyproduct"
+    resources :mypayjp, only: [:show]
+  post "pay" => "users#pay"
+  get "register_cregit_card" => "users#register_cregit_card"
+  get "search" => "products#search"
+
+  resources :category,only: [:index,:show]
   get "userlogout" => "users#userlogout"
   get "creditcard" => "users#creditcard-registration"
+  post "testpay/:id" => "mypayjp#create_charge"
 end

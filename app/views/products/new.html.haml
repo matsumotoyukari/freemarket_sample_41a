@@ -1,3 +1,6 @@
+.single-container{style: 'padding: 0;'}
+  = render "users/header.html.haml"
+
 %main.single-main
   %section.l-single-container.sell-item-container
     #sell-container
@@ -16,31 +19,13 @@
                 .sell-upload-items-container
                   .sell-upload-items.have-item-0
                     %ul
-                  = f.fields_for :product_images do |i|
-                    = i.label :image, class: "sell-upload-drop-box", for: "image" do
-                      %pre.visible-pc
-                        :preserve
-                          ドラッグアンドドロップ
-                          またはクリックしてファイルをアップロード
-                      = i.file_field :image, class: "file", id: "image", multiple: true
-                    / = i.label :image, class: "sell-upload-drop-box", for: "image" do
-                    /   %pre.visible-pc
-                    /     :preserve
-                    /       ドラッグアンドドロップ
-                    /       またはクリックしてファイルをアップロード
-                    /   = i.file_field :image, class: "file", id: "image", multiple: true
-                    / = i.label :image, class: "sell-upload-drop-box", for: "image" do
-                    /   %pre.visible-pc
-                    /     :preserve
-                    /       ドラッグアンドドロップ
-                    /       またはクリックしてファイルをアップロード
-                    /   = i.file_field :image, class: "file", id: "image", multiple: true
-                    / = i.label :image, class: "sell-upload-drop-box", for: "image" do
-                    /   %pre.visible-pc
-                    /     :preserve
-                    /       ドラッグアンドドロップ
-                    /       またはクリックしてファイルをアップロード
-                    /   = i.file_field :image, class: "file", id: "image", multiple: true
+                = f.fields_for :product_images do |i|
+                  .sell-upload-drop-box.have-item
+                    %pre.visible-pc
+                      :preserve
+                        ドラッグアンドドロップ
+                        またはクリックしてファイルをアップロード
+                    = i.file_field :image, class: "file"
             .sell-content
               .form-group
                 = f.label :name do
@@ -91,49 +76,29 @@
                 /     %input.input-default{:placeholder => "例）シャネル", :value => ""}/
                 /     %div
                 .form-group
-                  %label
+                  = f.label :condition do
                     商品の状態
                     %span.form-require 必須
                   .select-wrap
-                    %select.select-default
-                      %option{value: ""} ---
-                      %option{value: "1"} 新品、未使用
-                      %option{value: "2"} 未使用に近い
-                      %option{value: "3"} 目立った傷や汚れなし
-                      %option{value: "4"} やや傷や汚れあり
-                      %option{value: "5"} 傷や汚れあり
-                      %option{value: "6"} 全体的に状態が悪い
+                    = f.select :condition, Product.conditions.keys.map {|k| [I18n.t("enums.product.condition.#{k}"), k]}, {include_blank: "---"}, class: "select-default"
                     %i.fas.fa-chevron-down
             .sell-content.clearfix
               %h3.sell-sub-head 配送について
               %a.form-question{href: "/", target: "_blank"} ?
               .sell-form-box
                 .form-group
-                  %label
+                  = f.label :shipingfee_id do
                     配送料の負担
                     %span.form-require 必須
                   .select-wrap
-                    %select.select-default
-                      %option{value: ""} ---
-                      %option{value: "2"} 送料込み(出品者負担)
-                      %option{value: "1"} 着払い(購入者負担)
+                    = f.collection_select :shipingfee_id, Shipingfee.all, :id, :name, {:include_blank => "---"}, {class: "select-default"}
                     %i.fas.fa-chevron-down
                 .form-group
-                  %label
+                  = f.label :shipment_id do
                     配送の方法
                     %span.form-require 必須
                   .select-wrap
-                    %select.select-default
-                      %option{value: ""} ---
-                      %option{value: "5"} 未定
-                      %option{value: "14"} らくらくメルカリ便
-                      %option{value: "6"} ゆうメール
-                      %option{value: "8"} レターパック
-                      %option{value: "9"} 普通郵便(定形、定形外)
-                      %option{value: "10"} クロネコヤマト
-                      %option{value: "11"} ゆうパック
-                      %option{value: "13"} クリックポスト
-                      %option{value: "7"}
+                    = f.collection_select :shipment_id, Shipment.all, :id, :name, {:include_blank => "---"}, {class: "select-default"}
                     %i.fas.fa-chevron-down
                 .form-group
                   = f.label :area_id do
@@ -143,15 +108,11 @@
                     = f.collection_select :area_id, Area.all, :id, :name, {:include_blank => "---"}, {class: "select-default"}
                     %i.fas.fa-chevron-down
                 .form-group
-                  %label
+                  = f.label :shipmentday do
                     発送までの日数
                     %span.form-require 必須
                   .select-wrap
-                    %select.select-default
-                      %option{value: ""} ---
-                      %option{value: "1"} 1~2日で発送
-                      %option{value: "2"} 2~3日で発送
-                      %option{value: "3"} 4~7日で発送
+                    = f.select :shipmentday, Product.shipmentdays.keys.map {|k| [I18n.t("enums.product.shipmentday.#{k}"), k]}, {include_blank: "---"}, class: "select-default"
                     %i.fas.fa-chevron-down
             .sell-content.clearfix
               %h3.sell-sub-head 販売価格(300〜9,999,999)
@@ -166,7 +127,6 @@
                       .l-right.sell-price-input
                         ¥
                         %div
-                          / %input.input-default{placeholder: "例）300", value: ""}/
                           = f.text_field :price, class: "input-default", placeholder: "例）300"
                   %li.clearfix
                     .l-left
@@ -200,3 +160,5 @@
               %a.btn-default.btn-gray{href: "/"}
                 もどる
           .overlay
+
+= render "users/footer.html.haml"
