@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     resources :likes,only: [:create, :destroy]
   end
 
-
   post "pay" => "users#pay"
   get "register_cregit_card" => "users#register_cregit_card"
   get "search" => "products#search"
