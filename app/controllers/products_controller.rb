@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @categoryroot = Category.find(1).siblings
     @product = Product.find(params[:id])
   end
 
