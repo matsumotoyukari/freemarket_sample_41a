@@ -130,11 +130,12 @@
     %p.item-description-inner
       = @product.detail
   .item-button-container.clearfix
-    .item-button-left
-      %button.item-button.item-button-like
-        %i.far.fa-heart
-        %span いいね！
-        %span.fade-in-down 14
+
+    .item-button-left#like-button
+      - if current_user.already_liked?(@product)
+        = render partial: 'like_destroy_form', locals: { product: @product }
+      - else
+        = render partial: 'like_create_form', locals: { product: @product }
       %a.item-button.item-button-report.crearfix
         %i.far.fa-flag
         %span 不適切な商品の報告

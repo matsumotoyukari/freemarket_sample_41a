@@ -1,0 +1,5 @@
+= link_to product_like_path(product_id: product,id: current_user.id),method: :delete,remote: true,class: "item-button item-button-liked",id: "like" do
+  %i.fas.fa-heart
+  %span いいね！
+  %span.fade-in-down
+    = product.likes.length
