@@ -3,7 +3,7 @@
   = link_to product_path(product) do
     %figure.items-box-photo
       - if product.product_images.present?
-        %img.is-higher-height.lazyloaded{:alt => "【ストロベリーフィールズ】パンプス サンダル", "data-src" => "#{product.product_images[0]}", :src => "#{product.product_images[0].image_url}"}/
+        %img.is-higher-height.lazyloaded{:alt => "【ストロベリーフィールズ】パンプス サンダル", "data-src" => "#{product.product_images[0]}", :src => "#{product.product_images[0].image_url}"}
     .items-box-body
       %h3.items-box-name.font-2
         = product.name
