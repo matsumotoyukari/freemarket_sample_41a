@@ -20,14 +20,15 @@ require 'payjp'
     PaysHelper.create_charge(amount, customer_id)
     Trade.transaction do
       @trade = Trade.find_by(product_id: params[:id])
+      @trade.user_id = current_user.id
       @trade.deal = true
       @trade.save
       save_sellers_point(@product, amount)
     end
-
-    redirect_to root_path
+      redirect_to root_path
     rescue
-    redirect_to  product_path
+      redirect_to product_path
+
   end
 
   def set_product
