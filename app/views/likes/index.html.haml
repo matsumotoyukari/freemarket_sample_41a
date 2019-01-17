@@ -1,0 +1,26 @@
+= render "products/header"
+
+%main.l-container.clearfix
+  .l-content
+    %section.l-chapter-container
+      %h2.l-chapter-head
+        いいね一覧
+      %ul.mypage-item-list
+        - @products.each do |product|
+          %li
+            = link_to product_path(product),class: "mypage-item-link" do
+              %figure
+                - if product.product_images.present?
+                  = image_tag "#{product.product_images[0].image}",alt: "#{product.name}"
+                  %figcaption.mypage-sold
+                    .item-sold-out-badge
+                      %div SOLD
+              .mypage-item-body
+                .mypage-item-text
+                  = product.name
+                .mypage-item-text
+                  = converting_to_jpy(product.price)
+  = render "users/sidebar"
+
+
+= render "products/footer"
