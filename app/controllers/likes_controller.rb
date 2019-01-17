@@ -1,10 +1,8 @@
 class LikesController < ApplicationController
 
-
   def index
     @products = current_user.liked_products
   end
-
 
   def create
     @product = Product.find(params[:product_id])
@@ -15,10 +13,8 @@ class LikesController < ApplicationController
         format.js
       end
     end
-
-
-
   end
+  
   def destroy
     @product = Product.find(params[:product_id])
     @like = Like.find_by(product_id: params[:product_id], user_id: current_user.id)
@@ -30,6 +26,5 @@ class LikesController < ApplicationController
       end
     end
   end
-
-
+  
 end
