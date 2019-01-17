@@ -1,0 +1,86 @@
+.l-chapter-container{
+  margin: 0;
+  background: #fff;
+  .l-chapter-head{
+    font-size: 24px;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+  }
+  .mypage-item-list{
+    li{
+      position: relative;
+      .mypage-item-link{
+        display: block;
+        min-height: 50px;
+        padding: 16px;
+        color: #333;
+        text-decoration: none;
+        figure{
+          position: relative;
+          overflow: hidden;
+          float: left;
+          width: 48px;
+          height: 48px;
+          margin: 0;
+        }
+        img{
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 1;
+          width: 100%;
+        }
+        .mypage-item-body{
+          margin: 0 40px 0 68px;
+          .mypage-item-text{
+            overflow: hidden;
+            display: -webkit-box;
+            max-height: 4.4em;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+          }
+        }
+      }
+      &:first-child{
+        border-bottom: 1px solid #eee;
+      }
+      &:last-child{
+        border: 0;
+      }
+    }
+  }
+}
+.mypage-sold{
+  .item-sold-out-badge{
+    div{
+      top: 8px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      position: absolute;
+      left: 0;
+      z-index: 2;
+      color: #fff;
+      transform: rotate(-45deg);
+      font-weight: 600;
+    }
+    &:after{
+      border-width: 40px 40px 0 0;
+      border-color: #ea352d transparent transparent transparent;
+      display: block;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 0;
+      height: 0;
+      border-style: solid;
+
+    }
+  }
+}
