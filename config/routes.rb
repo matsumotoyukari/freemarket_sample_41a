@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :products do
     resources :mypayjp, only: [:show]
     resources :likes,only: [:create, :destroy]
+  end
+
 
   post "pay" => "users#pay"
   get "register_cregit_card" => "users#register_cregit_card"
