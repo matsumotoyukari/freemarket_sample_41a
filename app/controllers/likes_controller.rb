@@ -11,6 +11,8 @@ class LikesController < ApplicationController
       if @like.save
         format.html {redirect_back(fallback_location: product_path(@product))}
         format.js
+      else
+        redirect_back(fallback_location: product_path(@product))
       end
     end
   end
@@ -23,6 +25,8 @@ class LikesController < ApplicationController
       if @like.destroy
         format.html {redirect_back(fallback_location: product_path(@product))}
         format.js
+      else
+        redirect_back(fallback_location: product_path(@product))
       end
     end
   end
