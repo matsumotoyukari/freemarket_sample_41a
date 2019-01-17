@@ -1,5 +1,5 @@
 class MypayjpController < ApplicationController
-  before_action :set_product, only: [:show, :create_chage]
+  before_action :set_product, only: [:show, :create_charge]
 
 require 'payjp'
 
@@ -11,12 +11,11 @@ require 'payjp'
 
   def create_charge
     customer_id = current_user.payjp_id
-    point = params[:price].to_i
+    point = params[:point].to_i
     amount = @product.price - point
     if current_user.point
       save_users_point(point, amount)
     end
-
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     PaysHelper.create_charge(amount, customer_id)
     Trade.transaction do
