@@ -19,7 +19,7 @@ class LikesController < ApplicationController
   
   def destroy
     @product = Product.find(params[:product_id])
-    @like = Like.find_by(product_id: params[:product_id], user_id: current_user.id)
+    @like = @product.likes.where(user_id: current_user.id)
 
     respond_to do |format|
       if @like.destroy
