@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   root "products#index"
   resources :users
   resources :addresses, only: [:new, :create]
-  resources :products
+  resources :products do
+    resources :likes,only: [:create, :destroy]
+  end
+
+  resources :likes,only: [:index]
+
+
   post "pay" => "users#pay"
   get "register_cregit_card" => "users#register_cregit_card"
   get "search" => "products#search"
