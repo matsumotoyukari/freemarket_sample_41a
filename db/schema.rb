@@ -55,7 +55,8 @@ ActiveRecord::Schema.define(version: 20190115085458) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_likes_on_product_id", using: :btree
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
-
+  end
+  
   create_table "mypayjps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
