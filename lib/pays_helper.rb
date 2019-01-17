@@ -16,7 +16,7 @@ module PaysHelper
       :number => number,
       :cvc => cvc,
       :exp_month => exp_month,
-      :exp_year => exp_year_merged,
+      :exp_year => exp_year,
     }},
     {
     'X-Payjp-Direct-Token-Generate': 'true'
