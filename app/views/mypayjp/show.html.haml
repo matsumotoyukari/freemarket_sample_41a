@@ -19,8 +19,8 @@
               - if @user.point?
                 利用可能ポイント
                 .point
-                = @user.point
-                = number_field :point, data: {point: "#{@user.point}"}
+                  = @user.point
+                = number_field_tag :point, value: "0"
                 %br
               - else
                 .btn-default
