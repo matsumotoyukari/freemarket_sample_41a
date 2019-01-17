@@ -1,11 +1,11 @@
 class LikesController < ApplicationController
-
+  before_action :set_product,only: [:create,:destroy]
+  
   def index
     @products = current_user.liked_products
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @product.likes.new(user_id: current_user.id)
     respond_to do |format|
       if @like.save
@@ -18,7 +18,6 @@ class LikesController < ApplicationController
   end
   
   def destroy
-    @product = Product.find(params[:product_id])
     @like = @product.likes.where(user_id: current_user.id)
 
     respond_to do |format|
@@ -31,4 +30,7 @@ class LikesController < ApplicationController
     end
   end
   
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
 end
