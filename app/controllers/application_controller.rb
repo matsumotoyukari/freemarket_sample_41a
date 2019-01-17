@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameter, if: :devise_controller?
   protect_from_forgery with: :exception
 
+  include PaysHelper
+
   private
   def search_product(category)
     if category.children?
@@ -32,4 +34,17 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
+
+  def save_users_point(point, amount)
+    @user = current_user
+    @user.point -= point
+    @user.save
+  end
+
+  def save_sellers_point(product, amount)
+      @seller = User.find_by(id: product.seller)
+      @seller.point += amount
+      @seller.save
+  end
+
 end
