@@ -8,10 +8,10 @@ Rails.application.routes.draw do
 
   resources :likes,only: [:index]
   
-  resources :products 
+  resources :products do
     resources :mypayjp, only: [:show]
     resources :likes,only: [:create, :destroy]
-
+  
   post "pay" => "users#pay"
   get "register_cregit_card" => "users#register_cregit_card"
   get "search" => "products#search"
