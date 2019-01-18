@@ -1,0 +1,1 @@
+require 'pays_helper'

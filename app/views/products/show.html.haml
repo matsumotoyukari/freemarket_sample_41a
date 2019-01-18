@@ -63,14 +63,14 @@
           %th
             カテゴリー
           %td
-            =link_to "#" do
+            =link_to category_path(@product.category.root) do
               %div
                 = @product.category.root.name
-            =link_to "#" do
+            =link_to category_path(@product.category.parent) do
               .item-detail-table-sub-category
                 %i.icon-arrow-right
                   = @product.category.parent.name
-            =link_to "#" do
+            =link_to category_path(@product.category) do
               .item-detail-table-sub-sub-category
                 %i.icon-arrow-right
                   = @product.category.name
@@ -120,7 +120,7 @@
     %span.item-shipping-fee
       送料込み
   - if @product.trade.deal == false
-    = link_to "#" ,class: "item-buy-btn" do
+    = link_to product_mypayjp_path(@product), class: "item-buy-btn" do
       商品を購入する
   - elsif @product.trade.deal == true
     .item-buy-btn.disabled
@@ -130,11 +130,12 @@
     %p.item-description-inner
       = @product.detail
   .item-button-container.clearfix
-    .item-button-left
-      %button.item-button.item-button-like
-        %i.far.fa-heart
-        %span いいね！
-        %span.fade-in-down 14
+
+    .item-button-left#like-button
+      - if current_user.already_liked?(@product)
+        = render partial: 'like_destroy_form', locals: { product: @product }
+      - else
+        = render partial: 'like_create_form', locals: { product: @product }
       %a.item-button.item-button-report.crearfix
         %i.far.fa-flag
         %span 不適切な商品の報告
@@ -195,67 +196,42 @@
     .message-content
       %ul.message-items
         / 以下コメント１セット
-        %li.clearfix
-          / ユーザー情報以下
-          %a.message-user(href="#")
-            %figure
-              %div
-                / ユーザー画像
-                %img(src="//static-mercari-jp-imgtr2.akamaized.net/thumb/members/110939089.jpg?1464094325")
-                / ユーザー名
-              %figcaption.bold
-                もっちぃ
-          .message-body
-            / コメント
-            .message-body-text
-              コメント失礼します！25日までに届けていただくことはできますか？ちなみに住所は神奈川県です。
-            .message-icons.clearfix
-              .message-icon-left
-                %i.far.fa-clock
-                %span 7日前
-                / 不適切な投稿報告
-              .message-icon-right
-                %form(action="#")
-                  %button(type="submit")
-                    %i.fa.fa-flag
-            .i.icon-balloon
-            / ここまで
 
-        %li.clearfix
-          %a.message-user(href="#")
-            %figure
-              %div
-                %img(src="//static-mercari-jp-imgtr2.akamaized.net/thumb/members/110939089.jpg?1464094325")
-              %figcaption.bold
-                ※12月28〜1月4日迄、出荷不可です。
-              / 以下出品者だった場合
-            .message-is-seller
-              出品者
-              / ここまで
-          .message-body
-            .message-body-text
-              コメントありがとうございます。
-              明日発送可能で、埼玉県からの発送となりますので、25日着は問題無いかと思います。
-              宜しくお願い致します。
 
-            .message-icons.clearfix
-              .message-icon-left
-                %i.far.fa-clock
-                %span 7日前
-              .message-icon-right
-                %form(action="#")
-                  %button(type="submit")
-                    %i.fa.fa-flag
-            .i.icon-balloon
+        - @comments.each do |comment|
+          %li.clearfix
+            = link_to root_path,class: "message-user" do
+              %figure
+                %div
+                  %img(src="//static-mercari-jp-imgtr2.akamaized.net/thumb/members/110939089.jpg?1464094325")
+                %figcaption.bold
+                  = comment.user.name
+                / 以下出品者だった場合
+              - if comment.user == @product.seller
+                .message-is-seller
+                  出品者
+                  / ここまで
+            .message-body
+              .message-body-text
+                = comment.text
+
+              .message-icons.clearfix
+                .message-icon-left
+                  %i.far.fa-clock
+                  %span 7日前
+                .message-icon-right
+                  - if comment.user == current_user
+                    = link_to product_comment_path(product_id: @product.id,id: comment.id), method: :delete do
+                      %i.fas.fa-trash
+                  %i.fa.fa-flag
+              .i.icon-balloon
 
 
     .message-content
-      %form.message-form(action="#")
+      = form_for [@product,@comment],html: {class: "message-form"} do |f|
         / %input(type="hidden")トークン用？
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %input(type="hidden" name="item_id" value="hogehoge")
-        %input(type="hidden" name="redirect_url_key" value="item_detail")
-        %textarea.textarea-default(type="text" name="body")
-        %button.message-submit(type="submit")
+        = f.text_area :text,class: "textarea-default"
+        = f.button type: "submit",class: "message-submit" do
           %spam コメントする
 

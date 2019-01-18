@@ -1,0 +1,23 @@
+%section.mypage-user-icon
+  = link_to "#" do
+    %figure
+    - if current_user.image?
+      = image_tag("#{current_user.image}", class: "profile-image")
+      .form-wrapper
+        = form_for current_user do |f|
+          = f.label :profile_img do
+            = fa_icon 'images'
+            = f.file_field :image, class: "profile-image-change", id: "profile_img"
+            = f.button type: "submit", id: "profile_img_change" do
+              = fa_icon "angle-up"
+    %h2.bold
+      = current_user.name
+    .mypage-number
+      %div
+        評価
+        %span.bold
+          0
+      %div
+        出品数
+        %span.bold
+          0
