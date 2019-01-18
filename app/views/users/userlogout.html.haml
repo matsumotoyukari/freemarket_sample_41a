@@ -102,8 +102,8 @@
             = fa_icon "angle-right", class: "angle-right"
   .l-content
     .l-chapter-container
-      %form.l-single-inner{ action: "#", method: "POST", novalidate: "novalidate" }
+      = form_tag(destroy_user_session_path, method: :delete, novalidate: "novalidate", class: "l-single-inner") do
         .l-single-content
-          %button.btn-default.btn-red{ type: "submit" }
+          = button_tag(class: "btn-default btn-red", type: "submit") do
             ログアウト
           %input{ type: "hidden", name: "__csrf_value", value: "#"}
