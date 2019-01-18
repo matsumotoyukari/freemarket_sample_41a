@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   protect_from_forgery except: :pay
 
   def index
+    @user = User.find(1)
   end
 
   def register_cregit_card

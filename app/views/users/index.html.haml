@@ -1,4 +1,8 @@
 = render "products/header"
+/ - breadcrumb :users_index
+- breadcrumb :show_user, @user
+%nav.aaa
+  = breadcrumbs separator: " > "
 
 %main.l-container.clearfix
   .l-content
