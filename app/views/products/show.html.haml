@@ -231,8 +231,6 @@
       = form_for [@product,@comment],html: {class: "message-form"} do |f|
         / %input(type="hidden")トークン用？
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        / %input(type="hidden" name="item_id" value="hogehoge")
-        / %input(type="hidden" name="redirect_url_key" value="item_detail")
         = f.text_area :text,class: "textarea-default"
         = f.button type: "submit",class: "message-submit" do
           %spam コメントする
