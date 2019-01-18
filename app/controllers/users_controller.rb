@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   require 'payjp'
 
+  before_action :set_category
   protect_from_forgery except: :pay
 
   def index
