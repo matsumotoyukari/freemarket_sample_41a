@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190112113118) do
+ActiveRecord::Schema.define(version: 20190118025036) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20190112113118) do
     t.integer  "sizetype_id"
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
     t.index ["sizetype_id"], name: "index_categories_on_sizetype_id", using: :btree
+  end
+
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id", "user_id"], name: "index_likes_on_product_id_and_user_id", unique: true, using: :btree
+    t.index ["product_id"], name: "index_likes_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -122,14 +132,18 @@ ActiveRecord::Schema.define(version: 20190112113118) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.text     "name",                   limit: 65535
+    t.string   "cardtoken"
+    t.string   "payjp_id"
+    t.integer  "point"
     t.string   "provider"
     t.string   "uid"
-    t.string   "cardtoken"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "likes", "products"
+  add_foreign_key "likes", "users"
   add_foreign_key "products", "areas"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "shipingfees"
