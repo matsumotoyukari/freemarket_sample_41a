@@ -2,10 +2,18 @@ class UsersController < ApplicationController
   require 'payjp'
 
   before_action :set_category
+  before_action :set_user, only: [:update]
   protect_from_forgery except: :pay
 
   def index
     @user = User.find(1)
+  end
+
+  def update
+    if @user.id == current_user.id
+      current_user.update(update_user_profile)
+    end
+    redirect_to users_path
   end
 
   def register_cregit_card
@@ -25,6 +33,15 @@ class UsersController < ApplicationController
     else
       redirect_to register_cregit_card_path
     end
+  end
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  private
+  def update_user_profile
+    params.require(:user).permit(:image)
   end
 
 end
