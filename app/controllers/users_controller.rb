@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   protect_from_forgery except: :pay
 
   def index
-    @user = current_user
   end
 
   def update
