@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.id == current_user.id
       current_user.update(update_user_profile)
     else
