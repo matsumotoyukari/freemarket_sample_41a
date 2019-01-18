@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   include PaysHelper
 
+  def set_category
+    @categoryroot = Category.find(1).siblings
+  end
+
   private
   def search_product(category)
     if category.children?
