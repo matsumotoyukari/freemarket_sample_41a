@@ -19,8 +19,8 @@
               - if @user.point?
                 利用可能ポイント
                 .point
-                = @user.point
-                = f.number_field :price, data: {point: "#{@user.point}"}
+                  = @user.point
+                = number_field_tag :point, "0"
                 %br
               - else
                 .btn-default
@@ -31,6 +31,7 @@
               支払金額
             .buy-price-cell-fix
               = converting_to_jpy(@product.price)
+              = hidden_field_tag 'price', "#{@product.price}"
         %p.has-error-text
           配送先と支払い方法の入力を完了してください。
         .button-wrapper
