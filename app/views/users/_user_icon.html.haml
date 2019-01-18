@@ -2,15 +2,16 @@
   = link_to "#" do
     %figure
       = image_tag("#{@user.image}", class: "profile-image")
-    .form-wrapper
-      = form_for @user do |f|
-        %label{for: 'profile_img'}
-          = fa_icon 'images'
-          = f.file_field :image, class: "profile-image-change", id: "profile_img"
-          = f.button type: "submit", id: "profile_img_change" do
-            = fa_icon "angle-up"
+    - if current_user.id == @user.id
+      .form-wrapper
+        = form_for @user do |f|
+          %label{for: 'profile_img'}
+            = fa_icon 'images'
+            = f.file_field :image, class: "profile-image-change", id: "profile_img"
+            = f.button type: "submit", id: "profile_img_change" do
+              = fa_icon "angle-up"
     %h2.bold
-      = current_user.name
+      = @user.name
     .mypage-number
       %div
         評価
