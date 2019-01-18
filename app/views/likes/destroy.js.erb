@@ -1,0 +1,2 @@
+$('#like').remove();
+$('#like-button').prepend("<%= escape_javascript(render partial: 'products/like_create_form',locals: { product: @product }) %>");

@@ -24,7 +24,6 @@ gem 'coffee-rails', '~> 4.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -46,6 +45,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'rspec-rails'
   gem 'factory_girl_rails', "~> 4.4.1"
+  gem 'faker'
 end
 
 group :production do
@@ -62,14 +62,12 @@ group :development do
 end
 
 group :test do
-  gem 'faker'
   gem 'capybara', '>= 2.15'
   gem "rails-controller-testing"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'font-awesome-rails'
@@ -83,3 +81,4 @@ gem 'enum_help'
 gem 'payjp'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'sprockets'

@@ -8,6 +8,12 @@ class User < ApplicationRecord
   has_one :address,dependent: :destroy
   accepts_nested_attributes_for :address
   has_many :trades
+  has_many :likes,dependent: :destroy
+  has_many :liked_products, through: :likes, source: :product
+
+  def already_liked?(product)
+    likes.exists?(product_id: product.id)
+  end
 
   def self.from_omniauth(auth)
     user = User.find_by(email: auth.info.email)
