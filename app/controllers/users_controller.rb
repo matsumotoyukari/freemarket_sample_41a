@@ -5,6 +5,12 @@ class UsersController < ApplicationController
   protect_from_forgery except: :pay
 
   def index
+    @user = current_user
+  end
+
+  def update
+    current_user.update(update_user_profile)
+    redirect_to users_path
   end
 
   def register_cregit_card
@@ -24,6 +30,11 @@ class UsersController < ApplicationController
     else
       redirect_to register_cregit_card_path
     end
+  end
+
+  private
+  def update_user_profile
+    params.require(:user).permit(:image)
   end
 
 end
