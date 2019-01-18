@@ -1,6 +1,7 @@
 %section.mypage-user-icon
   = link_to "#" do
     %figure
+    - if @user.image?
       = image_tag("#{@user.image}", class: "profile-image")
     - if current_user.id == @user.id
       .form-wrapper
