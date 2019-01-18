@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :trades
   has_many :likes,dependent: :destroy
   has_many :liked_products, through: :likes, source: :product
+  has_many :comments
+
   mount_uploader :image, ImageUploader
 
   def already_liked?(product)

@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190118033307) do
+
+ActiveRecord::Schema.define(version: 20190118041308) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -43,6 +44,16 @@ ActiveRecord::Schema.define(version: 20190118033307) do
     t.integer  "sizetype_id"
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
     t.index ["sizetype_id"], name: "index_categories_on_sizetype_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "text",       limit: 65535, null: false
+    t.integer  "user_id",                  null: false
+    t.integer  "product_id",               null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["product_id"], name: "index_comments_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -144,6 +155,8 @@ ActiveRecord::Schema.define(version: 20190118033307) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.text     "name",                   limit: 65535
+    t.string   "provider"
+    t.string   "uid"
     t.string   "cardtoken"
     t.string   "payjp_id"
     t.integer  "point"
@@ -155,6 +168,8 @@ ActiveRecord::Schema.define(version: 20190118033307) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
   add_foreign_key "likes", "products"
   add_foreign_key "likes", "users"
   add_foreign_key "products", "areas"
