@@ -15,7 +15,6 @@
             %h2
               = link_to category_index_path ,class: "pc-header-nav-foot" do
                 カテゴリーから探す
-
             %ul.pc-header-nav-parent-wrap
               - @categoryroot.each do |root|
                 %li.pc-header-nav-parent
@@ -23,7 +22,8 @@
                     = link_to category_path(id: root.id) do
                       = root.name
                   %ul.pc-header-nav-child-wrap
-                    - root.children.first(14).each do |child|
+                    - root.children.
+                    first(14).each do |child|
                       %li.pc-header-nav-child
                         = link_to category_path(id: child.id) do
                           = child.name
@@ -36,19 +36,6 @@
                 %h3
                   = link_to category_index_path do
                     カテゴリー一覧
-
-
-
-
-
-
-
-
-
-
-
-
-
           %li
             %h2
               %a.pc-header-nav-root{href: ""} ブランドから探す

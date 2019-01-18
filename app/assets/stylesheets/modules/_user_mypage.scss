@@ -33,13 +33,22 @@
     left: 0;
     right : 0;
     transform: translate(0, -50%);
+    .form-wrapper{
+      margin-top: 3px;
+    }
     figure {
       overflow: hidden;
-      width : 60px;
-      height : 60px;
+      width : 65px;
+      height : 65px;
       margin : 0 auto;
-      border-radius : 50%;
-      display : block;
+      //border-radius : 50%;
+      display : inline-block;
+      .profile-image{
+        width: 65px;
+        height: 65px;
+        overflow: hidden;
+        border-radius: 50%;
+      }
       img {
         vertical-align: middle;
         }
@@ -273,6 +282,10 @@ h2{
   }
 }
 
+#profile_img{
+  display: none;
+}
+
 .angle-right {
   position: absolute;
   top: 23px;
@@ -283,4 +296,8 @@ h2{
 
 a{
   text-decoration: none;
+}
+
+#profile_img_change {
+  opacity: 0.6;
 }

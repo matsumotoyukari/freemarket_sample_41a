@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :products do
     resources :mypayjp, only: [:show]
     resources :likes,only: [:create, :destroy]
+    resources :comments,only: [:create,:destroy]
   end
 
   post "pay" => "users#pay"
