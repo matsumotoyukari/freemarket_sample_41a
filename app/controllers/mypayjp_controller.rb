@@ -21,7 +21,6 @@ require 'payjp'
     Trade.transaction do
       @trade = Trade.find_by(product_id: params[:id])
       @trade.user_id = current_user.id
-      @trade.deal = true
       @trade.save
       save_sellers_point(@product, amount)
     end
