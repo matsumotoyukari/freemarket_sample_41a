@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 
+  before_action :set_category
+
   def index
     @categoryroot = Category.find(1).siblings
     @ladies = search_product(Category.find(1))
@@ -16,6 +18,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
   end
+
 
   def create
     @product = Product.new(product_params)
