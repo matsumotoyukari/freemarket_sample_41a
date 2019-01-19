@@ -1,5 +1,16 @@
-.single-container{
+.single-containerl{
   padding: 0 0 220px;
+  .single-headerl{
+    height: 128px;
+    text-align: center;
+    h1{
+      padding: 40px 0 0;
+      img{
+        width: 185px;
+        height: 49px;
+      }
+    }
+  }
   .single-main{
     display: block;
     .login-panel{
