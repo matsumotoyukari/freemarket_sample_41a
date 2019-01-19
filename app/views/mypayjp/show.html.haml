@@ -4,7 +4,7 @@
   %section.buy-item
     .buy-content-inner
       %h3.buy-item-image
-        = image_tag "#{@product_images}"
+        = image_tag "#{@product.product_images[0].image}"
         %img.lazy-loaded(src="#{}")
       %p.buy-item-name
         = @product.name
