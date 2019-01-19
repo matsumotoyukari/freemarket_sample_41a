@@ -200,6 +200,33 @@
           color: #333;
           text-decoration: none;
           .items-box-photo {
+            .item-sold-out-badge{
+            div{
+              background-color: red;
+              position: absolute;
+              left: 0;
+              z-index: 2;
+              color: #fff;
+              transform: rotate(-45deg);
+              letter-spacing: 2px;
+              font-weight: 600;
+              top: 24px;
+              font-size: 28px;
+            }
+          }
+          .item-sold-out-badge:after{
+            border-width: 120px 120px 0 0;
+            border-color: #ea352d transparent transparent transparent;
+            display: block;
+            content: ‘’;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 0;
+            height: 0;
+            border-style: solid;
+          }
             width: 213px;
             overflow: hidden;
             position: relative;
