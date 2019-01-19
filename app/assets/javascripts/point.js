@@ -34,5 +34,5 @@ $(function() {
       }
       html = buildHTML()
       $(".button-wrapper").append(html)
-  }
+  });
 });
