@@ -1,5 +1,5 @@
 $(function(){
-  function separate(num){
+  function addCommaPrice(num){
     return String(num).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
   }
 
@@ -10,8 +10,8 @@ $(function(){
       $(".default-price").hide();
       var commission = Math.floor(price * 0.1),
       gain = Math.ceil(price - commission);
-      $(".default-commission").text("¥" + separate(commission)).show();
-      $(".default-gain").text("¥" + separate(gain)).show();
+      $(".default-commission").text("¥" + addCommaPrice(commission)).show();
+      $(".default-gain").text("¥" + addCommaPrice(gain)).show();
     } else {
       $(".default-price").text("-");
       $(".default-price").show();

@@ -9,7 +9,7 @@ $(function() {
   });
 
   // 幅変換
-  function widthEdit() {
+  function editImgWidth() {
     $(".preview").each(function(index){
       var count = $("li").find("img").length;
       var partsWidth = count * 160;
@@ -18,12 +18,12 @@ $(function() {
   }
 
   // プレビュー画像の数を取得
-  function imgCount() {
+  function countPreviewImages() {
     return $(".img-list").length;
   }
 
   // ファイルに値があるかチェックして値を持っていない選択エリアを表示
-  function inputCheck(){
+  function ShowNoInputAreaLast(){
     $(".sell-upload-drop-box").each(function(){
       fileCheck = $(this).find(".file").val().length;
       if(fileCheck == 0){
@@ -33,7 +33,7 @@ $(function() {
   }
 
   // 画像選択エリアに値があるかを調べて、なければその画像選択エリアを返す。
-  function inputCheckA(){
+  function ShowNoInputArea(){
     var abc = []
     $(".sell-upload-drop-box").each(function(i){
       if($(".have-item" + (i + 1)).find(".file").val().length == 0){
@@ -60,16 +60,16 @@ $(function() {
             fileField.hide();
 
           // プレビュー画像の数を取得
-            var num = imgCount();
+            var num = countPreviewImages();
           // プレビュー画像の数が３つ以下であれば値の入っていない画像選択エリアを表示し、他の画像選択エリアは見えなくする。
             if(num < 4){
-              inputCheckA()[0].siblings(".sell-upload-drop-box").hide();
-              inputCheckA()[0].show();
+              ShowNoInputArea()[0].siblings(".sell-upload-drop-box").hide();
+              ShowNoInputArea()[0].show();
             }
 
           // ファイルに値があるかチェックして値を持っていない選択エリアを表示（３つの場合
             if(num == 3){
-              inputCheck();
+              ShowNoInputAreaLast();
             }
 
             // ファイルの読み込みが完了したら読み込んだファイルの情報を与え、削除したときにこの画像選択エリアを表示し、この画像選択エリア以外は表示しない。
@@ -80,11 +80,11 @@ $(function() {
                   fileField.show();
                   fileField.find("input[type=file]").val('');
                   fileField.siblings(".sell-upload-drop-box").hide();
-                  widthEdit();
+                  editImgWidth();
                   return false;
                 });
             }
-            widthEdit();
+            editImgWidth();
             fileReader.readAsDataURL(fileProp);
       }
     i++;
