@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
   function buildHTML() {
     if(value > price){
       html = `<div class="btn-default btn-red">
@@ -18,9 +18,12 @@ $(function() {
 
   $("#point").on("keyup", function(e) {
     e.preventDefault()
-    var price = Number($(".buy-product-price").text())
+    var price = Number($(".buy-product-price-hidden").text())
     var value = Number($(this).val())
     var point = Number($(this).data('point'))
+    console.log(price)
+    console.log(value)
+    console.log(point)
     var usable_point = point - value
     var sell_price = price - value
     if(sell_price >= 0 && usable_point >= 0) {
@@ -35,4 +38,4 @@ $(function() {
       html = buildHTML()
       $(".button-wrapper").append(html)
   });
-});
+});*/
