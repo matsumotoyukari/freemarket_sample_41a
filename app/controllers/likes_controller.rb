@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   before_action :set_product,only: [:create,:destroy]
+  before_action :set_category
 
   def index
     @products = current_user.liked_products
