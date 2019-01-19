@@ -33,7 +33,7 @@
         /     %span
         /     .owl-dot-inner
         /       %img(src="https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m40712253135_4.jpg?1545354854")
-      - if @product.trade.deal == true
+      - if @product.trade.user_id?
         .item-sold-out-badge
           %div
             SOLD
