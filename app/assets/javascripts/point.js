@@ -1,4 +1,4 @@
-/*$(function() {
+$(function() {
   function buildHTML() {
     if(value > price){
       html = '<div class="btn-default btn-red">ポイントが不足しています。</div>'
@@ -29,4 +29,4 @@
       html = buildHTML()
       $(".button-wrapper").append(html)
   }
-})*/
+})
