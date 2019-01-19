@@ -32,11 +32,8 @@
     %h3.text-center
       %a{:href => ""}
         = Category.find(1).name + "新着アイテム"
-
     .items-box-content.clearfix
       = render partial: "productlist", collection: @ladies, as: :product
-
-
     .view-all
       %a{:href => ""} すべての商品を見る
 
@@ -46,7 +43,6 @@
         = Category.find(2).name + "新着アイテム"
     .items-box-content.clearfix
       = render partial: "productlist", collection: @mens, as: :product
-
     .view-all
       %a{:href => ""} すべての商品を見る
 
@@ -56,7 +52,6 @@
         = Category.find(3).name + "新着アイテム"
     .items-box-content.clearfix
       = render partial: "productlist", collection: @baby_products, as: :product
-
     .view-all
       %a{:href => ""} すべての商品を見る
 
@@ -66,10 +61,8 @@
         = Category.find(4).name + "新着アイテム"
     .items-box-content.clearfix
       = render partial: "productlist", collection: @interior_products, as: :product
-
     .view-all
       %a{:href => ""} すべての商品を見る
-
 
 %section.pickup-container
   %h2.pickup-head ピックアップブランド
