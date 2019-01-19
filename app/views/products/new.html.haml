@@ -24,7 +24,8 @@
                     %pre.visible-pc
                       :preserve
                         ドラッグアンドドロップ
-                        またはクリックしてファイルをアップロード
+                        or
+                        ファイルアップロード
                     = i.file_field :image, class: "file"
             .sell-content
               .form-group
@@ -51,16 +52,17 @@
                       必須
                   %div
                     .select-wrap
-                      = collection_select :category, :category_id, @categoryroot, :id, :name, {include_blank: "---"}, {class: "select-default select-box-parent"}
+                      = collection_select :product, :category_id, @categoryroot, :id, :name, {include_blank: "---"}, {class: "select-default select-box-parent"}
                       %i.fas.fa-chevron-down
                   - @categoryroot.each do |root|
                     .select-box-list
-                      = collection_select :category, :category_id, root.children, :id, :name,{include_blank: "---"}, {class: "select-default select-box-child",child_id: "#{root.id}"}
+                      = collection_select :product, :category_id, root.children, :id, :name,{include_blank: "---"}, {class: "select-default select-box-child",child_id: "#{root.id}"}
                       %i.fas.fa-chevron-down
                     - root.children.each do |son|
                       .select-box-list-son
                         = f.collection_select :category_id, son.children, :id, :name, {:include_blank => "---"}, {class: "select-default select-box-son", son_id: "#{son.id}"}
                         %i.fas.fa-chevron-down
+                  = f.hidden_field :category_id, {class: "category"}
                 / サイズを持つカテゴリーの商品を選択後追加されるフォーム
                 .form-group
                   = f.label :size_id do
@@ -96,7 +98,7 @@
                     = f.collection_select :shipingfee_id, Shipingfee.all, :id, :name, {:include_blank => "---"}, {class: "select-default select-delivery"}
                     %i.fas.fa-chevron-down
                 .form-group.form-group-shipment
-                  = f.label :shipment_id do
+                  = f.label :shipment_id, {id: "label-shipment"} do
                     配送の方法
                     %span.form-require 必須
                   .select-wrap
@@ -105,6 +107,7 @@
                   .select-wrap
                     = f.collection_select :shipment_id, @buyer, :id, :name, {:include_blank => "---"}, {class: "select-default select-method", shipingfee_id: 2}
                     %i.fas.fa-chevron-down
+                  = f.hidden_field :shipment_id, {class: "shipment"}
                 .form-group
                   = f.label :area_id do
                     発送元の地域

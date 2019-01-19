@@ -5,10 +5,13 @@ $(function(){
 
   $(".select-box-parent").on("change", function(){
     var parentId = $(this).val();
+    $(".select-box-son").val("");
+    $(".select-box-son").parent().hide();
 
     if(parentId == 0){
       $(".select-box-list-son").siblings(".select-box-list-son").hide();
     }
+
 
     $(".select-box-child").each(function(){
       if($(this).attr("child_id") == parentId){
@@ -22,6 +25,7 @@ $(function(){
 
   $(".select-box-child").on("change", function(){
     var childId = $(this).val();
+    $(".select-box-son").val("");
 
     $(".select-box-son").each(function(){
       if($(this).attr("son_id") == childId){
@@ -34,6 +38,8 @@ $(function(){
 
   $(".select-delivery").on("change", function(){
     var deliveryId = $(this).val();
+    $(".select-method").val("");
+
     if(deliveryId == 0){
       $(".form-group-shipment").hide();
     } else {
@@ -47,5 +53,15 @@ $(function(){
         $(this).parent().hide();
       }
     });
+  });
+
+  $(".select-box-son").on("change", function(){
+    var category = $(this).val();
+    $(".category").val(category);
+  });
+
+  $(".select-method").on("change", function(){
+    var shipment = $(this).val();
+    $(".shipment").val(shipment);
   });
 });
