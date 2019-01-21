@@ -100,10 +100,10 @@
       (税込)
     %span.item-shipping-fee
       送料込み
-  - if @product.trade.deal == false && @product.seller != current_user.id
+  - if @product.trade.deal == false && @product.seller != current_user.id && @product.trade.user_id.nil?
     = link_to product_mypayjp_path(@product), class: "item-buy-btn" do
       商品を購入する
-  - elsif @product.trade.deal == true
+  - else
     .item-buy-btn.disabled
       売り切れました
   .item-description

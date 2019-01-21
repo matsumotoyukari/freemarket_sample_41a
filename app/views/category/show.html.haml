@@ -17,6 +17,10 @@
       %h1.items-box-head
         = @category.name
       .items-box-content.clearfix.category-brand-list
-        = render partial: "products/productlist", collection: @products, as: :product
+        -if @products.length != 0
+          = render partial: "products/productlist", collection: @products, as: :product
+        -else
+          %h2.no-product
+            お探しの商品は見つかりませんでした。
 
 = render "products/footer"
