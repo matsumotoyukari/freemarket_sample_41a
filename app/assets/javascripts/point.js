@@ -5,7 +5,6 @@ $(function() {
                 それ以上のポイントは使用できません。
               </div>`
     } else if(input_point > point) {
-      console.log("ポイントオーバー")
       html = `<div class="btn-default btn-red">
                 ポイントが不足しています。
               </div>`
@@ -30,7 +29,6 @@ $(function() {
     $(".point").text(usable_point)
     $(".btn-default").remove()
     html = buildHTML(input_point, price, point)
-    console.log(html)
     $(".button-wrapper").append(html)
 
     if(sell_price < 0 && usable_point < 0) {
