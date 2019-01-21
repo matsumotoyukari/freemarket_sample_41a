@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+
+  before_filter :authenticate_user!, only: [:create, :destroy]
   before_action :set_product
 
 

@@ -11,33 +11,14 @@
               - @product.product_images.each do |image|
                 .owl-item
                   .owl-item-inner
-                    %img.owl-lazy(src="#{image.image_url}")
+                    = image_tag("#{image.image_url}", class: "owl-lazy")
         .owl-nav.disable
           .owl-prev
           .owl-next
-        / .owl-dots
-        /   .owl-dot
-        /     %span
-        /     .owl-dot-inner
-        /       %img(src="https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m40712253135_2.jpg?1545354854")
-        /   .owl-dot
-        /     %span
-        /     .owl-dot-inner
-        /       %img(src="https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m40712253135_3.jpg?1545354854")
-        /     .owl-item
-        /   .owl-dot
-        /     %span
-        /     .owl-dot-inner
-        /       %img(src="https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m40712253135_3.jpg?1545354854")
-        /   .owl-dot
-        /     %span
-        /     .owl-dot-inner
-        /       %img(src="https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m40712253135_4.jpg?1545354854")
-      - if @product.trade.deal == true
+      - if @product.trade.user_id?
         .item-sold-out-badge
           %div
             SOLD
-          / ここまで
     %table.item-detail-table
       %tbody
         %tr
@@ -45,7 +26,7 @@
             出品者
           %td
             =link_to "#" do
-              = @product.user.id
+              = @product.user.name
             %div
               %div.item-user-ratings
                 %i.fas.fa-smile
@@ -119,102 +100,82 @@
       (税込)
     %span.item-shipping-fee
       送料込み
-  - if @product.trade.deal == false
+  - if @product.trade.deal == false && @product.seller != current_user.id
     = link_to product_mypayjp_path(@product), class: "item-buy-btn" do
       商品を購入する
   - elsif @product.trade.deal == true
     .item-buy-btn.disabled
       売り切れました
-
   .item-description
     %p.item-description-inner
       = @product.detail
   .item-button-container.clearfix
-
     .item-button-left#like-button
-      - if current_user.already_liked?(@product)
-        = render partial: 'like_destroy_form', locals: { product: @product }
-      - else
-        = render partial: 'like_create_form', locals: { product: @product }
-      %a.item-button.item-button-report.crearfix
-        %i.far.fa-flag
-        %span 不適切な商品の報告
-
+      - if user_signed_in?
+        - if current_user.already_liked?(@product)
+          = render partial: 'like_destroy_form', locals: { product: @product }
+        - else
+          = render partial: 'like_create_form', locals: { product: @product }
+        %a.item-button.item-button-report.crearfix
+          %i.far.fa-flag
+          %span 不適切な商品の報告
     .item-button-right
-      %a(href='#')
+      = link_to "#" do
         %i.fas.fa-lock
         %span あんしん・あんぜんへの取り組み
-
-
-.listing-item-change-box
-  = link_to "商品の編集", edit_product_path ,class: "btn-default btn-red"
-  %p.text-center
-    or
-  = form_for @product , method: :delete do |f|
-    / %input(type ="hidden" name ="_csrf_value" value="damii")
-
-    %button.btn-default.btn-red(type= "submit")
-      出品を再開する
-
-    = f.submit 'この商品を消去する', class: "btn-default btn-gray"
-
-
-%ul.nav-item-link-prev-next.clearfix
-  %li.nav-item-link-prev
-    %a(href='#')
-      %i.fas.fa-chevron-left
-      商品名
-  %li.nav-item-link-next
-    %a(href='#')
-      商品名
+- if user_signed_in? && @product.seller == current_user.id
+  .listing-item-change-box
+    = link_to "商品の編集", edit_product_path ,class: "btn-default btn-red"
+    %p.text-center
+      or
+    = form_for @product , method: :delete do |f|
+      %button.btn-default.btn-red(type= "submit")
+        出品を再開する
+      = f.submit 'この商品を消去する', class: "btn-default btn-gray"
+  %ul.nav-item-link-prev-next.clearfix
+    %li.nav-item-link-prev
+      = link_to "#" do
+        %i.fas.fa-chevron-left
+        商品名
+    %li.nav-item-link-next
+      = link_to "#" do
+        商品名
       %i.fas.fa-chevron-right
-
-
-
 .item-social-media-box
-  / よくわからない者以下
   .text-center
     .fb-save.fb_iframe_widget
       %span
   %ul.social-media-box
     %li
-      %a.share-btn(href="#")
+      = link_to "#", {class: "share-btn"} do
         %i.fab.fa-facebook
     %li
-      %a.share-btn(href="#")
+      = link_to "#", {class: "share-btn"} do
         %i.fab.fa-twitter
     %li.social-hiddne-item
-      %a(href="#")
+      = link_to "#", {class: "share-btn"} do
         %i.fab.fa-line
     %li
-      %a(href="#")
+      = link_to "#", {class: "share-btn"} do
         %i.fab.fa-pinterest
-
-
 .item-detail-message
   .message-container
     .message-content
       %ul.message-items
-        / 以下コメント１セット
-
-
         - @comments.each do |comment|
           %li.clearfix
             = link_to root_path,class: "message-user" do
               %figure
                 %div
-                  %img(src="//static-mercari-jp-imgtr2.akamaized.net/thumb/members/110939089.jpg?1464094325")
+                  = image_tag(src="//static-mercari-jp-imgtr2.akamaized.net/thumb/members/110939089.jpg?1464094325")
                 %figcaption.bold
                   = comment.user.name
-                / 以下出品者だった場合
               - if comment.user == @product.seller
                 .message-is-seller
                   出品者
-                  / ここまで
             .message-body
               .message-body-text
                 = comment.text
-
               .message-icons.clearfix
                 .message-icon-left
                   %i.far.fa-clock
@@ -225,13 +186,9 @@
                       %i.fas.fa-trash
                   %i.fa.fa-flag
               .i.icon-balloon
-
-
     .message-content
       = form_for [@product,@comment],html: {class: "message-form"} do |f|
-        / %input(type="hidden")トークン用？
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         = f.text_area :text,class: "textarea-default"
         = f.button type: "submit",class: "message-submit" do
           %spam コメントする
-
