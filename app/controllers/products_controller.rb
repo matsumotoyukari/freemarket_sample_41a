@@ -13,6 +13,9 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     4.times { @product.product_images.build}
+    @categoryroot = Category.find(1).siblings
+    @exhibitor = Shipment.where(shipingfee_id: 1)
+    @buyer = Shipment.where(shipingfee_id: 2)
   end
 
   def show
@@ -47,6 +50,9 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @categoryroot = Category.find(1).siblings
+    @exhibitor = Shipment.where(shipingfee_id: 1)
+    @buyer = Shipment.where(shipingfee_id: 2)
   end
 
   def update
