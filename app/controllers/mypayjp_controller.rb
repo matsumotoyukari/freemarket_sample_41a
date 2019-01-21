@@ -1,4 +1,6 @@
 class MypayjpController < ApplicationController
+
+  before_filter :authenticate_user!, only: [:show, :create_charge]
   before_action :set_product, only: [:show, :create_charge]
 
 require 'payjp'
