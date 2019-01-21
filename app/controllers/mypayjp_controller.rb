@@ -1,9 +1,14 @@
 class MypayjpController < ApplicationController
+
+  before_filter :authenticate_user!, only: [:show, :create_charge]
   before_action :set_product, only: [:show, :create_charge]
 
 require 'payjp'
 
   def show
+    if current_user.id == @product.seller
+      redirect_to product_path
+    end
     @user = current_user
     @area = Area.find_by(id: current_user.address.prefecture)
     @product_images = ProductImage.find_by(product_id: params[:id])

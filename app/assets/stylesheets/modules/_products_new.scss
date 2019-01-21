@@ -48,33 +48,70 @@
                             list-style: none;
                             display: block;
                             width: 100%;
+                              li {
+                                width: 140px;
+                                height: 182px;
+                                display: inline-block;
+                                border: 1px solid #eee;
+                                  figure {
+                                    min-height: 140px;
+                                    height: 140px;
+                                    width: 140px;
+                                    margin: 0;
+                                    background: #000;
+                                      img {
+                                        width: 100%;
+                                        height: 100%;
+                                      }
+                                  }
+                                  .sell-upload-button {
+                                    font-size: 14px;
+                                      label {
+                                        box-sizing: border-box;
+                                        display: inline-block;
+                                        width: 50%;
+                                        background: #f5f5f5;
+                                        line-height: 44px;
+                                        text-align: center;
+                                        color: #0099e8;
+                                        cursor: pointer;
+                                      }
+                                      a {
+                                        &:last-child {
+                                          border-left: 1px solid #eee;
+                                        }
+                                        box-sizing: border-box;
+                                        display: inline-block;
+                                        width: 50%;
+                                        background: #f5f5f5;
+                                        line-height: 44px;
+                                        text-align: center;
+                                        color: #0099e8;
+                                      }
+                                  }
+                              }
                           }
                       }
                       .sell-upload-drop-box {
                             float: right;
                             position: relative;
-                            width: 538px;
-                            // width: 50px;
+                            width: 540px;
                             margin: 0;
                             min-height: 102px;
                             padding: 40px;
                             background: #f5f5f5;
                             border: 1px dashed #ccc;
-                            // font-size: 0;
                             text-align: center;
                             cursor: pointer;
                               pre {
                                 position: absolute;
-                                top: 40%;
-                                left: 16px;
+                                top: 35%;
+                                left: 10px;
                                 right: 16px;
                               }
                       }
-                      .have-item {
-                        margin: 0 0 0 20px;
-                      }
                       .file {
-                        // display: none;
+                        display: none;
                       }
                   }
                   .clearfix:after {
@@ -129,6 +166,34 @@
                         line-height: 1.5;
                         // outline: 0;
                       }
+                      .select-box-list {
+                        margin: 8px 0 0;
+                        position: relative;
+                        background: #fff;
+                        width: 400px;
+                          .select-default {
+                              -webkit-appearance: none;
+                              width: 100%;
+                              position: relative;
+                              z-index: 2;
+                              height: 48px;
+                              padding: 0 16px;
+                              border-radius: 4px;
+                              border: 1px solid #ccc;
+                              background: 0;
+                              font-size: 16px;
+                              line-height: 1.5;
+                              cursor: pointer;
+                              // outline: 0;
+                            }
+                            .fa-chevron-down {
+                              position: absolute;
+                              top: 35%;
+                              right: 16px;
+                              color: #888;
+                              font-size: 18px;
+                            }
+                      }
                       .select-wrap {
                         margin: 8px 0 0;
                         position: relative;
@@ -156,6 +221,34 @@
                             color: #888;
                             font-size: 18px;
                           }
+                      }
+                      .select-box-list-son {
+                        margin: 8px 0 0;
+                        position: relative;
+                        background: #fff;
+                        width: 400px;
+                          .select-default {
+                              -webkit-appearance: none;
+                              width: 100%;
+                              position: relative;
+                              z-index: 2;
+                              height: 48px;
+                              padding: 0 16px;
+                              border-radius: 4px;
+                              border: 1px solid #ccc;
+                              background: 0;
+                              font-size: 16px;
+                              line-height: 1.5;
+                              cursor: pointer;
+                              // outline: 0;
+                            }
+                            .fa-chevron-down {
+                              position: absolute;
+                              top: 35%;
+                              right: 16px;
+                              color: #888;
+                              font-size: 18px;
+                            }
                       }
                   }
                   .sell-sub-head {
