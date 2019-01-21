@@ -7,7 +7,7 @@ require 'payjp'
 
   def show
     if current_user.id == @product.seller
-      redirect_to prouct_path
+      redirect_to product_path
     end
     @user = current_user
     @area = Area.find_by(id: current_user.address.prefecture)
