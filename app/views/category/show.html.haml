@@ -1,4 +1,14 @@
 = render "products/header"
+- if @category.root?
+  - breadcrumb :rootcategory, @category
+
+- elsif @category.children?
+  - breadcrumb :childcategory, @category
+
+- else @category.childless?
+  - breadcrumb :soncategory, @category
+%nav.pan
+  = breadcrumbs separator: " > "
 %main.l-container.clearfix
   .l-content.full-width
     %ul.parts-nav
