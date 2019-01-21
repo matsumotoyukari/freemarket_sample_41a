@@ -43,7 +43,7 @@
         .l-right2
           %ul.pc-header-user-nav
             %li
-              = link_to new_user_session class: "pc-header-nav-root" do
+              = link_to users_path, class: "pc-header-nav-root" do
                 マイページ
             %li
               = link_to destroy_user_session_path, method: :delete,class: "pc-header-logout" do
@@ -52,7 +52,7 @@
         .l-right2
           %ul.pc-header-login-nav
             %li
-              = link_to users_path, class: "sp-header-btn btn-red" do
+              = link_to new_user_session, class: "sp-header-btn btn-red" do
                 ログイン
             %li
               = link_to new_user_path, class: "sp-header-btn header-signup" do
