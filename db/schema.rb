@@ -142,9 +142,9 @@ ActiveRecord::Schema.define(version: 20190118041308) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.text     "name",                   limit: 65535
+    t.string   "cardtoken"
     t.string   "provider"
     t.string   "uid"
-    t.string   "cardtoken"
     t.string   "payjp_id"
     t.integer  "point"
     t.string   "image"

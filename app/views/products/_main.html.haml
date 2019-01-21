@@ -35,7 +35,6 @@
         = link_to category_path(Category.find(1)) do
           = Category.find(1).name + "新着アイテム"
 
-
       .items-box-content.clearfix
         = render partial: "productlist", collection: @ladies, as: :product
 
