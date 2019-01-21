@@ -29,51 +29,50 @@
         = link_to "",root_path,class: "top-banner banner-welcome"
 %section.pickup-container
   %h2.pickup-head ピックアップカテゴリー
-  - if @ladies.length != 0
+  - if @ladies_products.length != 0
     %section.items-box-container.clearfix
       %h3.text-center
-        = link_to category_path(Category.find(1)) do
-          = Category.find(1).name + "新着アイテム"
+        = link_to category_path(@ladies) do
+          = @ladies.name + "新着アイテム"
+
 
       .items-box-content.clearfix
-        = render partial: "productlist", collection: @ladies, as: :product
+        = render partial: "productlist", collection: @ladies_products, as: :product
 
 
       .view-all
-        = link_to category_path(Category.find(1)) do
+        = link_to category_path(@ladies) do
           すべての商品を見る
-  - if @mens.length != 0
+  - if @mens_products.length != 0
     %section.items-box-container.clearfix
       %h3.text-center
-        = link_to category_path(Category.find(2)) do
-          = Category.find(2).name + "新着アイテム"
+        = link_to category_path(@mens) do
+          = @mens.name + "新着アイテム"
       .items-box-content.clearfix
-        = render partial: "productlist", collection: @mens, as: :product
+        = render partial: "productlist", collection: @mens_products, as: :product
 
       .view-all
-        = link_to category_path(Category.find(2)) do
+        = link_to category_path(@mens) do
           すべての商品を見る
   - if @baby_products.length != 0
     %section.items-box-container.clearfix
       %h3.text-center
-        = link_to category_path(Category.find(3)) do
-          = Category.find(3).name + "新着アイテム"
+        = link_to category_path(@baby) do
+          = @baby.name + "新着アイテム"
       .items-box-content.clearfix
         = render partial: "productlist", collection: @baby_products, as: :product
 
       .view-all
-        = link_to category_path(Category.find(3)) do
+        = link_to category_path(@baby) do
           すべての商品を見る
   - if @interior_products.length != 0
     %section.items-box-container.clearfix
       %h3.text-center
-        = link_to category_path(Category.find(4)) do
-          = Category.find(4).name + "新着アイテム"
+        = link_to category_path(@interior) do
+          = @interior.name + "新着アイテム"
       .items-box-content.clearfix
         = render partial: "productlist", collection: @interior_products, as: :product
 
       .view-all
-        = link_to category_path(Category.find(4)) do
+        = link_to category_path(@interior) do
           全ての商品を見る
-
-
