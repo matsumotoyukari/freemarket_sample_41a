@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   PARENT = 1
 
   def set_category
-    @categoryroot = Category.find(1).siblings
+    @categoryroot = Category.find(PARENT).siblings
   end
 
   private
