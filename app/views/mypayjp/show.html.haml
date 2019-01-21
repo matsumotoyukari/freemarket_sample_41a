@@ -22,7 +22,7 @@
                 利用可能ポイント
                 .point
                   = @user.point
-                = number_field_tag :point
+                = number_field_tag :point, :point, {"data-point" => "#{@user.point}"}
                 %br
               - else
                 .btn-default
