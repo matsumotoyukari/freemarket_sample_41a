@@ -6,6 +6,9 @@ class MypayjpController < ApplicationController
 require 'payjp'
 
   def show
+    if current_user.id == @product.seller
+      redirect_to prouct_path
+    end
     @user = current_user
     @area = Area.find_by(id: current_user.address.prefecture)
     @product_images = ProductImage.find_by(product_id: params[:id])
