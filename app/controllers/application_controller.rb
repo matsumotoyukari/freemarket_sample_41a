@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   include PaysHelper
 
+  PARENT = 1
+
   def set_category
     @categoryroot = Category.find(1).siblings
   end
