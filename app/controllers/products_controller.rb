@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
 
+  before_filter :authenticate_user!, only: [:new, :create, :destroy, :edit, :update]
   before_action :set_category
 
   def index
