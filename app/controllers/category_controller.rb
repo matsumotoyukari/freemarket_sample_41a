@@ -1,5 +1,6 @@
 class CategoryController < ApplicationController
   def index
+    @category = Category.find(1)
     @categoryroot = Category.find(1).siblings
   end
 
