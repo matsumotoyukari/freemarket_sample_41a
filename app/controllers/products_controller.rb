@@ -5,9 +5,13 @@ class ProductsController < ApplicationController
 
   def index
     @categoryroot = Category.find(1).siblings
-    @ladies = search_product(Category.find(1))
-    @mens = search_product(Category.find(2))
+    @ladies = Category.find(1)
+    @ladies_products = search_product(Category.find(1))
+    @mens = Category.find(2)
+    @mens_products = search_product(Category.find(2))
+    @baby = Category.find(3)
     @baby_products = search_product(Category.find(3))
+    @interior = Category.find(4)
     @interior_products = search_product(Category.find(4))
   end
 
