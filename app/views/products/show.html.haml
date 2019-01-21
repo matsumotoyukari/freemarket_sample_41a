@@ -11,7 +11,7 @@
               - @product.product_images.each do |image|
                 .owl-item
                   .owl-item-inner
-                    %img.owl-lazy(src="#{image.image_url}")
+                    = image_tag(src="#{image.image_url}", class: "owl-lazy")
         .owl-nav.disable
           .owl-prev
           .owl-next
@@ -26,7 +26,7 @@
             出品者
           %td
             =link_to "#" do
-              = @product.user.id
+              = @product.user.name
             %div
               %div.item-user-ratings
                 %i.fas.fa-smile
@@ -100,7 +100,7 @@
       (税込)
     %span.item-shipping-fee
       送料込み
-  - if @product.trade.deal == false
+  - if @product.trade.deal == false && @product.seller != current_user.id
     = link_to product_mypayjp_path(@product), class: "item-buy-btn" do
       商品を購入する
   - elsif @product.trade.deal == true
@@ -120,25 +120,26 @@
           %i.far.fa-flag
           %span 不適切な商品の報告
     .item-button-right
-      %a(href='#')
+      = link_to "#" do
         %i.fas.fa-lock
         %span あんしん・あんぜんへの取り組み
-.listing-item-change-box
-  = link_to "商品の編集", edit_product_path ,class: "btn-default btn-red"
-  %p.text-center
-    or
-  = form_for @product , method: :delete do |f|
-    %button.btn-default.btn-red(type= "submit")
-      出品を再開する
-    = f.submit 'この商品を消去する', class: "btn-default btn-gray"
-%ul.nav-item-link-prev-next.clearfix
-  %li.nav-item-link-prev
-    = link_to "#" do
-      %i.fas.fa-chevron-left
-      商品名
-  %li.nav-item-link-next
-    = link_to "#" do
-      商品名
+- if user_signed_in? && @product.seller == current_user.id
+  .listing-item-change-box
+    = link_to "商品の編集", edit_product_path ,class: "btn-default btn-red"
+    %p.text-center
+      or
+    = form_for @product , method: :delete do |f|
+      %button.btn-default.btn-red(type= "submit")
+        出品を再開する
+      = f.submit 'この商品を消去する', class: "btn-default btn-gray"
+  %ul.nav-item-link-prev-next.clearfix
+    %li.nav-item-link-prev
+      = link_to "#" do
+        %i.fas.fa-chevron-left
+        商品名
+    %li.nav-item-link-next
+      = link_to "#" do
+        商品名
       %i.fas.fa-chevron-right
 .item-social-media-box
   .text-center
