@@ -35,6 +35,9 @@
                 %i.fas.fa-frown
                 %label{for: "face3"}
                   悪い
+          = f.button type: "submit",class: "btn-default" do
+            評価を投稿する
+
         - if current_user.id == @product.seller
           %ul.transact-review-list.clearfix
             %li
