@@ -12,7 +12,8 @@ class User < ApplicationRecord
   has_many :likes,dependent: :destroy
   has_many :liked_products, through: :likes, source: :product
   has_many :comments
-  has_many :rates
+  has_many :buyer_rates, class_name: "Rate", foreign_key: :buyer_id
+  has_many :seller_rates,class_name: "Rate", foreign_key: :seller_id
 
 
   mount_uploader :image, ImageUploader
