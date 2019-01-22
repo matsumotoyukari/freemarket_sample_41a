@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   protect_from_forgery except: :pay
 
   def index
+    @purchase_products = current_user.purchase_products
     @user = User.find(1)
   end
 
@@ -17,6 +18,26 @@ class UsersController < ApplicationController
   end
 
   def register_cregit_card
+  end
+
+  def purchase
+    @purchase_products = current_user.purchase_products
+  end
+
+  def purchased
+    @purchase_products = current_user.purchase_products
+  end
+
+  def listings
+    @products = current_user.products
+  end
+
+  def progress
+    @products = current_user.products
+  end
+
+  def completed
+    @products = current_user.products
   end
 
   def pay
