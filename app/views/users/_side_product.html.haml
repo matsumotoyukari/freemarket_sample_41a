@@ -1,0 +1,26 @@
+.l-side
+  %section.l-side-product
+    %h3.transact-info-head
+      取引情報
+
+    .transact-info-inner
+      %ul.transact-info-table
+        %li.transact-info-table-row
+          %span.transact-info-table-cell
+            商品
+          %ul.transact-info-table-cell
+            %li
+              = link_to product_path(product) do
+                -if product.product_images.present?
+                  =image_tag product.product_images[0].image_url,class: "is-higher-height lazyloaded"
+                .transact-info-item.bold
+                  = product.name
+                  %br
+                  = converting_to_jpy(product.price)
+        %li.transact-info-table-row
+          %span.transact-info-table-cell
+            送料
+          %ul.transact-info-table-cell
+            %li
+              = product.shipingfee.name
+
