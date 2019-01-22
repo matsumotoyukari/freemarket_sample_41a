@@ -1,4 +1,4 @@
-.single-container
+.single-container1
   %header.single-header
     %h1
       %a
@@ -24,7 +24,7 @@
     %section.l-single-container
       %h2.l-single-head
         会員情報登録
-      = breadcrumbs separator: " > "
+      .l-single-inner
       = form_for(resource, as: resource_name, url: registration_path(resource_name))  do |f|
         .l-single-content
           .form-group
@@ -57,3 +57,5 @@
           .form-group.rbt
             = f.submit "次に進む", class: "btn-default btn-red"
             = f.hidden_field :point, value: "500"
+
+    = render "users/footer.html.haml"

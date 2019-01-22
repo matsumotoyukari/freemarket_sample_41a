@@ -1,22 +1,34 @@
 class ProductsController < ApplicationController
 
+  before_filter :authenticate_user!, only: [:new, :create, :destroy, :edit, :update]
   before_action :set_category
 
   def index
     @categoryroot = Category.find(1).siblings
-    @ladies = search_product(Category.find(1))
-    @mens = search_product(Category.find(2))
+    @ladies = Category.find(1)
+    @ladies_products = search_product(Category.find(1))
+    @mens = Category.find(2)
+    @mens_products = search_product(Category.find(2))
+    @baby = Category.find(3)
     @baby_products = search_product(Category.find(3))
+    @interior = Category.find(4)
     @interior_products = search_product(Category.find(4))
   end
 
   def new
     @product = Product.new
     4.times { @product.product_images.build}
+    @categoryroot = Category.find(1).siblings
+    @exhibitor = Shipment.where(shipingfee_id: 1)
+    @buyer = Shipment.where(shipingfee_id: 2)
   end
 
   def show
     @product = Product.find(params[:id])
+    @seller = User.find_by(id: @product.seller)
+    @another_product = @seller.products.where.not(id: @product.id)
+    @same_category = @product.category
+    @same_category_products = @same_category.products.where.not(id: @product.id)
     @comment = Comment.new
     @comments = Comment.where(product_id: @product.id)
   end
@@ -47,6 +59,9 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @categoryroot = Category.find(1).siblings
+    @exhibitor = Shipment.where(shipingfee_id: 1)
+    @buyer = Shipment.where(shipingfee_id: 2)
   end
 
   def update

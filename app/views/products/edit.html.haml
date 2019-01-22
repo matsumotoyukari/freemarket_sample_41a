@@ -51,15 +51,17 @@
                     %span.form-require
                       必須
                   %div
-                    / .select-wrap
-                    /   = f.collection_select :category_id, Category.all, :id, :name, {:include_blank => "---"}, {class: "select-default"}
-                    /   %i.fas.fa-chevron-down
-                    / .select-wrap
-                    /   = f.collection_select :category_id, Category.all, :id, :name, {:include_blank => "---"}, {class: "select-default"}
-                    /   %i.fas.fa-chevron-down
                     .select-wrap
-                      = f.collection_select :category_id, Category.all, :id, :name, {:include_blank => "---"}, {class: "select-default"}
+                      = collection_select :category, :category_id, @categoryroot, :id, :name, {include_blank: "---"}, {class: "select-default select-box-parent"}
                       %i.fas.fa-chevron-down
+                  - @categoryroot.each do |root|
+                    .select-box-list
+                      = collection_select :category, :category_id, root.children, :id, :name,{include_blank: "---"}, {class: "select-default select-box-child",child_id: "#{root.id}"}
+                      %i.fas.fa-chevron-down
+                    - root.children.each do |son|
+                      .select-box-list-son
+                        = f.collection_select :category_id, son.children, :id, :name, {:include_blank => "---"}, {class: "select-default select-box-son", son_id: "#{son.id}"}
+                        %i.fas.fa-chevron-down
                 / サイズを持つカテゴリーの商品を選択後追加されるフォーム
                 .form-group
                   = f.label :size_id do
@@ -92,14 +94,17 @@
                     配送料の負担
                     %span.form-require 必須
                   .select-wrap
-                    = f.collection_select :shipingfee_id, Shipingfee.all, :id, :name, {:include_blank => "---"}, {class: "select-default"}
+                    = f.collection_select :shipingfee_id, Shipingfee.all, :id, :name, {:include_blank => "---"}, {class: "select-default select-delivery"}
                     %i.fas.fa-chevron-down
-                .form-group
+                .form-group.form-group-shipment
                   = f.label :shipment_id do
                     配送の方法
                     %span.form-require 必須
                   .select-wrap
-                    = f.collection_select :shipment_id, Shipment.all, :id, :name, {:include_blank => "---"}, {class: "select-default"}
+                    = f.collection_select :shipment_id, @exhibitor, :id, :name, {:include_blank => "---"}, {class: "select-default select-method", shipingfee_id: 1}
+                    %i.fas.fa-chevron-down
+                  .select-wrap
+                    = f.collection_select :shipment_id, @buyer, :id, :name, {:include_blank => "---"}, {class: "select-default select-method", shipingfee_id: 2}
                     %i.fas.fa-chevron-down
                 .form-group
                   = f.label :area_id do
@@ -128,15 +133,15 @@
                       .l-right.sell-price-input
                         ¥
                         %div
-                          = f.text_field :price, class: "input-default", placeholder: "例）300"
+                          = f.text_field :price, class: "input-default input-price", placeholder: "例）300"
                   %li.clearfix
                     .l-left
                       販売手数料 (10%)
-                    .l-right -
+                    .l-right.default-price.default-commission -
                   %li.clearfix.bold
                     .l-left
                       販売利益
-                    .l-right -
+                    .l-right.default-price.default-gain -
             .modal{role: "dialog", tabindex: "-1"}
               .modal-inner
             .sell-content.sell-btn-box

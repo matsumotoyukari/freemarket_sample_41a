@@ -1,4 +1,14 @@
 = render "products/header"
+- if @category.root?
+  - breadcrumb :rootcategory, @category
+
+- elsif @category.children?
+  - breadcrumb :childcategory, @category
+
+- else @category.childless?
+  - breadcrumb :soncategory, @category
+%nav.pan
+  = breadcrumbs separator: " > "
 %main.l-container.clearfix
   .l-content.full-width
     %ul.parts-nav
@@ -17,6 +27,10 @@
       %h1.items-box-head
         = @category.name
       .items-box-content.clearfix.category-brand-list
-        = render partial: "products/productlist", collection: @products, as: :product
+        -if @products.length != 0
+          = render partial: "products/productlist", collection: @products, as: :product
+        -else
+          %h2.no-product
+            お探しの商品は見つかりませんでした。
 
 = render "products/footer"

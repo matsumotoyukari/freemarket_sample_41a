@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_filter :authenticate_user!, only: [:register_cregit_card, :update, :pay, :create_charge]
+
   require 'payjp'
 
   before_action :set_category

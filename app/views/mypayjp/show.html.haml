@@ -4,12 +4,14 @@
   %section.buy-item
     .buy-content-inner
       %h3.buy-item-image
-        = image_tag "#{@product_images}"
+        = image_tag "#{@product.product_images[0].image}"
         %img.lazy-loaded(src="#{}")
       %p.buy-item-name
         = @product.name
       = form_tag("/testpay/#{@product.id}" ,method: "post", class: "buy-form") do
         %p.buy-product-price
+          .buy-product-price-hidden(style="display: none")
+            = @product.price
           = converting_to_jpy(@product.price)
           %span.item-shipping-fee
             送料込み
@@ -20,7 +22,7 @@
                 利用可能ポイント
                 .point
                   = @user.point
-                = number_field_tag :point, "0"
+                = number_field_tag :point, :point, {"data-point" => "#{@user.point}"}
                 %br
               - else
                 .btn-default
@@ -30,7 +32,7 @@
             .buy-price-cell
               支払金額
             .buy-price-cell-fix
-              = converting_to_jpy(@product.price)
+              = @product.price
               = hidden_field_tag 'price', "#{@product.price}"
         %p.has-error-text
           配送先と支払い方法の入力を完了してください。
