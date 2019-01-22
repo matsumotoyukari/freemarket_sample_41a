@@ -15,8 +15,8 @@ class ProductsController < ApplicationController
     @product = Product.new
     IMAGE_COUNT.times { @product.product_images.build}
     @categoryroot = Category.find(1).siblings
-    @exhibitor = Shipment.where(shipingfee_id: 1)
-    @buyer = Shipment.where(shipingfee_id: 2)
+    @exhibitor = Shipment.exhibitor
+    @buyer = Shipment.buyer
   end
 
   def show
@@ -54,8 +54,8 @@ class ProductsController < ApplicationController
     count = @product.product_images.count
     (IMAGE_COUNT - count).times { @product.product_images.build }
     @categoryroot = Category.find(1).siblings
-    @exhibitor = Shipment.where(shipingfee_id: 1)
-    @buyer = Shipment.where(shipingfee_id: 2)
+    @exhibitor = Shipment.exhibitor
+    @buyer = Shipment.buyer
     category_id = @product.category_id
     @category_ids = Category.find_by(id: category_id).path_ids
   end
