@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  require "user.rb"
 
   before_filter :authenticate_user!, only: [:new, :create, :destroy, :edit, :update]
   before_action :set_category
@@ -31,9 +32,9 @@ class ProductsController < ApplicationController
     @same_category_products = @same_category.products.where.not(id: @product.id)
     @comment = Comment.new
     @comments = Comment.where(product_id: @product.id)
-    @rate_good = good_rate_count(@seller)
-    @rate_nomal = nomal_rate_count(@seller)
-    @rate_bad = bad_rate_count(@seller)
+    @rate_good = @seller.good_rate_count
+    @rate_nomal = @seller.nomal_rate_count
+    @rate_bad = @seller.bad_rate_count
   end
 
 
