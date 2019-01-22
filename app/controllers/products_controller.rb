@@ -27,6 +27,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @seller = User.find_by(id: @product.seller)
     @another_product = @seller.products.where.not(id: @product.id)
+    @same_category = @product.category
+    @same_category_products = @same_category.products.where.not(id: @product.id)
     @comment = Comment.new
     @comments = Comment.where(product_id: @product.id)
   end
