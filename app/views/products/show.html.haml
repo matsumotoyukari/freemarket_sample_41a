@@ -195,10 +195,18 @@
         = f.text_area :text,class: "textarea-default"
         = f.button type: "submit",class: "message-submit" do
           %spam コメントする
-  .items-container
-    %h2.items-container-head
-      %p
-        = "#{@seller.name} さんの他の出品"
-    .items-container-content.clearfix
-      = render partial: "productlist", collection: @another_product, as: :product
+  - if @another_product
+    .items-container
+      %h2.items-container-head
+        %p
+          = "#{@seller.name} さんの他の出品"
+      .items-container-content.clearfix
+        = render partial: "productlist", collection: @another_product, as: :product
+  - if @same_category_products
+    .items-container
+      %h2.items-container-head
+        %p
+          同じカテゴリーの商品
+      .items-container-content.clearfix
+        = render partial: "productlist", collection: @same_category_products, as: :product
 = render "products/footer"
