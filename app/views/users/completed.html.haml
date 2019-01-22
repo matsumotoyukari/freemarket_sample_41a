@@ -1,0 +1,57 @@
+= render "products/header"
+/ - breadcrumb :users_index
+%nav.aaa
+  = breadcrumbs separator: " > "
+
+%main.l-container.clearfix
+  .l-content
+    %section.mypage-tab-container
+      %h2.mypage-tab-head
+        出品した商品
+      %ul.mypage-tabs.exhibit
+        %li.bold
+          %h3
+            = link_to mypage_listings_path do
+              出品中
+        %li.bold
+          %h3
+            = link_to mypage_progress_path do
+              取引中
+        %li.bold.active
+          %h3
+            = link_to mypage_completed_path do
+              売却済み
+      .tab-content
+        - if @products
+          %ul#mypage-tab-transaction-now.active-item
+            - @products.each do |product|
+              -if product.trade.deal == true
+                %li
+                  = link_to "/transaction/#{product.id}",class: "mypage-item-link" do
+                    %figure
+                      - if product.product_images.present?
+                        = image_tag "#{product.product_images[0].image}",alt: "#{product.name}"
+                        %figcaption.mypage-sold
+                          .item-sold-out-badge
+                            %div SOLD
+                    .mypage-item-body
+                      .mypage-item-text
+                        = "「#{product.name}」を購入しました"
+                        %br
+                      .mypage-item-status.bold.action-required
+                        取引完了
+              - else
+                %li.mypage-item-not-found.bold
+                  取引完了の商品がありません
+
+        - else
+          %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane
+            %li.mypage-item-not-found.bold
+              取引完了の商品がありません
+
+  = render "sidebar"
+
+= render "products/footer"
+
+
+
