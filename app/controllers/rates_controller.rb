@@ -1,7 +1,7 @@
 class RatesController < ApplicationController
   before_action :set_category
 
-  def transaction
+  def new
     @product = Product.find(params[:product_id])
     @rate = Rate.new
   end
@@ -13,8 +13,11 @@ class RatesController < ApplicationController
     elsif current_user.id == @product.trade.user_id
       @rate = Rate.new(params_seller_rate)
     end
-    @rate.save
-    redirect_to users_path
+    if @rate.save
+      redirect_to users_path
+    else
+      redirect_to new_product_rate_path(@product)
+    end
   end
 
   def edit
@@ -27,14 +30,23 @@ class RatesController < ApplicationController
     @rate = @product.rate
     if current_user.id == @product.seller
       @rate.update(params_buyer_rate)
+      @trade = @product.trade
+      @trade.deal = true
+      if @trade.save
+        redirect_to users_path
+      else
+        redirect_to edit_product_rate_path(@product,@product.rate)
+      end
     elsif current_user.id == @product.trade.user_id
       @rate.update(params_seller_rate)
+      @trade = @product.trade
+      @trade.deal = true
+      if @trade.save
+        redirect_to users_path
+      else
+        redirect_to edit_product_rate_path(@product,@product.rate)
+      end
     end
-    @trade = @product.trade
-    @trade.deal = true
-    @trade.save
-
-    redirect_to users_path
 
   end
 
