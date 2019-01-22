@@ -1,0 +1,11 @@
+= render "products/header"
+/ - breadcrumb :users_index
+%nav.aaa
+  = breadcrumbs separator: " > "
+
+%main.l-container.clearfix
+  .l-content
+    = render "bought_product"
+  = render "sidebar"
+
+= render "products/footer"
