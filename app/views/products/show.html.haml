@@ -1,4 +1,7 @@
 = render "products/header"
+- breadcrumb :product, @product
+%nav.pan
+  = breadcrumbs separator: " > "
 %section.item-box-container.l-single-container
   %h1.item-name
     = @product.name
@@ -100,10 +103,10 @@
       (税込)
     %span.item-shipping-fee
       送料込み
-  - if @product.trade.deal == false && @product.seller != current_user.id
+  - if @product.trade.deal == false && @product.trade.user_id.nil?
     = link_to product_mypayjp_path(@product), class: "item-buy-btn" do
       商品を購入する
-  - elsif @product.trade.deal == true
+  - else
     .item-buy-btn.disabled
       売り切れました
   .item-description
@@ -192,3 +195,18 @@
         = f.text_area :text,class: "textarea-default"
         = f.button type: "submit",class: "message-submit" do
           %spam コメントする
+  - if @another_product
+    .items-container
+      %h2.items-container-head
+        %p
+          = "#{@seller.name} さんの他の出品"
+      .items-container-content.clearfix
+        = render partial: "productlist", collection: @another_product, as: :product
+  - if @same_category_products
+    .items-container
+      %h2.items-container-head
+        %p
+          同じカテゴリーの商品
+      .items-container-content.clearfix
+        = render partial: "productlist", collection: @same_category_products, as: :product
+= render "products/footer"
