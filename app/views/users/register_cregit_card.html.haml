@@ -1,31 +1,17 @@
 %body
-  .single-container
-    %main.single-main
-      %section.l-single-container
-        %h2.l-single-head 支払い方法
-        %form#add-card-form.l-single-inner{action: "/pay", method: "POST"}
+  %main.l-single-main
+    %section.l-single-container
+      %h2.l-single-head 支払い方法
+      = form_tag '/pay', class: "l-single-inner", id: "add-card-form" do |f|
+        .l-single-content
           .form-group
-            %label{for: "payment_card_no"} カード番号
+            = label_tag :payment_card_no do
+              カード番号
             %span.form-require 必須
-            %input#payment_card_no.input-default{"data-input-type" => "card", name: "number", maxlength: "19", placeholder: "半角数字のみ", type: "text", value: ""}/
-            %ul#card-no-error-wrapper.has-error-text
-            %ul.signup-card-list
-              %li
-                %img{alt: "", height: "20", src: "", width: "49"}/
-              %li
-                %img{alt: "", height: "20", src: "", width: "34"}/
-              %li
-                %img{alt: "", height: "20", src: "", width: "30"}/
-              %li
-                %img{alt: "", height: "20", src: "", width: "32"}/
-              %li
-                %img{alt: "", height: "20", src: "", width: "21"}/
-              %li
-                %img{alt: "", height: "20", src: "", width: "32"}/
-              %li
-                %img{alt: "", height: "20", src: "", width: "32"}/
+            = text_field_tag :number, "", {class: "input-default", id: "payment_card_no", maxlength: "16", placeholder: "半角数字のみ"}
           .form-group.signup-form-expire
-            %label{for: "payment_card_expire"} 有効期限
+            = label_tag :payment_card_expire do
+              有効期限
             %span.form-require 必須
             %br/
             .select-wrap4
@@ -62,13 +48,27 @@
             %span 年
             %ul#expire-yy-error-wrapper.has-error-text
           .form-group
-            %label{for: "payment_card_security_code"} セキュリティコード
+            = label_tag :payment_card_security_code do
+              セキュリティコード
             %span.form-require 必須
-            %input#payment_card_security_code.input-default{placeholder: "カード背面4桁もしくは3桁の番号", type: "number", value: "", name: "cvc"}/
+            = number_field_tag :cvc, "", {class: "input-default", id: "payment_card_security_code", placeholder: "カード背面4桁もしくは3桁の番号"}
             %ul#security-code-error-wrapper.has-error-text
             .signup-seqcode
               .signup-seqcode-text{"data-js" => "show-tips-toggle"}
                 %span.form-question>
                 %i.fas.fa-question-circle
                 カード裏面の番号とは？
-          %button#submit-button.btn-default.btn-red{type: "submit"} 次へ進む
+          = submit_tag "次へ進む", {class: "btn-red btn-default", id: "submit-button"}
+  %footer.single-footer
+    %nav
+      %ul.clearfix
+        %li
+          %a{href: "https://www.mercari.com/jp/privacy/"} プライバシーポリシー
+        %li
+          %a{href: "https://www.mercari.com/jp/tos/"} メルカリ利用規約
+        %li
+          %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+    %a.single-footer-logo{href: "https://www.mercari.com/jp/"}
+      %img{alt: "mercari", height: "65", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?327793976", width: "80"}/
+    %p
+      %small © 2019 Mercari

@@ -1,12 +1,10 @@
 = render "products/header"
-- breadcrumb :users_index
-%nav.pan
+/ - breadcrumb :users_index
+%nav.aaa
   = breadcrumbs separator: " > "
 
 %main.l-container.clearfix
   .l-content
-    = render "user_icon"
-    = render "infomation"
     = render "bought_product"
   = render "sidebar"
 
