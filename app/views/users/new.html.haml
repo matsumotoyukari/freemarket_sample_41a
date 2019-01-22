@@ -12,11 +12,11 @@
             メールアドレスで登録
           %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
             %i.fa.fa-facebook-official.fa-2x
-            = link_to user_facebook_omniauth_authorize_path do
+            = link_to user_facebook_omniauth_authorize_path, class: "word-designation" do
               Facebookで登録
           %button#google-login.btn-default.btn-sns.btn-sns-google
             %i.fab.fa-google-plus-g.fa-2x
-            = link_to user_google_oauth2_omniauth_authorize_path do
+            = link_to user_google_oauth2_omniauth_authorize_path, class: "word-designation" do
               Googleで登録
 
   = render "users/footer.html.haml"
