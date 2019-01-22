@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @seller = User.find_by(id: @product.seller)
-    @another_product = @seller.products.where(seller: @seller.id).where.not(id: @product.id)
+    @another_product = @seller.products.where.not(id: @product.id)
     @comment = Comment.new
     @comments = Comment.where(product_id: @product.id)
   end
