@@ -9,17 +9,6 @@ class ApplicationController < ActionController::Base
     @categoryroot = Category.find(Constants::PARENT).siblings
   end
 
-  def good_rate_count(user)
-    user.buyer_rates.where(buyer_rate: 1).count + @seller.seller_rates.where(seller_rate: 1).count
-  end
-
-  def nomal_rate_count(user)
-    user.buyer_rates.where(buyer_rate: 2).count + @seller.seller_rates.where(seller_rate: 2).count
-  end
-
-  def bad_rate_count(user)
-    user.buyer_rates.where(buyer_rate: 3).count + @seller.seller_rates.where(seller_rate: 3).count
-  end
 
   private
   def search_product(category)

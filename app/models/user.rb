@@ -22,6 +22,18 @@ class User < ApplicationRecord
     likes.exists?(product_id: product.id)
   end
 
+  def good_rate_count
+    self.buyer_rates.where(buyer_rate: 1).count + self.seller_rates.where(seller_rate: 1).count
+  end
+
+  def nomal_rate_count
+    self.buyer_rates.where(buyer_rate: 2).count + self.seller_rates.where(seller_rate: 2).count
+  end
+
+  def bad_rate_count
+    self.buyer_rates.where(buyer_rate: 3).count + self.seller_rates.where(seller_rate: 3).count
+  end
+
   def self.from_omniauth(auth)
     user = User.find_by(email: auth.info.email)
     if user
