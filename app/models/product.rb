@@ -9,6 +9,8 @@ class Product < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
   has_many :comments
+  has_one :rate
+  belongs_to :shipingfee
 
   with_options presence: true do
     validates :name, length: { maximum: 40 }
