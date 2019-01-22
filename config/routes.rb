@@ -14,6 +14,16 @@ Rails.application.routes.draw do
     resources :comments,only: [:create,:destroy]
   end
 
+
+  get "mypage/purchase" => "users#purchase"
+  get "mypage/purchased" => "users#purchased"
+  get "mypage/listings" => "users#listings"
+  get "mypage/progress" => "users#progress"
+  get "mypage/completed" => "users#completed"
+  get "transaction/:product_id" => "rates#transaction"
+  get "transaction/:product_id/edit" => "rates#edit"
+  post "transaction/:product_id" => "rates#create"
+  patch "transaction/:product_id" => "rates#update"
   post "pay" => "users#pay"
   get "register_cregit_card" => "users#register_cregit_card"
   get "search" => "products#search"
