@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190118041308) do
+ActiveRecord::Schema.define(version: 20190122031759) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -95,6 +95,19 @@ ActiveRecord::Schema.define(version: 20190118041308) do
     t.index ["size_id"], name: "index_products_on_size_id", using: :btree
   end
 
+  create_table "rates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "seller_id",   null: false
+    t.integer  "product_id",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "buyer_id"
+    t.integer  "buyer_rate"
+    t.integer  "seller_rate"
+    t.index ["buyer_id"], name: "index_rates_on_buyer_id", using: :btree
+    t.index ["product_id"], name: "index_rates_on_product_id", using: :btree
+    t.index ["seller_id"], name: "index_rates_on_seller_id", using: :btree
+  end
+
   create_table "shipingfees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
@@ -162,6 +175,9 @@ ActiveRecord::Schema.define(version: 20190118041308) do
   add_foreign_key "products", "shipingfees"
   add_foreign_key "products", "shipments"
   add_foreign_key "products", "users", column: "seller"
+  add_foreign_key "rates", "products"
+  add_foreign_key "rates", "users", column: "buyer_id"
+  add_foreign_key "rates", "users", column: "seller_id"
   add_foreign_key "shipments", "shipingfees"
   add_foreign_key "sizes", "sizetypes"
   add_foreign_key "trades", "products"
