@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
     @categoryroot = Category.find(Constants::PARENT).siblings
   end
 
-
   private
   def search_product(category)
     if category.children?
