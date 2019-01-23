@@ -32,6 +32,9 @@ class ProductsController < ApplicationController
     @same_category_products = @same_category.products.where.not(id: @product.id)
     @comment = Comment.new
     @comments = Comment.where(product_id: @product.id)
+    @rate_good = @seller.good_rate_count
+    @rate_nomal = @seller.nomal_rate_count
+    @rate_bad = @seller.bad_rate_count
   end
 
 

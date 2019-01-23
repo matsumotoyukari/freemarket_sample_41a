@@ -12,13 +12,26 @@ class User < ApplicationRecord
   has_many :likes,dependent: :destroy
   has_many :liked_products, through: :likes, source: :product
   has_many :comments
-  has_many :rates
+  has_many :buyer_rates, class_name: "Rate", foreign_key: :buyer_id
+  has_many :seller_rates,class_name: "Rate", foreign_key: :seller_id
 
 
   mount_uploader :image, ImageUploader
 
   def already_liked?(product)
     likes.exists?(product_id: product.id)
+  end
+
+  def good_rate_count
+    self.buyer_rates.where(buyer_rate: 1).count + self.seller_rates.where(seller_rate: 1).count
+  end
+
+  def nomal_rate_count
+    self.buyer_rates.where(buyer_rate: 2).count + self.seller_rates.where(seller_rate: 2).count
+  end
+
+  def bad_rate_count
+    self.buyer_rates.where(buyer_rate: 3).count + self.seller_rates.where(seller_rate: 3).count
   end
 
   def self.from_omniauth(auth)
