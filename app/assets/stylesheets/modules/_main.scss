@@ -89,12 +89,12 @@
             .banner-bokurano-heisei {
               display: block;
               height: 390px;
-              background-image: url(https://www.mercari.com/jp/assets/img/common/jp/top/banner-bokurano-heisei.jpg);
+              background-image: image-url("banner-new-register-2019.jpg");
             }
             .banner-kusanagi {
               display: block;
               height: 390px;
-              background-image: url(https://www.mercari.com/jp/assets/img/common/jp/top/banner-bokurano-heisei-entertainment.png);
+              background-image: image-url("banner-bokurano-heisei-entertainment.png");
             }
             .banner-welcome {
               display: block;
@@ -103,7 +103,7 @@
               background-position: center;
               background-repeat: no-repeat;
               background-color: #D9F7FF;
-              background-image: url(https://www.mercari.com/jp/assets/img/common/jp/top/banner-featured-hobby.jpg);
+              background-image: image-url("banner-featured-hobby.jpg");
             }
         }
     }
