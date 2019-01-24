@@ -51,7 +51,12 @@ test:
 #
 production:
   <<: *default
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
   database: freemarket_sample_41a_production
+  pool: 5
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
+  host: <%= EMV['END_POINT'] %>
