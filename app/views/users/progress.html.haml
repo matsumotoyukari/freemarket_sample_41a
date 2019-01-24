@@ -33,11 +33,11 @@
                             %div SOLD
                     .mypage-item-body
                       .mypage-item-text
-                        = "「#{product.name}」を購入しました"
+                        = "「#{product.name}」を取引開始しました"
                         %br
-                        受け取り評価をしてください
+                        評価をしてください
                       .mypage-item-status.bold.action-required
-                        受取評価待ち
+                        評価をしてください
               - elsif product.rate.buyer_rate.nil?
                 %li
                   = link_to edit_product_rate(product,product.rate),class: "mypage-item-link" do
@@ -49,7 +49,7 @@
                             %div SOLD
                     .mypage-item-body
                       .mypage-item-text
-                        = "「#{product.name}」を購入しました"
+                        = "「#{product.name}」を取引開始しました"
                         %br
                         購入者に評価をしてください
                       .mypage-item-status.bold.action-required
@@ -65,11 +65,11 @@
                             %div SOLD
                     .mypage-item-body
                       .mypage-item-text
-                        = "「#{product.name}」を購入しました"
+                        = "「#{product.name}」を取引開始しました"
                         %br
-                        出品者の評価を待っています
-                      .mypage-item-status.bold.action-required
-                        出品者の評価待ち
+                        購入者の評価待ちです
+                      .mypage-item-status.bold.evaluated
+                        購入者の評価待ち
               - else
                 %li.mypage-item-not-found.bold
                   取引中の商品がありません
