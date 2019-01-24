@@ -1,6 +1,12 @@
+.flash-notice {
+  background-color: #b1ff00;
+  color: #fff;
+  text-align: center;
+}
 .pc-header.visible-pc{
   height: 83px;
   background-color: #fff;
+  padding-top: 10px;
   .pc-header-inner{
     height: 83px;
     width: 1020px;
@@ -9,7 +15,6 @@
     .clearfix{
       width: 1020px;
       height: 36px;
-      margin-top: 10px;
       h1.l-left{
         background-repeat: no-repeat;
         margin: 0px;
