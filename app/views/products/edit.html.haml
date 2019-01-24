@@ -4,7 +4,7 @@
 %main.single-main
   %section.l-single-container.sell-item-container
     #sell-container
-      %div{"data-reactroot" => ""}
+      %div
         .sell-container-inner
           %h2.l-single-head 商品の情報を入力
           = form_for @product, html: {class: "sell-form"} do |f|
@@ -18,15 +18,22 @@
               .sell-dropbox-container.clearfix.state-image-number-4
                 .sell-upload-items-container
                   .sell-upload-items.have-item-0
-                    %ul
+                    %ul.preview
+                      - @product.product_images.each_with_index do |images, index|
+                        - if images.image.present?
+                          %li{class: "img-list img-list#{index}"}
+                            %figure.img-list-figure
+                              = image_tag images.image.to_s, {alt: "", class: "img#{index}"}
+                            .sell-upload-button
+                              = link_to "削除", edit_product_path, id: "delete", class: "delete#{index}"
                 = f.fields_for :product_images do |i|
-                  .sell-upload-drop-box.have-item
+                  %label.sell-upload-drop-box.have-item
                     %pre.visible-pc
                       :preserve
                         ドラッグアンドドロップ
-                        またはクリックしてファイルをアップロード
+                        or
+                        ファイルアップロード
                     = i.file_field :image, class: "file"
-                    = i.hidden_field :id, value: i.object.id
             .sell-content
               .form-group
                 = f.label :name do
@@ -52,32 +59,32 @@
                       必須
                   %div
                     .select-wrap
-                      = collection_select :category, :category_id, @categoryroot, :id, :name, {include_blank: "---"}, {class: "select-default select-box-parent"}
+                      = collection_select :product, :category_id, @categoryroot, :id, :name, {include_blank: "---"}, {class: "select-default select-box-parent"}
                       %i.fas.fa-chevron-down
                   - @categoryroot.each do |root|
                     .select-box-list
-                      = collection_select :category, :category_id, root.children, :id, :name,{include_blank: "---"}, {class: "select-default select-box-child",child_id: "#{root.id}"}
-                      %i.fas.fa-chevron-down
+                      - if @category_ids[0] == root.id
+                        = collection_select :product, :category_id, root.children, :id, :name,{include_blank: "---"}, {class: "select-default select-box-child active",child_id: "#{root.id}"}
+                        %i.fas.fa-chevron-down
+                      - else
+                        = collection_select :product, :category_id, root.children, :id, :name,{include_blank: "---"}, {class: "select-default select-box-child",child_id: "#{root.id}"}
+                        %i.fas.fa-chevron-down
                     - root.children.each do |son|
                       .select-box-list-son
-                        = f.collection_select :category_id, son.children, :id, :name, {:include_blank => "---"}, {class: "select-default select-box-son", son_id: "#{son.id}"}
-                        %i.fas.fa-chevron-down
-                / サイズを持つカテゴリーの商品を選択後追加されるフォーム
+                        - if @category_ids[1] == son.id
+                          = f.collection_select :category_id, son.children, :id, :name, {:include_blank => "---"}, {class: "select-default select-box-son active", son_id: "#{son.id}"}
+                          %i.fas.fa-chevron-down
+                        - else
+                          = f.collection_select :category_id, son.children, :id, :name, {:include_blank => "---"}, {class: "select-default select-box-son", son_id: "#{son.id}"}
+                          %i.fas.fa-chevron-down
+                  = f.hidden_field :category_id, {class: "category"}
                 .form-group
                   = f.label :size_id do
                     サイズ
                     %span.form-require 必須
                   .select-wrap
-                    = f.collection_select :size_id, Size.all, :id, :name, {:include_blank => "---"}, {class: "select-default"}
+                    = f.collection_select :size_id, Size.all, :id, :name, {include_blank: "---"}, {class: "select-default"}
                     %i.fas.fa-chevron-down
-                / ブランドを持つカテゴリーを選択後追加されるフォーム
-                / .form-group.form-suggest-container
-                /   %label
-                /     ブランド
-                /     %span.form-arbitrary 任意
-                /   %div
-                /     %input.input-default{:placeholder => "例）シャネル", :value => ""}/
-                /     %div
                 .form-group
                   = f.label :condition do
                     商品の状態
@@ -94,24 +101,25 @@
                     配送料の負担
                     %span.form-require 必須
                   .select-wrap
-                    = f.collection_select :shipingfee_id, Shipingfee.all, :id, :name, {:include_blank => "---"}, {class: "select-default select-delivery"}
+                    = f.collection_select :shipingfee_id, Shipingfee.all, :id, :name, {include_blank: "---"}, {class: "select-default select-delivery"}
                     %i.fas.fa-chevron-down
                 .form-group.form-group-shipment
-                  = f.label :shipment_id do
+                  = f.label :shipment_id, {id: "label-shipment", class: "active"} do
                     配送の方法
                     %span.form-require 必須
                   .select-wrap
-                    = f.collection_select :shipment_id, @exhibitor, :id, :name, {:include_blank => "---"}, {class: "select-default select-method", shipingfee_id: 1}
+                    = f.collection_select :shipment_id, @exhibitor, :id, :name, {include_blank: "---"}, {class: "select-default select-method", shipingfee_id: 1}
                     %i.fas.fa-chevron-down
                   .select-wrap
-                    = f.collection_select :shipment_id, @buyer, :id, :name, {:include_blank => "---"}, {class: "select-default select-method", shipingfee_id: 2}
+                    = f.collection_select :shipment_id, @buyer, :id, :name, {include_blank: "---"}, {class: "select-default select-method", shipingfee_id: 2}
                     %i.fas.fa-chevron-down
+                  = f.hidden_field :shipment_id, {class: "shipment"}
                 .form-group
                   = f.label :area_id do
                     発送元の地域
                     %span.form-require 必須
                   .select-wrap
-                    = f.collection_select :area_id, Area.all, :id, :name, {:include_blank => "---"}, {class: "select-default"}
+                    = f.collection_select :area_id, Area.all, :id, :name, {include_blank: "---"}, {class: "select-default"}
                     %i.fas.fa-chevron-down
                 .form-group
                   = f.label :shipmentday do
@@ -122,7 +130,7 @@
                     %i.fas.fa-chevron-down
             .sell-content.clearfix
               %h3.sell-sub-head 販売価格(300〜9,999,999)
-              %a.form-question{href: "/", target: "_blank"} ?
+              = link_to "?", root_path, class: "form-question"
               .sell-form-box
                 %ul.sell-price
                   %li.form-group
@@ -147,24 +155,20 @@
             .sell-content.sell-btn-box
               %div
                 %p
-                  %a{href: "/", target: "_blank"}
-                    禁止されている出品
+                  = link_to "禁止されている出品", root_path
                   、
-                  %a{href: "/", target: "_blank"}
-                    行為
+                  = link_to "行為", root_path
                   を必ずご確認ください。
                 %p
                   またブランド品でシリアルナンバー等がある場合はご記載ください。
-                  %a{href: "/", target: "_blank"} 偽ブランドの販売
+                  = link_to "偽ブランドの販売", root_path
                   は犯罪であり処罰される可能性があります。
                 %p
                   また、出品をもちまして
-                  %a{href: "/"}
-                    加盟店規約
+                  = link_to "加盟店規約", root_path
                   に同意したことになります。
               = f.submit "変更する", class: "btn-default btn-red"
-              %a.btn-default.btn-gray{href: "/"}
-                もどる
+              = link_to "もどる", root_path, class: "btn-default btn-gray"
           .overlay
-= render "users/footer.html.haml"
 
+= render "users/footer.html.haml"
