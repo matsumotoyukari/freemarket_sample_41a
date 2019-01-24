@@ -22,7 +22,7 @@
         - if @products
           %ul#mypage-tab-transaction-now.active-item
             - @products.each do |product|
-              -if product.rate.nil?
+              -if product.trade.user_id.present? && product.rate.nil?
                 %li
                   = link_to new_product_rate_path(product),class: "mypage-item-link" do
                     %figure
@@ -38,9 +38,9 @@
                         評価をしてください
                       .mypage-item-status.bold.action-required
                         評価をしてください
-              - elsif product.rate.buyer_rate.nil?
+              - elsif product.rate.present? && product.rate.buyer_rate.nil?
                 %li
-                  = link_to edit_product_rate(product,product.rate),class: "mypage-item-link" do
+                  = link_to edit_product_rate_path(product,product.rate),class: "mypage-item-link" do
                     %figure
                       - if product.product_images.present?
                         = image_tag "#{product.product_images[0].image}",alt: "#{product.name}"
@@ -54,7 +54,7 @@
                         購入者に評価をしてください
                       .mypage-item-status.bold.action-required
                         取引評価待ち
-              - elsif product.rate.seller_rate.nil?
+              - elsif product.rate.present? && product.rate.seller_rate.nil?
                 %li
                   = link_to product_path(product),class: "mypage-item-link" do
                     %figure
@@ -70,9 +70,7 @@
                         購入者の評価待ちです
                       .mypage-item-status.bold.evaluated
                         購入者の評価待ち
-              - else
-                %li.mypage-item-not-found.bold
-                  取引中の商品がありません
+
 
         - else
           %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane
