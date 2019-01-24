@@ -37,9 +37,9 @@
                         %br
                       .mypage-item-status.bold.action-required
                         取引完了
-              - else
-                %li.mypage-item-not-found.bold
-                  取引完了の商品がありません
+            - if @products.none?{|product| product.trade.deal == true}
+              %li.mypage-item-not-found.bold
+                取引完了の商品がありません
 
         - else
           %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane
