@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :area
   belongs_to :size
-  accepts_nested_attributes_for :product_images
+  accepts_nested_attributes_for :product_images, allow_destroy: true
   has_one :trade, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user

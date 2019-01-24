@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def index
     @purchase_products = current_user.purchase_products
     @user = User.find(1)
+    @rate_count = current_user.buyer_rates.count + current_user.seller_rates.count
   end
 
   def update

@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 
   before_filter :authenticate_user!, only: [:new, :create, :destroy, :edit, :update]
   before_action :set_category
+  IMAGE_COUNT = 4
 
   def index
     @categoryroot = Category.find(1).siblings
@@ -17,10 +18,10 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    4.times { @product.product_images.build}
+    IMAGE_COUNT.times { @product.product_images.build}
     @categoryroot = Category.find(1).siblings
-    @exhibitor = Shipment.where(shipingfee_id: 1)
-    @buyer = Shipment.where(shipingfee_id: 2)
+    @exhibitor = Shipment.exhibitor
+    @buyer = Shipment.buyer
   end
 
   def show
@@ -31,6 +32,9 @@ class ProductsController < ApplicationController
     @same_category_products = @same_category.products.where.not(id: @product.id)
     @comment = Comment.new
     @comments = Comment.where(product_id: @product.id)
+    @rate_good = @seller.good_rate_count
+    @rate_nomal = @seller.nomal_rate_count
+    @rate_bad = @seller.bad_rate_count
   end
 
 
@@ -41,7 +45,7 @@ class ProductsController < ApplicationController
       Trade.create(product_id: @product.id)
       redirect_to root_path(@product)
     else
-      render :action => "new"
+      redirect_to new_product_path
     end
   end
 
@@ -59,9 +63,13 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    count = @product.product_images.count
+    (IMAGE_COUNT - count).times { @product.product_images.build }
     @categoryroot = Category.find(1).siblings
-    @exhibitor = Shipment.where(shipingfee_id: 1)
-    @buyer = Shipment.where(shipingfee_id: 2)
+    @exhibitor = Shipment.exhibitor
+    @buyer = Shipment.buyer
+    category_id = @product.category_id
+    @category_ids = Category.find_by(id: category_id).path_ids
   end
 
   def update
@@ -70,7 +78,7 @@ class ProductsController < ApplicationController
       @product.update(update_product_params)
       redirect_to root_path(@product)
     else
-      render action: "edit"
+      redirect_to edit_product_path
     end
   end
 
@@ -81,6 +89,6 @@ class ProductsController < ApplicationController
   end
 
   def update_product_params
-    params.require(:product).permit(:name, :detail, :condition, :category_id, :size_id, :shipingfee_id, :shipment_id, :area_id, :shipmentday, :price, product_images_attributes: [:image, :destroy, :id]).merge(seller: current_user.id)
+    params.require(:product).permit(:name, :detail, :condition, :category_id, :size_id, :shipingfee_id, :shipment_id, :area_id, :shipmentday, :price, product_images_attributes: [:image, :_destroy, :id]).merge(seller: current_user.id)
   end
 end
