@@ -40,9 +40,9 @@ class ProductsController < ApplicationController
 
     if @product.save
       Trade.create(product_id: @product.id)
-      redirect_to root_path(@product)
+      redirect_to root_path(@product), notice: "出品が完了しました"
     else
-      redirect_to new_product_path
+      redirect_to new_product_path, alert: "必須項目をすべて選択してください"
     end
   end
 
@@ -73,9 +73,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if @product.seller == current_user.id
       @product.update(update_product_params)
-      redirect_to root_path(@product)
+      redirect_to root_path(@product), notice: "編集が完了しました"
     else
-      redirect_to edit_product_path
+      redirect_to edit_product_path, alert: "必須項目をすべて選択してください"
     end
   end
 
