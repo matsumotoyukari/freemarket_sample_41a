@@ -21,18 +21,11 @@
                 %figure
                   - if product.product_images.present?
                     = image_tag "#{product.product_images[0].image}",alt: "#{product.name}"
-                    %figcaption.mypage-sold
-                      .item-sold-out-badge
-                        %div SOLD
                 .mypage-item-body
                   .mypage-item-text
                     = product.name
                   .mypage-item-text
                     = converting_to_jpy(product.price)
-          - else
-            %li.mypage-item-not-found.bold
-              取引中の商品がありません
-
 
     - else
       %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane

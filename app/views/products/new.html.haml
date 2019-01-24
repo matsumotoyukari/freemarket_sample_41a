@@ -1,6 +1,8 @@
+- if flash[:alert]
+  %p#flash.flash-alert
+    = flash[:alert]
 .single-container{style: 'padding: 0;'}
   = render "users/header.html.haml"
-
 %main.single-main
   %section.l-single-container.sell-item-container
     #sell-container

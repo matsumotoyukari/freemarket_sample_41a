@@ -15,6 +15,7 @@ require 'payjp'
   end
 
   def create_charge
+    @product = Product.find(params[:id])
     customer_id = current_user.payjp_id
     point = params[:point].to_i
     amount = @product.price - point
