@@ -1,0 +1,68 @@
+= render "products/header"
+/ - breadcrumb :users_index
+%nav.aaa
+  = breadcrumbs separator: " > "
+
+%main.l-container.clearfix
+  .l-content
+    %section.l-chapter-container
+      %h2.l-chapter-head
+        取引画面
+      .transact-attention
+        %h3
+          %i.fas.fa-grin-alt
+          %span 受取評価をして下さい
+          %p
+            商品が発送されました。商品が到着したら、出品者の評価をしてください。
+      = form_for @rate ,url: {:action => :create},html: {class: "transact-form-review"} do |f|
+        - if current_user.id == @product.trade.user_id
+          %ul.transact-review-list.clearfix
+            %li
+              = f.radio_button :seller_rate,1,id: "face1"
+              .transact-review-icon
+                %i.fas.fa-smile
+                %label{for: "face1"}
+                  良い
+            %li
+              = f.radio_button :seller_rate,2,id: "face2"
+              .transact-review-icon
+                %i.fas.fa-meh
+                %label{for: "face2"}
+                  普通
+            %li
+              = f.radio_button :seller_rate,3,id: "face3"
+              .transact-review-icon
+                %i.fas.fa-frown
+                %label{for: "face3"}
+                  悪い
+          = f.button type: "submit",class: "btn-default" do
+            評価を投稿する
+
+        - if current_user.id == @product.seller
+          %ul.transact-review-list.clearfix
+            %li
+              = f.radio_button :buyer_rate,1,id: "face1"
+              .transact-review-icon
+                %i.fas.fa-smile
+                %label{for: "face1"}
+                  良い
+            %li
+              = f.radio_button :buyer_rate,2,id: "face2"
+              .transact-review-icon
+                %i.fas.fa-meh
+                %label{for: "face2"}
+                  普通
+            %li
+              = f.radio_button :buyer_rate,3,id: "face3"
+              .transact-review-icon
+                %i.fas.fa-frown
+                %label{for: "face3"}
+                  悪い
+
+          = f.button type: "submit",class: "btn-default" do
+            評価を投稿する
+
+
+  = render partial: "users/side_product", locals: {product: @product}
+
+= render "products/footer"
