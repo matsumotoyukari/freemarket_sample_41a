@@ -89,12 +89,12 @@
             .banner-bokurano-heisei {
               display: block;
               height: 390px;
-              background-image: url(https://www.mercari.com/jp/assets/img/common/jp/top/banner-bokurano-heisei.jpg);
+              background-image: image-url("banner-new-register-2019.jpg");
             }
             .banner-kusanagi {
               display: block;
               height: 390px;
-              background-image: url(https://www.mercari.com/jp/assets/img/common/jp/top/banner-bokurano-heisei-entertainment.png);
+              background-image: image-url("banner-bokurano-heisei-entertainment.png");
             }
             .banner-welcome {
               display: block;
@@ -103,7 +103,7 @@
               background-position: center;
               background-repeat: no-repeat;
               background-color: #D9F7FF;
-              background-image: url(https://www.mercari.com/jp/assets/img/common/jp/top/banner-featured-hobby.jpg);
+              background-image: image-url("banner-featured-hobby.jpg");
             }
         }
     }
@@ -200,33 +200,6 @@
           color: #333;
           text-decoration: none;
           .items-box-photo {
-            &-badge{
-            div{
-              background-color: red;
-              position: absolute;
-              left: 0;
-              z-index: 2;
-              color: #fff;
-              transform: rotate(-45deg);
-              letter-spacing: 2px;
-              font-weight: 600;
-              top: 24px;
-              font-size: 28px;
-            }
-          }
-          &-badge:after{
-            border-width: 120px 120px 0 0;
-            border-color: #ea352d transparent transparent transparent;
-            display: block;
-            content: ‘’;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            width: 0;
-            height: 0;
-            border-style: solid;
-          }
             width: 213px;
             overflow: hidden;
             position: relative;
@@ -304,9 +277,32 @@
 
 
 
-
-
-
+.items-box-photo-badge{
+  div{
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    color: #fff;
+    transform: rotate(-45deg);
+    letter-spacing: 2px;
+    font-weight: 600;
+    top: 24px;
+    font-size: 28px;
+  }
+}
+.items-box-photo-badge:after{
+  border-width: 120px 120px 0 0;
+  border-color: #ea352d transparent transparent transparent;
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
 
 
 
